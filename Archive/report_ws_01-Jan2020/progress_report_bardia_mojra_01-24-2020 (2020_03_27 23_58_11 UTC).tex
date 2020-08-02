@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{makecell}
+\usepackage[caption=false,font=footnotesize,subrefformat=parens,labelformat=parens]{subfig}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[table]{xcolor}
+
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{.05in}
+\pagestyle{plain}
+
+%Title, date an author of the document
+\title{Progress Report}
+\author{Bardia Mojra}
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+
+
+
+\section{Progress}
+\begin{itemize}
+  \item I read \cite{DLSISR}, \cite{DCSR}, \cite{ImRegSurvey},\cite{discoman} and \cite{ImSRwVDRCAN}; they have helped me begin to understand a bigger picture. For super resolution I first need to understand each step as it is shown in \cite{DLSISR}, super resolution is a multi-stage process and each step adds certain improvement to the over performance of SR system. 
+  
+  \item I began with \cite{ImRegSurvey} which provides steps that include detecting features, feature matching, image transformation and final resampling. \cite{ImSRwVDRCAN} and \cite{RCANforImClass} go over RCAN or residual channel attention networks which is a training model that provides separate training paths for different sets of features such as low and high frequency features. This helps with fine detail recovery, although lost information can never be recovered, this technique provides a way of recreating such trivial details based on what is learned from training data set. 
+  
+  \item Currently I am working on understanding \cite{DCSR} which explains dilated convolutions for single image SR. It appears that we can recover more details by expanding the kernel in some step. I am still working through the paper. 
+  
+  \item Nolan has been doing the coding, I tried to get in on it but I am afraid at this point I would only slow him down and our deadline is coming up soon. I began by finding some of the code needed and we go over the code and discuss everyday we work on it. We still need a repository for more engaged code development, our SVN-OneDrive repository does seem to work anymore and we don't want to spend too much time on it. 
+      
+  \item Regarding scene awareness and semantic SLAM, I read \cite{discoman}. It opens the gate for me, I see the system but still have to do more reading to understand each sub component of the system. 
+
+\end{itemize}
+
+\section{Plans}
+\begin{itemize}
+ \item Continue to learn Nolan's code. 
+
+ \item Need to read \cite{ImSRwDeepCNN}, \cite{MixDNNforSISR}, \cite{mModalSemanticSLAMwProb}, and \cite{RCANforImClass}; these papers seem fundamental to understanding the overall picture. 
+   
+ \item There many common acronyms used in papers referring to known and useful algorithms. I will make list of them and begin investigating learning one by one. 
+
+ \item Get more comfortable with Python, Numpy, TensorFlow, and PyTorch. 
+
+ \item Begin working on SLAM. 
+
+ \item Learn ROS.
+
+\end{itemize}
+
+%Sets the bibliography style to UNSRT and imports the 
+\newpage 
+\bibliography{bibfile_bm} 
+\bibliographystyle{ieeetr}
+
+\end{document}

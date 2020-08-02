@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{makecell}
+\usepackage[caption=false,font=footnotesize,subrefformat=parens,labelformat=parens]{subfig}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[table]{xcolor}
+
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{.05in}
+\pagestyle{plain}
+
+%Title, date an author of the document
+\title{Progress Report}
+\author{Bardia Mojra}
+
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+
+\begin{center}
+\bigskip
+\bigskip
+ Robotic Vision Lab \\
+ The University of Texas at Arlington\\
+\end{center}
+
+\newpage 
+
+\section{Progress}
+Following items are listed in order of priority: 
+\begin{itemize}  
+	
+  \item Per Nolan's recommendation, I read paper \cite{MSSRwCNN} on single image multi-scale super resolution (MSSR) using CNN's. See Literature Review section for more details. 
+  
+  \item Nolan and I are working on a report for PVBS challenge, it is due Friday. We are almost done, it should be finished by end of day, Friday. 
+  
+  \item Have begun the dissection process for each paper I read, this is done by meticulously reading each paper and following leads.
+  
+  \item Began using gVim, I am still in early stages. I am ramping the use of it. 
+  
+  \item Tried to setup Ubuntu on my machine, ran into some issues booting from USB drive. Seems to be an ASUS thing. Still working on it. 
+  
+  \item (On pause) I am still working through Jason Brownlee's ML Mastery book, \cite{MLmasteryPy}. I am still on day 3 but need to get back to as soon as possible.
+
+
+\end{itemize}
+
+\section{Plans}
+Following items are listed in order of priority: 
+
+\begin{itemize} 
+ 
+ \item (Top priority)I will begin dissecting \cite{discoman} to prepare for March 27th presentation.
+
+ \item (On pause) Resume Robotic Perception course as soon as possible.
+
+ \item (On pause) Resume Machine Learning course with Andrew Ng as soon as possible.
+
+ \item (On pause) Need to read \cite{ImSRwDeepCNN}, \cite{MixDNNforSISR}, \cite{mModalSemanticSLAMwProb}, and \cite{RCANforImClass}; these papers seem fundamental to understanding the overall picture.
+
+ \item (On pause) Get intimate with Python, Numpy, Pandas, Scipy, and Matplotlib, TensorFlow and PyTorch. 
+
+ \item (On pause) Read Digital Image Processing by Gonzalez and Woods. 
+
+ \item (On pause) Learn ROS.
+ 
+ \item (On pause) (Supremely important) Read on scene understanding, semantic SLAM, graph SLAM, visual odometer, place recognition, and Kalman Filtering. Read Niko Sunderhauf's research publications. 
+ 
+ \end{itemize}
+
+
+\section{General Notes}
+This section summarizes general research leads. The following item are to be investigated, understood and briefly summarized. 
+
+\subsection{Keywords}
+\begin{itemize}
+	\item Bayesian Learning: This probabilistic ML approach treats model parameters as random variables. Read \cite{Bayesian_Learning_2012} for more details. 
+	
+	\item Convex Optimization:
+	
+	\item Q-Learning:
+\end{itemize}
+
+\section{Literature Review}
+\subsection{Single Image Super-Resolution Using Multi-Scale Convolutional Neural Network - MSSR \cite{MSSRwCNN}}
+
+  Paper proposes an architecture with two parallel path with different depths (which correspond to scales) for residual learning; where one path (module L) is used for large factor up-scaling (x4, x8) and the other (module S) for small factor up-scaling (x2). At the end, it combines the outputs by summation (a form of ensembles). In contrast to previous work where the focus is on small factor up-scaling (x2) and repeat if needed, this model takes higher factor up-scaling into consideration while training the network which helps with reducing blurriness of output image for higher factor up-scaling. The model uses multi-scale residual learning to train on general model for multiple up-scaling factors; hence, saving memory and processing time. This paper provides experiment results that show higher output image integrity where peak signal to noise ratio (PSNR) and structural similarity index (SSIM) are higher or comparatively close to state-of-the-art methods.  
+
+\subsubsection{Keywords}
+\begin{itemize}
+	\item Bicubic interpolation: A method for artificially up-sampling an image, it is superior to nearest neighbor and bi-linear interpolation. Rather than simply averaging neighboring pixels to calculate pixel value in between, it also takes into account the gradient of its 16 neighboring pixels (hence bicubic) and results in a smoother curved image. This happens to work better than previous methods because images of physical world are made up of mostly round edges rather than sharp and square ones. 
+	
+	\item Lanczos re-sampling:
+	
+	\item Statistical priors:
+	
+	\item Stochastic Neighbor Embedding (paper by G. Hinton \cite{SNE}): Read paper.
+	
+	\item Parse coding:
+	
+	\item GoogLeNet:
+	
+	\item YCbCr color space: 
+	
+	\item Caffe package (paper by Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick, R., Guadarrama, S., Darrell, T.): Convolutional architecture for fast feature embedding. \underline{Read and write literature review}.  
+	
+	\item Adam method (paper by Kingma, D., Ba, J.): A method for stochastic optimization. 
+	
+	\item PSNR (performance metric): Peak Signal to Noise Ratio represents the ratio between max (peak) possible value (power) of a signal (image) and the power of distorting noise.  
+	
+	\item SSIM (performance metric): Structural Similarity Index, is the ratio of structural features of a processed image to the original image. The value represent percentage of structural features/information retained throughout image processing.  
+	
+	\item A+ (SR method, paper):
+	
+	\item SelfEx (SR method, paper):
+	
+	\item SRCNN (SR method, paper): Image Super Resolution Using Deep Convolutional Networks. \underline{Read again and write literature review}.  
+	
+	\item FSRCNN (SR method, paper):
+	
+	\item VDSR (SR method, paper):
+	
+\end{itemize} 
+
+
+\subsection{Value Iteration Networks - VIN \cite{VIN}}
+\subsubsection{Keywords}
+\begin{itemize}
+	\item Imitation Learning: **need to finish reading \cite{Vitaly_Kurin_2017}.**
+	
+	\item CNNs applied to reinforcement learning: 
+	
+	\item MDP (Markov Decision Process):
+	
+	\item VI Algorithm (Value Iteration): 
+	
+	\item SGD (stochastic gradient decent):
+	
+	\item Theano Code: "Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently. It can use GPUs and perform efficient symbolic differentiation." 
+	
+	\item Grid-World Domain:
+
+\end{itemize}
+
+%Sets the bibliography style to UNSRT and imports the 
+\newpage 
+\bibliography{bibfile_bm} 
+\bibliographystyle{ieeetr}
+
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{makecell}
+\usepackage[caption=false,font=footnotesize,subrefformat=parens,labelformat=parens]{subfig}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[table]{xcolor}
+
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{.05in}
+\pagestyle{plain}
+
+%Title, date an author of the document
+\title{Progress Report}
+\author{Bardia Mojra}
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+
+
+
+\section{Progress}
+\begin{itemize}
+  \item Following items are listed in order of priority: 
+  
+  \item I have continued to work with Nolan on super resolution project, mostly shadowing and learning at this point. We are almost done and currently training the model, we expect better results this time. 
+  
+  \item This week, I started using Omega (a Unix machine) and became aware of some differences it has with MS CMD. I am developing a shell program for my Operating Systems class, it has been very time consuming but I have also learned a lot. I believe some of these tools will be useful when dealing with ROS, RTOS and with other low level software interfaces and systems. While developing the shell, I faced many issues and bugs due to the fact that I was developing code for micro-controller architecture (RISC and ARM). These are subtle but deadly differences such dynamic memory allocation vs dedicated SRAM and EEPROM or on PC having limited stack and an address space that is decoupled from the hardware which prevents some bugs/errors to be produced at compile time. And finally the fact that even though using the same compiler will produce the same machine language instructions; it is not guaranteed to run or behave the same way on different operating systems (Windows vs. Unix) even with CMD Unix emulator on Windows.  
+  
+  \item Moreover, I began reading on Cmake, GDB, and Vim. I believe these are important skills to pick up but anything beyond course work needs will be given lower priority. I think picking up Vim is a must now, it is so much faster to develop code using Vim, the mouse is too slow.  
+  
+  \item I am still working through Jason Brownlee's ML Mastery book, \cite{MLmasteryPy}. I am still on day 3 but need to get back to as soon as possible. I recommended it to a friend, he is almost finished and is using similar Python libraries as we do, so it is effective. 
+  
+  \item (On pause) I have continued to use Python as much as possible in order to become intimate with the syntax, modules and pipelines. I also need to do some small practice projects using Numpy, Pandas, Scipy, and Matplotlib. I have prioritized learning these fundamental modules over Tensorflow and Pytorch as I believe, long term, it will accelerate my learning and productivity growth rate. 
+  
+  \item (On pause) I have continued to read on CNN's and DL in depth. I did not get to it much this week but I am keeping it as a top priority. 
+  
+  \item (On pause) Had to put Robotic Perception course on pause.
+  
+  \item (On pause) Had to put Machine Learning course with Andrew Ng on pause. 
+
+\end{itemize}
+
+\section{Plans}
+\begin{itemize}
+ \item Following items are listed in order of priority: 
+ 
+ \item I will continue to shadow and help Nolan on the SR project. My goal is to build up my foundation and skill set to be able to contribute in the most meaningful way. 
+
+ \item (High priority) Setup an Ubuntu environment.
+
+ \item (On pause) I will dissect \cite{discoman} and prepare an in-depth presentation for RVL's paper review on a TBD date.
+  
+ \item (On pause) Resume Robotic Perception course as soon as possible.
+
+ \item (On pause) Resume Machine Learning course with Andrew Ng as soon as possible.
+
+ \item (On pause) Need to read \cite{ImSRwDeepCNN}, \cite{MixDNNforSISR}, \cite{mModalSemanticSLAMwProb}, and \cite{RCANforImClass}; these papers seem fundamental to understanding the overall picture.
+   
+ \item (On pause) There many common acronyms used in papers referring to known and useful algorithms. I will make list of them and begin investigating learning one by one. 
+
+ \item (On pause) Get intimate with Python, Numpy, Pandas, Scipy, and Matplotlib.
+ 
+ \item (On pause) Learn TensorFlow and PyTorch. 
+
+ \item (On pause) Get intimate with Linux Shell, and learn ROS.
+ 
+ \item (On pause) (Supremely important) Read on scene understanding, semantic SLAM, graph SLAM, visual odometer, place recognition, and Kalman Filtering. Read Niko Sunderhauf's research publications. 
+ 
+\end{itemize}
+
+%Sets the bibliography style to UNSRT and imports the 
+\newpage 
+\bibliography{bibfile_bm} 
+\bibliographystyle{ieeetr}
+
+\end{document}

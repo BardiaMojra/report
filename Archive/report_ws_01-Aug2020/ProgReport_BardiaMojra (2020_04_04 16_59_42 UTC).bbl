@@ -1,0 +1,84 @@
+\begin{thebibliography}{10}
+
+\bibitem{MeshRCNN}
+G.~Gkioxari, J.~Malik, and J.~Johnson, ``Mesh r-cnn,'' in {\em The IEEE
+  International Conference on Computer Vision (ICCV)}, October 2019.
+
+\bibitem{CAD2RL}
+F.~Sadeghi and S.~Levine, ``Cad2rl: Real single-image flight without a single
+  real image,'' 07 2017.
+
+\bibitem{PanopticSeg2019}
+A.~Kirillov, K.~He, R.~B. Girshick, C.~Rother, and P.~Doll{\'a}r, ``Panoptic
+  segmentation,'' {\em 2019 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pp.~9396--9405, 2019.
+
+\bibitem{SVO}
+C.~{Forster}, M.~{Pizzoli}, and D.~{Scaramuzza}, ``Svo: Fast semi-direct
+  monocular visual odometry,'' in {\em 2014 IEEE International Conference on
+  Robotics and Automation (ICRA)}, pp.~15--22, May 2014.
+
+\bibitem{HornsMethod}
+B.~Horn, ``Closed-form solution of absolute orientation using unit
+  quaternions,'' {\em Journal of the Optical Society A}, vol.~4, pp.~629--642,
+  04 1987.
+
+\bibitem{NYUV2}
+N.~Silberman, D.~Hoiem, P.~Kohli, and R.~Fergus, ``Indoor segmentation and
+  support inference from rgbd images,'' pp.~746--760, 10 2012.
+
+\bibitem{DGCNNLPC}
+Y.~Wang, Y.~Sun, Z.~Liu, S.~E. Sarma, M.~M. Bronstein, and J.~M. Solomon,
+  ``Dynamic graph {CNN} for learning on point clouds,'' {\em CoRR},
+  vol.~abs/1801.07829, 2018.
+
+\bibitem{MaskRCNN}
+K.~He, G.~Gkioxari, P.~Dollar, and R.~Girshick, ``Mask r-cnn,'' {\em IEEE
+  Transactions on Pattern Analysis and Machine Intelligence}, p.~1–1, 2018.
+
+\bibitem{MLmasteryPy}
+J.~Brownlee, {\em Machine Learning Mastery With Python: Understand Your Data,
+  Create Accurate Models, and Work Projects End-to-End}.
+\newblock Machine Learning Mastery, 2016.
+
+\bibitem{ImSRwDeepCNN}
+C.~Dong, C.~C. Loy, K.~He, and X.~Tang, ``Image super-resolution using deep
+  convolutional networks,'' {\em CoRR}, vol.~abs/1501.00092, 2015.
+
+\bibitem{MixDNNforSISR}
+D.~Liu, Z.~Wang, N.~M. Nasrabadi, and T.~S. Huang, ``Learning a mixture of deep
+  networks for single image super-resolution,'' {\em CoRR},
+  vol.~abs/1701.00823, 2017.
+
+\bibitem{mModalSemanticSLAMwProb}
+K.~{Doherty}, D.~{Fourie}, and J.~{Leonard}, ``Multimodal semantic slam with
+  probabilistic data association,'' in {\em 2019 International Conference on
+  Robotics and Automation (ICRA)}, pp.~2419--2425, May 2019.
+
+\bibitem{RCANforImClass}
+F.~Wang, M.~Jiang, C.~Qian, S.~Yang, C.~Li, H.~Zhang, X.~Wang, and X.~Tang,
+  ``Residual attention network for image classification,'' {\em CoRR},
+  vol.~abs/1704.06904, 2017.
+
+\bibitem{Bayesian_Learning_2012}
+``Bayesian learning,'' 2012.
+
+\bibitem{MSSRwCNN}
+X.~Jia, X.~Xu, B.~Cai, and K.~Guo, ``Single image super-resolution using
+  multi-scale convolutional neural network,'' {\em Lecture Notes in Computer
+  Science}, p.~149–157, 2018.
+
+\bibitem{SNE}
+G.~Hinton and S.~Roweis, ``Stochastic neighbor embedding,'' {\em Advances in
+  neural information processing systems}, vol.~15, pp.~833--840, 2003.
+
+\bibitem{VIN}
+A.~Tamar, Y.~WU, G.~Thomas, S.~Levine, and P.~Abbeel, ``Value iteration
+  networks,'' in {\em Advances in Neural Information Processing Systems 29}
+  (D.~D. Lee, M.~Sugiyama, U.~V. Luxburg, I.~Guyon, and R.~Garnett, eds.),
+  pp.~2154--2162, Curran Associates, Inc., 2016.
+
+\bibitem{Vitaly_Kurin_2017}
+V.~Kurin, ``Introduction to imitation learning,'' Aug 2017.
+
+\end{thebibliography}

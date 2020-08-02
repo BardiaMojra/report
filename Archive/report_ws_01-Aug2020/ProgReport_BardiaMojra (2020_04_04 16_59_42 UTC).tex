@@ -1,0 +1,180 @@
+\documentclass[11pt]{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{makecell}
+\usepackage[caption=false,font=footnotesize,subrefformat=parens,labelformat=parens]{subfig}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage[table]{xcolor}
+
+\setlength{\parindent}{0.25in}
+\setlength{\parskip}{.05in}
+\pagestyle{plain}
+
+%Title, date an author of the document
+\title{Progress Report}
+\author{Bardia Mojra}
+
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+
+\begin{center}
+\bigskip
+\bigskip
+ Robotic Vision Lab \\
+ The University of Texas at Arlington\\
+\end{center}
+
+\newpage 
+
+\section{Progress}
+Following items are listed in order of priority: 
+\begin{itemize}  
+	
+  \item After setting up my Ubuntu system, I began working through Gibson v2 environment installation document. It is fairly well documented and straightforward. Bhaskar seems interested to work on this competition, perhaps Bhaskar and I could setup weekly calls to exchange ideas and collaborate. 
+   
+  \item Regarding SLAM, I am currently going through tutorial A of SLAM Lectures video series by Claus Brenner. My goal is to keep up with Chris' weekly milestone plan, I believe it is a great group learning opportunity.  
+  
+  \item I read \cite{MeshRCNN} and \cite{CAD2RL} this week. Mesh R-CNN, \cite{MeshRCNN}, introduces a novel model for single image to 3D object prediction by first detecting objects in 2D image and creating instance segmentation results. Then it recreates the predicted object in Voxel space and later refining it using a mesh refinement CNN branch. Mesh R-CNN combines multiple state-of-the-art techniques from 2D and 3D image processing domains to produce a high fidelity 3D object predictions. Moreover, CAD2RL, \cite{CAD2RL}, introduces a new DRL model for training UAV's obstacle avoidance feature where the drone is only provided with sequences of flight images via a monocular camera setup and outputs velocity predictions to avoid running into any obstacles. This paper focuses on direct use of simulation environment images for training a real-world-ready UAV obstacle avoidance flight feature. The drone follows free space in front of it and simultaneously maps surrounding indoor environment as it keeps moving towards open free space.     
+  
+  \item Continue reading on RL, DRL and SLAM. I began reading on Turtlebot3 and ROS.
+  
+  \item Read , began to dissect it. It's a heavy paper, I have already read it twice, I need to go back and read it again and learn the material. 
+    
+  %\item Working on Bridge Fellowship?
+    
+  \item Still working on \cite{PanopticSeg2019}, \cite{SVO}, \cite{HornsMethod}, \cite{NYUV2}, \cite{DGCNNLPC}, and \cite{MaskRCNN}.
+
+\end{itemize}
+
+\section{Plans}
+Following items are listed in order of priority: 
+
+\begin{itemize} 
+	
+ \item (On pause) Resume Machine Learning course with Andrew Ng as soon as possible.  
+ 
+ \item (On pause) I am working through Jason Brownlee's ML Mastery book, \cite{MLmasteryPy}.
+ 
+ \item (On pause) Resume Robotic Perception course as soon as possible.
+
+ \item (On pause) Need to read \cite{ImSRwDeepCNN}, \cite{MixDNNforSISR}, \cite{mModalSemanticSLAMwProb}, and \cite{RCANforImClass}; these papers seem fundamental to understanding the overall picture.
+
+ \item (On pause) Get intimate with Python, Numpy, Pandas, Scipy, and Matplotlib, TensorFlow and PyTorch. 
+
+ \item (On pause) Read Digital Image Processing by Gonzalez and Woods. 
+
+ \item (On pause) Learn ROS.
+ 
+ \item (On pause) (Supremely important) Read on scene understanding, semantic SLAM, graph SLAM, visual odometer, place recognition, and Kalman Filtering. Read Niko Sunderhauf's research publications. 
+ 
+ \end{itemize}
+
+
+\section{General Notes}
+This section summarizes general research leads. The following item are to be investigated, understood and briefly summarized. 
+
+\begin{itemize}
+	\item Open3D: An open source toolbox used for truth occupancy grid application and probably other things. Should review. 
+	
+	\item Horn's paper \cite{HornsMethod}: It introduces Unit Quaternions which allow for complex domain representation of kinematics. Very important paper for robotic motion. Should review.
+	
+	\item Bayesian Learning: This probabilistic ML approach treats model parameters as random variables. Read \cite{Bayesian_Learning_2012} for more details. 
+	
+	\item Convex Optimization:
+	
+	\item Q-Learning: A learning model of reinforcement (RL), learning from delayed reward. 
+	
+	\item Deep Reinforcement Learning: 
+\end{itemize}
+
+\section{Literature Review}
+
+\subsection{Dynamic Graph CNN for Learning on Point Clouds \cite{DGCNNLPC}}
+ This paper introduces a new model for training CNNs to learn similar features of point cloud objects. 
+
+\subsubsection{Keywords}
+\begin{itemize}
+	\item PointNet
+	\item Extrinsic and intrinsic descriptors:
+	\item Permutation variance:
+	
+\end{itemize}
+
+\subsection{Single Image Super-Resolution Using Multi-Scale Convolutional Neural Network - MSSR \cite{MSSRwCNN}}
+
+  Paper proposes an architecture with two parallel path with different depths (which correspond to scales) for residual learning; where one path (module L) is used for large factor up-scaling (x4, x8) and the other (module S) for small factor up-scaling (x2). At the end, it combines the outputs by summation (a form of ensembles). In contrast to previous work where the focus is on small factor up-scaling (x2) and repeat if needed, this model takes higher factor up-scaling into consideration while training the network which helps with reducing blurriness of output image for higher factor up-scaling. The model uses multi-scale residual learning to train on general model for multiple up-scaling factors; hence, saving memory and processing time. This paper provides experiment results that show higher output image integrity where peak signal to noise ratio (PSNR) and structural similarity index (SSIM) are higher or comparatively close to state-of-the-art methods.  
+
+\subsubsection{Keywords}
+\begin{itemize}
+	
+	\item Lanczos re-sampling:
+	
+	\item Statistical priors:
+	
+	\item Stochastic Neighbor Embedding (paper by G. Hinton \cite{SNE}): Read paper.
+	
+	\item Parse coding:
+	
+	\item GoogLeNet:
+	
+	\item YCbCr color space: 
+	
+	\item Caffe package (paper by Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick, R., Guadarrama, S., Darrell, T.): Convolutional architecture for fast feature embedding. \underline{Read and write literature review}.  
+	
+	\item Adam method (paper by Kingma, D., Ba, J.): A method for stochastic optimization. 
+	
+	\item PSNR (performance metric): Peak Signal to Noise Ratio represents the ratio between max (peak) possible value (power) of a signal (image) and the power of distorting noise.  
+	
+	\item SSIM (performance metric): Structural Similarity Index, is the ratio of structural features of a processed image to the original image. The value represent percentage of structural features/information retained throughout image processing.  
+	
+	\item A+ (SR method, paper):
+	
+	\item SelfEx (SR method, paper):
+	
+	\item SRCNN (SR method, paper): Image Super Resolution Using Deep Convolutional Networks. \underline{Read again and write literature review}.  
+	
+	\item FSRCNN (SR method, paper):
+	
+	\item VDSR (SR method, paper):
+	
+\end{itemize} 
+
+
+\subsection{Value Iteration Networks - VIN \cite{VIN}}
+\subsubsection{Keywords}
+\begin{itemize}
+	\item Imitation Learning: **need to finish reading \cite{Vitaly_Kurin_2017}.**
+	
+	\item CNNs applied to reinforcement learning: 
+	
+	\item MDP (Markov Decision Process):
+	
+	\item VI Algorithm (Value Iteration): 
+	
+	\item SGD (stochastic gradient decent):
+	
+	\item Theano Code: "Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently. It can use GPUs and perform efficient symbolic differentiation." 
+	
+	\item Grid-World Domain:
+
+\end{itemize}
+
+%Sets the bibliography style to UNSRT and imports the 
+\newpage 
+\bibliography{bibfile_bm} 
+\bibliographystyle{ieeetr}
+
+\end{document}
