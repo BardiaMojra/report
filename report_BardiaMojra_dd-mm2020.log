@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.8.1)  1 AUG 2020 21:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.8.1)  8 AUG 2020 02:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -123,7 +123,7 @@ Package color Info: Driver file: pdftex.def on input line 147.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-No file report_BardiaMojra_date.aux.
+(./report_BardiaMojra_date.aux)
 \openout1 = `report_BardiaMojra_date.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -138,6 +138,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count99
@@ -170,69 +171,31 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
-
-
-LaTeX Warning: Citation `PanopticSeg2019' on page 2 undefined on input line 58.
-
-
-
-LaTeX Warning: Citation `SVO' on page 2 undefined on input line 58.
-
-
-LaTeX Warning: Citation `HornsMethod' on page 2 undefined on input line 58.
-
-
-LaTeX Warning: Citation `NYUV2' on page 2 undefined on input line 58.
-
-
-LaTeX Warning: Citation `DGCNNLPC' on page 2 undefined on input line 58.
-
-
-LaTeX Warning: Citation `MaskRCNN' on page 2 undefined on input line 58.
-
-
-LaTeX Warning: Citation `ZinsserWilliamKnowlton2006Oww' on page 2 undefined on 
-input line 60.
-
-[2]
-
-LaTeX Warning: Citation `ImSRwDeepCNN' on page 3 undefined on input line 78.
-
-
-LaTeX Warning: Citation `MixDNNforSISR' on page 3 undefined on input line 78.
-
-
-LaTeX Warning: Citation `mModalSemanticSLAMwProb' on page 3 undefined on input 
-line 78.
-
-
-LaTeX Warning: Citation `RCANforImClass' on page 3 undefined on input line 78.
-
-[3]
-No file report_BardiaMojra_date.bbl.
-(./report_BardiaMojra_date.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ [2] [3]
+(./report_BardiaMojra_date.bbl
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+) [4] [5] (./report_BardiaMojra_date.aux) ) 
 Here is how much of TeX's memory you used:
- 1822 strings out of 494923
- 21721 string characters out of 6180743
- 73186 words of memory out of 5000000
- 5143 multiletter control sequences out of 15000+600000
- 12823 words of font info for 47 fonts, out of 8000000 for 9000
+ 1828 strings out of 494923
+ 21854 string characters out of 6180743
+ 73225 words of memory out of 5000000
+ 5145 multiletter control sequences out of 15000+600000
+ 12861 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,6n,24p,1105b,197s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report_BardiaMojra_date.pdf (3 pages, 69311 bytes).
+ 27i,6n,24p,324b,197s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
+pfb>
+Output written on report_BardiaMojra_date.pdf (5 pages, 82816 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 44 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
