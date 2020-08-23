@@ -1,47 +1,42 @@
 This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: report_BardiaMojra_date.aux
+The top-level auxiliary file: report_BardiaMojra_dd-mm2020.aux
 The style file: ieeetr.bst
-Database file #1: report_BardiaMojra_bib.bib
-I was expecting an "="---line 134 of file report_BardiaMojra_bib.bib
- :  
- :  url       = {http://arxiv.org/abs/1704.06904},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
+Database file #1: bib_BardiaMojra_dd-mm2020.bib
 Warning--empty booktitle in NYUV2
 You've used 12 entries,
             1876 wiz_defined-function locations,
-            555 strings with 5656 characters,
-and the built_in function-call counts, 3127 in all, are:
-= -- 274
+            555 strings with 5704 characters,
+and the built_in function-call counts, 3154 in all, are:
+= -- 278
 > -- 153
 < -- 0
 + -- 56
 - -- 44
-* -- 226
-:= -- 458
-add.period$ -- 13
+* -- 229
+:= -- 462
+add.period$ -- 14
 call.type$ -- 12
-change.case$ -- 12
+change.case$ -- 11
 chr.to.int$ -- 0
 cite$ -- 13
-duplicate$ -- 165
-empty$ -- 300
+duplicate$ -- 170
+empty$ -- 302
 format.name$ -- 44
-if$ -- 759
+if$ -- 766
 int.to.chr$ -- 0
 int.to.str$ -- 12
-missing$ -- 12
-newline$ -- 40
+missing$ -- 14
+newline$ -- 41
 num.names$ -- 12
-pop$ -- 54
+pop$ -- 53
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 100
+skip$ -- 97
 stack$ -- 0
 substring$ -- 158
-swap$ -- 62
+swap$ -- 63
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
@@ -49,5 +44,5 @@ type$ -- 0
 warning$ -- 1
 while$ -- 23
 width$ -- 14
-write$ -- 109
-(There was 1 error message)
+write$ -- 111
+(There was 1 warning)
