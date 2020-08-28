@@ -1,9 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{HandsOn_CV_w_tf2}
-E.~A. Benjamin~Planche, {\em Hands-On Computer Vision with TensorFlow 2}.
-\newblock Packt Publishing, 5 2019.
-
 \bibitem{ImSRwDeepCNN}
 C.~Dong, C.~C. Loy, K.~He, and X.~Tang, ``Image super-resolution using deep
   convolutional networks,'' {\em CoRR}, vol.~abs/1501.00092, 2015.
@@ -19,9 +15,8 @@ K.~{Doherty}, D.~{Fourie}, and J.~{Leonard}, ``Multimodal semantic slam with
   Robotics and Automation (ICRA)}, pp.~2419--2425, May 2019.
 
 \bibitem{RCANforImClass}
-F.~Wang, M.~Jiang, C.~Qian, S.~Yang, C.~Li, H.~Zhang, X.~Wang, and X.~Tang,
-  ``Residual attention network for image classification,'' {\em CoRR},
-  vol.~abs/1704.06904, 2017.
+F.~Wang and S.~Y. C. L. H. Z. X. W. X.~T. Mengqing~Jiang, Chen~Qian, ``Residual
+  attention network for image classification,'' {\em CoRR}, 2017.
 
 \bibitem{PanopticSeg2019}
 A.~Kirillov, K.~He, R.~B. Girshick, C.~Rother, and P.~Doll{\'a}r, ``Panoptic

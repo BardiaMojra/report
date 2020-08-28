@@ -43,13 +43,13 @@
 Following items are listed in order of priority:
 \begin{itemize}
 
-	\item OCRTOC: I managed to setup and run OCRTOC container on my laptop and test the competition environment. Chris and I will continue working on the simulation since it is due September 13th. We discussed using an available ROS package for instance segmentation.
+	\item OCRTOC: Chris and I are working on implementing instance segmentation and inverse kinematics on UR5 simulation. PoseCNN, \cite{PoseCNN}, uses a convolutional neural network architecture to estimate 6D pose of every object using instance segmentation with RGB-depth camera. First it uses semantic labeling to detect and classify each object within the RGB image, then it estimates the 3D translation by localizing 2D object center in the image and then estimates its distance to the camera. That is done at pixel level and then they use Hough voting method to estimate the center of the object, in 2D. This is a novel approach, but perhaps it could be improved if we first estimate the 3D contour of the object then estimate the center point of the object directly in 3D. Moreover, they use a regression model to estimate each object's 3D rotation. To train their 3D rotation regression model, authors propose two L2 loss functions, PoseLoss (PLoss) and ShapeMatch-Loss (SLoss) where SLoss does not require the specification of object symmetries. At last, they use depth image/video for improving 6D pose annotation and training their model in a global optimization step. Similar learning models can be developed using Deep Reinforcement Learning since ground truth is available via depth camera.
 
-	\item UR5: I set up the robotic arm at the center of the table as discussed but it is also simple to move to any side if needed. I put the electrical box behind the futon and that is where the hand controller is connected too. We probably need some ziptie to secure the cable to the table and something to secure it to the floor.
+	\item DenseFusion: I will read and dissect DenseFusion paper, \cite{DenseFusion}, some time this weekends.
 
-	\item TensorFlow: Read the first chapter of \cite{HandsOn_CV_w_tf2}. I think it is a great book to read in junction with other material since it uses latest python packages.
+	\item UR5: I began looking at installing Robotiq parallel gripper, it should be fairly straightforwards and simple. We still need to secure UR5e wires to the floor and table.
 
-	\item Chris and I attended Amazon Robotic Summit earlier this week. It was mostly Amazon directors and management team presenting their cloud computing service for large scale and easy to deploy parallel simulation testing environment. They also talked about ROS development on AWS and its integrated features with Amazon's RoboMaker.
+	\item TensorFlow: I went through chapter 1 TensorFlow implementation provided in \cite{HandsOn_CV_w_tf2}. I need to begin using Anaconda to manage my Python workspaces. Nolan and Zongyao will assist me with getting started on that.
 
 	\item Fellowship: I still need to work on my applications, I will write a new draft by next week. I have been avoiding this for far too long.
 

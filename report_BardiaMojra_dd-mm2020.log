@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.8.15)  22 AUG 2020 23:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.8.15)  28 AUG 2020 18:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -382,7 +382,6 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 28.
 LaTeX Info: Redefining \pageref on input line 28.
 LaTeX Info: Redefining \nameref on input line 28.
- (/home/bardi/git/report/report_BardiaMojra_dd-mm2020.out) (/home/bardi/git/report/report_BardiaMojra_dd-mm2020.out)
 \@outlinefile=\write4
 \openout4 = `report_BardiaMojra_dd-mm2020.out'.
 
@@ -405,34 +404,84 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
- [2] [3] (/home/bardi/git/report/report_BardiaMojra_dd-mm2020.bbl
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no “ in font cmr10!
-)
+
+
+LaTeX Warning: Citation `PoseCNN' on page 2 undefined on input line 46.
+
+
+LaTeX Warning: Citation `DenseFusion' on page 2 undefined on input line 48.
+
+
+LaTeX Warning: Citation `HandsOn_CV_w_tf2' on page 2 undefined on input line 52.
+
+[2] [3]
+
+LaTeX Warning: Citation `ImSRwDeepCNN' on page 4 undefined on input line 77.
+
+
+LaTeX Warning: Citation `MixDNNforSISR' on page 4 undefined on input line 77.
+
+
+LaTeX Warning: Citation `mModalSemanticSLAMwProb' on page 4 undefined on input line 77.
+
+
+LaTeX Warning: Citation `RCANforImClass' on page 4 undefined on input line 77.
+
+
+LaTeX Warning: Citation `PanopticSeg2019' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Citation `SVO' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Citation `HornsMethod' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Citation `NYUV2' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Citation `DGCNNLPC' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Citation `MaskRCNN' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Citation `ZinsserWilliamKnowlton2006Oww' on page 4 undefined on input line 83.
+
+[4]
+No file report_BardiaMojra_dd-mm2020.bbl.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
- [4] [5]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
- (/home/bardi/git/report/report_BardiaMojra_dd-mm2020.aux)
+(/home/bardi/git/report/report_BardiaMojra_dd-mm2020.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
-Package rerunfilecheck Info: File `report_BardiaMojra_dd-mm2020.out' has not changed.
-(rerunfilecheck)             Checksum: 56686F942A7BF8A77D7D8AB872517FB1;83.
+
+
+Package rerunfilecheck Warning: File `report_BardiaMojra_dd-mm2020.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `report_BardiaMojra_dd-mm2020.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  56686F942A7BF8A77D7D8AB872517FB1;83.
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
  ) 
 Here is how much of TeX's memory you used:
- 8197 strings out of 492982
- 118700 string characters out of 6134896
- 214193 words of memory out of 5000000
- 11621 multiletter control sequences out of 15000+600000
- 12861 words of font info for 47 fonts, out of 8000000 for 9000
+ 8174 strings out of 492982
+ 118116 string characters out of 6134896
+ 212665 words of memory out of 5000000
+ 11618 multiletter control sequences out of 15000+600000
+ 12823 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,38p,411b,323s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /home/bardi/git/report/report_BardiaMojra_dd-mm2020.pdf (5 pages, 85425 bytes).
+ 41i,7n,38p,1433b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on /home/bardi/git/report/report_BardiaMojra_dd-mm2020.pdf (4 pages, 70850 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
