@@ -43,19 +43,22 @@
 Following items are listed in order of priority:
 \begin{itemize}
 
-	\item OCRTOC: Chris and I are working on implementing instance segmentation and inverse kinematics on UR5 simulation. PoseCNN, \cite{PoseCNN}, uses a convolutional neural network architecture to estimate 6D pose of every object using instance segmentation with RGB-depth camera. First it uses semantic labeling to detect and classify each object within the RGB image, then it estimates the 3D translation by localizing 2D object center in the image and then estimates its distance to the camera. That is done at pixel level and then they use Hough voting method to estimate the center of the object, in 2D. This is a novel approach, but perhaps it could be improved if we first estimate the 3D contour of the object then estimate the center point of the object directly in 3D. Moreover, they use a regression model to estimate each object's 3D rotation. To train their 3D rotation regression model, authors propose two L2 loss functions, PoseLoss (PLoss) and ShapeMatch-Loss (SLoss) where SLoss does not require the specification of object symmetries. At last, they use depth image/video for improving 6D pose annotation and training their model in a global optimization step. Similar learning models can be developed using Deep Reinforcement Learning since ground truth is available via depth camera.
 
-	\item DenseFusion: I will read and dissect DenseFusion paper, \cite{DenseFusion}, some time this weekends.
+	\item OCRTOC: This week Jerry and I worked on implementing a pose estimation solution for OCRTOC competition, we looked at PoseCNN \cite{PoseCNN}, DenseFusion \cite{DenseFusion}, DOPE \cite{NVlabs_2020_dope}. As discussed, DOPE is the most promising solution and Jerry is leading that effort. I started back on ROS industrial tutorials, it introduces a lot of features that I still need to get comfortable with. I also believe we might be able to draw inspiration from the latest kitting implementations found on GitHub.
+
+	\item DenseFusion \cite{DenseFusion}: DenseFusion is a model for estimating 6D position for a given RGB-Depth input. First, it generates object segmentation masks and bounding boxes from RGB images. Moreover, it generate point cloud based on processed masked depth images. Then, RGB image crops are used to generate color embeddings using a CNN. In parallel, masked point clouds are used to generate geometry embeddings. The two embeddings are then pixel-wise dense fused together as one tensor for each training sample. Then a MLP is trained PointNet with Average Pooling, instead of Max Pooling, to encode the stochastic features or "information about the vicinity of each point and of the point cloud as a whole". Then it is concatenated to the tensor so that pixel-wise features are preserved.
 
 	\item UR5: I began looking at installing Robotiq parallel gripper, it should be fairly straightforwards and simple. We still need to secure UR5e wires to the floor and table.
 
-	\item TensorFlow: I went through chapter 1 TensorFlow implementation provided in \cite{HandsOn_CV_w_tf2}. I need to begin using Anaconda to manage my Python workspaces. Nolan and Zongyao will assist me with getting started on that.
+	\item Begin working on quaternions tutorial.
+
+	\item TensorFlow: I went through chapter 1 TensorFlow implementation provided in \cite{CVwithTF2}. I need to begin using Anaconda to manage my Python workspaces. Nolan and Zongyao will assist me with getting started on that.
 
 	\item Fellowship: I still need to work on my applications, I will write a new draft by next week. I have been avoiding this for far too long.
 
 	\item Machine Learning: I did not work on ML course this week.
 
-	\item (On pause) Nolan and I have continued to work on TISR paper, I started a new document where I summarize background information. A copy of this document has been uploaded to GitHub.
+
 
 
 \end{itemize}
@@ -68,19 +71,12 @@ Following items are listed in order of priority:
 \begin{itemize}
 	\item Continue to work on OCRTOC with Chris and begin working with instance segmentation ROS node.
 
-	\item Go through ROS Industrial tutorials and documentation.
+	\item Continue with ROS Industrial tutorials and documentation.
 
-	\item Resume Robotic Perception course as soon as possible.
-
-	\item (On pause) Begin working on quaternions tutorial.
-
-	\item (On pause) Need to read \cite{ImSRwDeepCNN}, \cite{MixDNNforSISR}, \cite{mModalSemanticSLAMwProb}, and \cite{RCANforImClass}; these papers seem fundamental to understanding the overall picture.
+	\item (On pause) Resume Robotic Perception course as soon as possible.
 
 	\item (On pause) Read Digital Image Processing by Gonzalez and Woods.
 
-	\item (On pause) I still need to dissect \cite{PanopticSeg2019}, \cite{SVO}, \cite{HornsMethod}, \cite{NYUV2}, \cite{DGCNNLPC}, and \cite{MaskRCNN}.
-
-	\item (On pause) I still need to dissect \cite{ZinsserWilliamKnowlton2006Oww}.
 \end{itemize}
 
 
