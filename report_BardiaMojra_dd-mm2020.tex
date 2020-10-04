@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{bookmark}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{amsfonts}
@@ -10,7 +11,7 @@
 \usepackage{comment}
 \usepackage{float}
 \usepackage{graphicx}
-\usepackage[hidelinks]{hyperref}
+%\usepackage[hidelinks]{hyperref}
 \usepackage{makecell}
 \usepackage[caption=false,font=footnotesize,subrefformat=parens,labelformat=parens]{subfig}
 \usepackage{wrapfig}
@@ -43,20 +44,27 @@
 Following items are listed in order of priority:
 \begin{itemize}
 
+	\item Pose Estimation: This week I read \cite{marchand2015pose}, it is a comprehensive road map for implementing camera pose estimation. It begins P3P as a classical solution for camera pose estimation where it uses minimal set of point correspondences between 2D measurement in the image to 3D features of the model. Later PnP introduced a non-linear implementation for N point correspondences, in authors' opinion, "the gold standard" solution to PnP problem consist of estimating six parameters of the transformation matrix. The solution is obtained by minimizing the norm of projection error using Gaussian-Newton of a Levenberg-Marquardt technique (not sure if this statement makes sense in theory - these are two separate optimization methods). It is noted that when Gaussian noise is assumed to be present in the measurements, projection error minimization results in Maximum Likelihood estimate. In section 3, they briefly describe what algorithms work best in their view for various applications. They consider RANSAC and M-estimators as two classical approaches for making robust estimation. Moreover, they look at numerous keypoint matching processes and markerless tracking proposals for camera relative pose estimation and motion tracking. When pose estimate of some object is known, a 3D contour of the object is projected onto the image. Object contour is sampled and a search is performed along the edge normal to the contour to find strong gradients in the next frame. For unknown object and environments, monocular VSLAM solutions are considered a viable approach by the authors as they are used in ARToolKit and other commercial solutions. State of the art VSLAM solutions such as FastSLAM, PTAM, ORB-SLAM take advantage of incremental new data integration techniques (mostly use EKF or a particle filter) and update error probability density on the go, as well as performing bundle adjustment (BA) offline to further increase mapping accuracy. Another advantage of using VSLAM end to end solutions is the integrated image registration directly in 3D space which is done by using Gaussian-Newton or Levenberg-Marquardt approaches for known matching points, and iterative closest point (ICP) for unknown ones. Binary feature descriptors such as ORB (orientation invariant), BRISK (scale and orientation invariant), FREAK, and BRIEF make it very efficient to track and recognize objects and scenery which translates into tracking object and camera poses.
 
-	\item OCRTOC: This week Jerry and I worked on implementing a pose estimation solution for OCRTOC competition, we looked at PoseCNN \cite{PoseCNN}, DenseFusion \cite{DenseFusion}, DOPE \cite{NVlabs_2020_dope}. As discussed, DOPE is the most promising solution and Jerry is leading that effort. I started back on ROS industrial tutorials, it introduces a lot of features that I still need to get comfortable with. I also believe we might be able to draw inspiration from the latest kitting implementations found on GitHub.
 
-	\item DenseFusion \cite{DenseFusion}: DenseFusion is a model for estimating 6D position for a given RGB-Depth input. First, it generates object segmentation masks and bounding boxes from RGB images. Moreover, it generate point cloud based on processed masked depth images. Then, RGB image crops are used to generate color embeddings using a CNN. In parallel, masked point clouds are used to generate geometry embeddings. The two embeddings are then pixel-wise dense fused together as one tensor for each training sample. Then a MLP is trained PointNet with Average Pooling, instead of Max Pooling, to encode the stochastic features or "information about the vicinity of each point and of the point cloud as a whole". Then it is concatenated to the tensor so that pixel-wise features are preserved.
 
-	\item UR5: I began looking at installing Robotiq parallel gripper, it should be fairly straightforwards and simple. We still need to secure UR5e wires to the floor and table.
+	\item OCRTOC: I setup \cite{MoreFusion} on my computer and began studying the code and I will re-implement it for learning purposes. I reinstalled Ubuntu on my lab computer for model training purposes. Next I need to setup MoreFusion or PoseNet on it. I think we can come up with some improved algorithm for object pose estimation if we thoroughly study state of the art VSLAM solutions. 
 
-	\item Begin working on quaternions tutorial.
+	\item Reading list: \cite{lampinen2001bayesian} and \cite{li2019survey}.
 
-	\item TensorFlow: I went through chapter 1 TensorFlow implementation provided in \cite{CVwithTF2}. I need to begin using Anaconda to manage my Python workspaces. Nolan and Zongyao will assist me with getting started on that.
+	\item MoreFusion \cite{MoreFusion}: Still need to write a literature review on this.
 
-	\item Fellowship: I still need to work on my applications, I will write a new draft by next week. I have been avoiding this for far too long.
+	\item PoseNet \cite{PoseNet}: I read this paper today, it seems like a simple approach but I am quite skeptical it would work in an inverse setting where we estimate the pose of the objects in the scene rather than the camera. I will set it up and train a data set on it and see how it performs.
 
-	\item Machine Learning: I did not work on ML course this week.
+	\item UR5e:
+
+	\item Quaternions:
+
+	\item TensorFlow:
+
+	\item Fellowship: I attended NSF Grant webinar and I know I can write a good personal statement but I have no idea if my research is worthy of anything at all at this point. I am confident if I do good research I will produce great results but at this point I can not make any judgment on my work as I am still learning and absorbing at a high rate. Usually when my learning rate declines I know I am in a good position with respect to the material. This is my self-feedback.
+
+	\item Machine Learning: Working on Keras tutorial.
 
 
 
@@ -69,9 +77,8 @@ Following items are listed in order of priority:
 Following items are listed in order of priority:
 
 \begin{itemize}
-	\item Continue to work on OCRTOC with Chris and begin working with instance segmentation ROS node.
 
-	\item Continue with ROS Industrial tutorials and documentation.
+	\item (On pause) Continue with ROS Industrial tutorials and documentation.
 
 	\item (On pause) Resume Robotic Perception course as soon as possible.
 
@@ -81,7 +88,7 @@ Following items are listed in order of priority:
 
 
 
-%Sets the bibliography style to UNSRT and imports the
+%Sets the bibliography style to UNSRT and import the
 \newpage
 \bibliography{bib_BardiaMojra_dd-mm2020}
 \bibliographystyle{ieeetr}

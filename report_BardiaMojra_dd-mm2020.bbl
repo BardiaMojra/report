@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{marchand2015pose}
+E.~Marchand, H.~Uchiyama, and F.~Spindler, ``Pose estimation for augmented
+  reality: a hands-on survey,'' {\em IEEE transactions on visualization and
+  computer graphics}, vol.~22, no.~12, pp.~2633--2651, 2015.
+
+\bibitem{MoreFusion}
+K.~Wada, E.~Sucar, S.~James, D.~Lenton, and A.~J. Davison, ``Morefusion:
+  Multi-object reasoning for 6d pose estimation from volumetric fusion,'' in
+  {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pp.~14540--14549, 2020.
+
+\bibitem{lampinen2001bayesian}
+J.~Lampinen and A.~Vehtari, ``Bayesian approach for neural networks—review
+  and case studies,'' {\em Neural networks}, vol.~14, no.~3, pp.~257--274,
+  2001.
+
+\bibitem{li2019survey}
+R.~Li, Z.~Liu, and J.~Tan, ``A survey on 3d hand pose estimation: Cameras,
+  methods, and datasets,'' {\em Pattern Recognition}, vol.~93, pp.~251--272,
+  2019.
+
+\bibitem{PoseNet}
+A.~Kendall, M.~Grimes, and R.~Cipolla, ``Posenet: A convolutional network for
+  real-time 6-dof camera relocalization,'' in {\em Proceedings of the IEEE
+  international conference on computer vision}, pp.~2938--2946, 2015.
+
+\end{thebibliography}
