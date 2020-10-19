@@ -1,9 +1,9 @@
 \begin{thebibliography}{1}
 
-\bibitem{marchand2015pose}
-E.~Marchand, H.~Uchiyama, and F.~Spindler, ``Pose estimation for augmented
-  reality: a hands-on survey,'' {\em IEEE transactions on visualization and
-  computer graphics}, vol.~22, no.~12, pp.~2633--2651, 2015.
+\bibitem{Dope}
+J.~Tremblay, T.~To, B.~Sundaralingam, Y.~Xiang, D.~Fox, and S.~Birchfield,
+  ``Deep object pose estimation for semantic robotic grasping of household
+  objects,'' {\em arXiv preprint arXiv:1809.10790}, 2018.
 
 \bibitem{MoreFusion}
 K.~Wada, E.~Sucar, S.~James, D.~Lenton, and A.~J. Davison, ``Morefusion:
@@ -20,10 +20,5 @@ J.~Lampinen and A.~Vehtari, ``Bayesian approach for neural networks—review
 R.~Li, Z.~Liu, and J.~Tan, ``A survey on 3d hand pose estimation: Cameras,
   methods, and datasets,'' {\em Pattern Recognition}, vol.~93, pp.~251--272,
   2019.
-
-\bibitem{PoseNet}
-A.~Kendall, M.~Grimes, and R.~Cipolla, ``Posenet: A convolutional network for
-  real-time 6-dof camera relocalization,'' in {\em Proceedings of the IEEE
-  international conference on computer vision}, pp.~2938--2946, 2015.
 
 \end{thebibliography}
