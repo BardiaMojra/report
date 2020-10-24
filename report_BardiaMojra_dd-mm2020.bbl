@@ -5,12 +5,6 @@ J.~Tremblay, T.~To, B.~Sundaralingam, Y.~Xiang, D.~Fox, and S.~Birchfield,
   ``Deep object pose estimation for semantic robotic grasping of household
   objects,'' {\em arXiv preprint arXiv:1809.10790}, 2018.
 
-\bibitem{MoreFusion}
-K.~Wada, E.~Sucar, S.~James, D.~Lenton, and A.~J. Davison, ``Morefusion:
-  Multi-object reasoning for 6d pose estimation from volumetric fusion,'' in
-  {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
-  Recognition}, pp.~14540--14549, 2020.
-
 \bibitem{lampinen2001bayesian}
 J.~Lampinen and A.~Vehtari, ``Bayesian approach for neural networks—review
   and case studies,'' {\em Neural networks}, vol.~14, no.~3, pp.~257--274,
@@ -20,5 +14,14 @@ J.~Lampinen and A.~Vehtari, ``Bayesian approach for neural networks—review
 R.~Li, Z.~Liu, and J.~Tan, ``A survey on 3d hand pose estimation: Cameras,
   methods, and datasets,'' {\em Pattern Recognition}, vol.~93, pp.~251--272,
   2019.
+
+\bibitem{MoreFusion}
+K.~Wada, E.~Sucar, S.~James, D.~Lenton, and A.~J. Davison, ``Morefusion:
+  Multi-object reasoning for 6d pose estimation from volumetric fusion,'' in
+  {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition}, pp.~14540--14549, 2020.
+
+\bibitem{planche2019hands}
+B.~Planche and E.~Andres, ``Hands-on computer vision with tensorflow 2,'' 2019.
 
 \end{thebibliography}
