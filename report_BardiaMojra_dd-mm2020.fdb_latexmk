@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex report_BardiaMojra_dd-mm2020"] 1603508008 "report_BardiaMojra_dd-mm2020.aux" "report_BardiaMojra_dd-mm2020.bbl" "report_BardiaMojra_dd-mm2020" 1603508072
+["bibtex report_BardiaMojra_dd-mm2020"] 1604109016 "report_BardiaMojra_dd-mm2020.aux" "report_BardiaMojra_dd-mm2020.bbl" "report_BardiaMojra_dd-mm2020" 1604109042
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/ieeetr.bst" 1480098433 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "bib_BardiaMojra_dd-mm2020.bib" 1603503493 2571 122a5f27acab2e86410925c69ba16cca ""
-  "report_BardiaMojra_dd-mm2020.aux" 1603508027 1448 5f4f17a58cfc98809670a3ef5889921c ""
+  "bib_BardiaMojra_dd-mm2020.bib" 1604108972 3050 919150d82c03077ebd134ca74165733b ""
+  "report_BardiaMojra_dd-mm2020.aux" 1604109017 1523 de794d944023a5043c9121a01ada2f69 ""
   "report_BardiaMojra_dd-mm2020.bcf" 0 -1 0 ""
   (generated)
   "report_BardiaMojra_dd-mm2020.bbl"
   "report_BardiaMojra_dd-mm2020.blg"
-["pdflatex"] 1603508027 "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.tex" "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.pdf" "report_BardiaMojra_dd-mm2020" 1603508072
-  "/etc/texmf/web2c/texmf.cnf" 1597421292 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.aux" 1603508027 1448 5f4f17a58cfc98809670a3ef5889921c ""
-  "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.tex" 1603508026 5553 0884b6d1301a333fee1e5851e09bf674 ""
+["pdflatex"] 1604109016 "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.tex" "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.pdf" "report_BardiaMojra_dd-mm2020" 1604109042
+  "/etc/texmf/web2c/texmf.cnf" 1604001751 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.aux" 1604109017 1523 de794d944023a5043c9121a01ada2f69 ""
+  "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.tex" 1604109041 2903 6fca8b953995e1c40c456b8f8d86689f ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1480098698 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1480098698 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -109,14 +109,14 @@
   "/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1480098843 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1597515959 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1597515969 4126140 6ff0e42b6ed87675499d2694beb9ebf7 ""
-  "report_BardiaMojra_dd-mm2020.aux" 1603508027 1448 5f4f17a58cfc98809670a3ef5889921c ""
-  "report_BardiaMojra_dd-mm2020.bbl" 1603508008 1047 bcc4e1bc7882d37942a2ed7471d3cdd6 "bibtex report_BardiaMojra_dd-mm2020"
-  "report_BardiaMojra_dd-mm2020.tex" 1603508026 5553 0884b6d1301a333fee1e5851e09bf674 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1604002338 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1604002360 4130261 847cde3c3a52f9e2b34d7073a85cf103 ""
+  "report_BardiaMojra_dd-mm2020.aux" 1604109017 1523 de794d944023a5043c9121a01ada2f69 ""
+  "report_BardiaMojra_dd-mm2020.bbl" 1604109016 1356 2bb903ea5c26accb8d07a0c8ce82a765 "bibtex report_BardiaMojra_dd-mm2020"
+  "report_BardiaMojra_dd-mm2020.tex" 1604109041 2903 6fca8b953995e1c40c456b8f8d86689f ""
   (generated)
-  "report_BardiaMojra_dd-mm2020.aux"
-  "report_BardiaMojra_dd-mm2020.log"
   "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.pdf"
   "report_BardiaMojra_dd-mm2020.pdf"
+  "report_BardiaMojra_dd-mm2020.aux"
   "/home/bardi/git/report/report_BardiaMojra_dd-mm2020.log"
+  "report_BardiaMojra_dd-mm2020.log"

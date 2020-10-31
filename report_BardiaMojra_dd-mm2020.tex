@@ -42,41 +42,30 @@
 
 \section{To Do}
 \begin{itemize}
-	\item Look into transfer learning
+	\item Look into transfer learning. Read \cite{tobin2017domain}.
+	\item Look into domain randomization and adaptation.
+	\item Reconstruct a pose estimation model to familiarize myself and then start modifying it.
+	\item Read \cite{choi2013rgb}.
 \end{itemize}
 
 
 \section{Progress}
 Following items are listed in order of priority:
 \begin{itemize}
+	\item Pose Estimation: I began dissecting \cite{tobin2017domain}, they used a Bayesian model to estimate distance traveled between each frame. They also introduced a "smart feature-encoding disentanglement technique" which I need to understand. They also used Lie Algebra (some vector-domain representation) for 3D orientation. I will finish this paper for next week. I also went over PoseCNN code but I need to finish setting up computer and upgrade lab computer to U20.04 and start playing with their NN model and apply all some ideas.
 
-	\item Pose Estimation: This week I dissected \cite{Dope} and wrote a literature review. The notes are on my Task Manager OneNote. Dope uses synthesized data for training their model and they works on so-called reality gap. Reality gap occurs when a model is trained on simulated data and tested in real environment and is characterized by models failure to perform as well as expected based on simulation dataset.
-	      Dope uses Domain Randomization (DR) as a feasible solution to reality gap problem. Authors used Falling Things synthetic dataset and well as their own and combined DR images with photorealistic images to yield better training results than using only DR dataset. In essence, Dope is deep neural network that infer the 2D coordinates of projected 3D bounding boxes and then derives the 3D coordinates using EPnP.
-	      In their approach, first they estimate a belief map of 2D keypoints of
-	      all objects of interest in the image coordinate system. In the second
-	      stage they compute (EPnP) 6D pose estimate based on the most likelihood
-	      estimate (MLE) from the previous step.
-	      Moreover for training, developers generated their ground truth training
-	      data in simulation using Unreal Engine as oppose to PoseCNN's training
-	      data, YCB data set, which is a set of high resolution scanned items limited to few objects and training images. DOPE's data set is much larger and allows for much deeper neural net training. It is also embedded or fused with eight intercepting lines from camera's focal point to the eight corners of each object's bounding box and another line to the center of the box for each object.
+	\item OCRTOC: I successfully upgraded my computer,
+	      now moving to Ubuntu 20.04. I am trying to keep with Jerry at the same time trying to contribute on the research side.
 
-	\item OCRTOC: Jerry helped me setup a Docker container for DOPE but we need to convert the code from python v2 to v3. I also need to install Unreal Engine on my laptop and start modifying the dataset with Nvidia's NDDS plugin to generate our own embeddings. I think with additional
-	      embeddings we can achieve better results or at least broaden the
-	      application range. Moreover, I am almost out of space on my laptop so I am going to upgrade it with a 2TB M2 drive and perhaps an additional 2TB SSD for Windows and internal backup. Unreal Engine alone needs about
-	      150GB, Matlab is another 50GB. I see why robotics is going more towards deep learning and that maybe because it is too difficult for most to derive equations of motion a simple LTI system.
-
-	\item Reading list: \cite{lampinen2001bayesian} and \cite{li2019survey}.
+	\item TensorFlow \cite{CVTF2}: I continued to
+	      chapter 2, Dense layer turns out to be very basic implementation, a fully connected layer.
 
 	\item MoreFusion \cite{MoreFusion}: Still need to write a literature review on this.
 
-	\item Project Alpe with Nolan: Nolan and I met today and discussed the direction of this side project. We don't want to spend more than 2-3 hours a week on this and we want to make it as productive as possible. Our objective is to record one-hour bi-weekly podcast on computer vision, AI and robotics where we discuss papers we read, what we learned recently and some of our projects. We will each create a professional website and incrementally post about our academic progress.
-
-	\item TensorFlow: Now that I have some clue what I am doing in regards to pose estimation, I am shifting more time to implementation. I am working on chapter 2 on \cite{planche2019hands} which begins with a computer vision example using TensorFlow and Keras. I will try to finish it by end of the weekend. Everything makes more sense now, even when I review previous notes and reports I find new connections and familiar patterns.
-
-	\item Quaternions: I think I understand this much better now. I don't think Hamilton intended to describe a 4th spatial dimension as described by some sources. I believe 6D and 7D notations are merely to simplify complex calculation. It is much easer to describe motion of an object with an additional variable term (a new mathematical dimension) than to calculate it for every instance using differentials of position with respect to time. It is an abstractions technique similar to the 3 angular "dimensions".
-
+	\item Project Alpe with Nolan: We skipped this week's work session, we were both busy and Nolan had an important deadline.
+	\item Reading list: \cite{lampinen2001bayesian} and \cite{li2019survey}.
+	\item Quaternions:
 	\item UR5e:
-
 	\item Fellowship:
 
 
