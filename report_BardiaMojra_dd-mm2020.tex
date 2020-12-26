@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{bookmark}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -30,50 +30,175 @@
 \maketitle
 \thispagestyle{empty}
 
-\begin{center}
-	\bigskip
-	\bigskip
-	Robotic Vision Lab
 
-	University of Texas at Arlington
+\bigskip
+\bigskip
+\begin{center}
+Robotic Vision Lab
 \end{center}
 
+\begin{center}
+University of Texas at Arlington
+\end{center}
+
+
+
 \newpage
+\section{Long-Term Goals}
+\begin{itemize}
+    \item Agile Manufacturing 
+\end{itemize}
+
+\section{Mid-Term Goals}
+\begin{itemize}
+    \item Bayesian Pose Estimation 
+    \item ARIAC
+    \item Pose Estimation Survey 
+\end{itemize}
 
 \section{To Do}
 \begin{itemize}
-	\item Look into transfer learning. Read \cite{tobin2017domain}.
-	\item Look into domain randomization and adaptation.
-	\item Reconstruct a pose estimation model to familiarize myself and then start modifying it.
-	\item Read \cite{choi2013rgb}.
+    \item Dissect Kendall's \cite{kendall2017uncertainties}: in progress. 
+    \item Write a literature review for \cite{kendall2017uncertainties}: in progress.
+    \item Dissect BayesOD \cite{harakeh2020bayesod}: in progress.
+    \item Write a literature review for \cite{harakeh2020bayesod}: Done.
+    \item Implement PoseCNN, DOPE, and BayesOD.
+	\item Look into transfer learning. 
+	\item Read and write a review for \cite{tobin2017domain}: Done. 
+	\item Look into domain randomization and adaptation techniques.
+	\item MoreFusion \cite{MoreFusion}: Wrote a literature review. Done.
+	\item Reading list: \cite{lampinen2001bayesian} and \cite{li2019survey}.
+    \item Read \cite{choi2013rgb}.
+    \item Search for recent pose estimation survey papers.
+    \item Generate new data set for PoseCNN and DOPE using UE4. 
+	\item Read more papers on deep pose estimation. \item Learn to use UE4. 
+
 \end{itemize}
 
 
 \section{Progress}
 Following items are listed in order of priority:
 \begin{itemize}
-	\item Pose Estimation: I began dissecting \cite{tobin2017domain}, they used a Bayesian model to estimate distance traveled between each frame. They also introduced a "smart feature-encoding disentanglement technique" which I need to understand. They also used Lie Algebra (some vector-domain representation) for 3D orientation. I will finish this paper for next week. I also went over PoseCNN code but I need to finish setting up computer and upgrade lab computer to U20.04 and start playing with their NN model and apply all some ideas.
+	\item Pose Estimation with BNN's: I am currently working on dissecting 
+	\cite{kendall2017uncertainties} and write a review for it simultaneously. 
+	Next, I will expand the review I have written for BayesOD and add more 
+	details as I look into the source code. My goal is to do some research every
+	morning and to end that with a page of written material. I will focus on 
+	Bayesian vision as it offers probabilistic predictions by using per pixel
+	Bayesian inference rather than deterministic output predictions based on MLE
+	 parameters as currently used by CNN's. 
+	
+	
+	\item Bayesian Uncertainty, \cite{kendall2017uncertainties}: Current pose 
+	estimation models with performance comparable with state of the art such as 
+	\cite{posecnn}, \cite{Dope}, \cite{MoreFusion}, and \cite{DenseFusion} all 
+	use CNN's. 
+	
+	Although the use of CNN's remains a powerful tool as a mean to compute rich 
+	feature maps by taking advantage of color channels; it has its short 
+	comings, mainly that predictions are deterministic even though the model 
+	is probabilistic. 
+	
+	Classical neural networks and CNN's use maximum likelihood to calculate 
+	network weights and biases which derive network outputs. Such models are 
+	represented by conditional PDF \( p(\textbf{y} | \textbf{x}, \theta) \) 
+	trained on data \( D = \{ \textbf{x}_{i},\textbf{y}_{i} \}_{i = 1}^{N} \) 
+	and converging to a set of learned parameters 
+	\( \theta = \{ \textbf{W}, \textbf{b} \}\) where
 
-	\item OCRTOC: I successfully upgraded my computer,
-	      now moving to Ubuntu 20.04. I am trying to keep with Jerry at the same time trying to contribute on the research side.
+	$$ p(D| \theta) = \prod_{i = 1}^{N}  p(\textbf{y}_{i} |\textbf{x}_{i}, \theta)  $$
+	
+	defines that PDF. For training these models, parameters \textbf{W} and 
+	\textbf{b} are learned through back-propagation using Maximum Likelihood 
+	Estimate (MLE) method, as defined by  
+	
+	$$ \hat{\theta}_{MLE} = \underset{\theta}{argMax} \sum_{i = 1}^{N} ln ~p(\textbf{y}_{i} | \textbf{x}_{i}, \theta) $$
+	
+	
 
-	\item TensorFlow \cite{CVTF2}: I continued to
-	      chapter 2, Dense layer turns out to be very basic implementation, a fully connected layer.
+	but in bayesian ---- 
+	
+	We start with the two basic rules for Bayesian machine learning, sum rule 
+	and product rule.
+	
+	Sum rule: 
+	
+	$$ p(\textbf{X}) = \sum_{\textbf{y}_{i}}~ p(\textbf{y}_{i} ,\textbf{x}_{i})  $$  
+	
+	Product rule: 
+	
+	$$  p(\textbf{X}_{i}, \textbf{Y}_{i}) = p(x)p(\textbf{y}_{i}|\textbf{x}_{i}) $$ 
+	
+	
+	Bayesian Learning: Learning is done by applying Bayes' rule to the current 
+	state of knowledge as new evidence becomes available throughout the training
+	 process. 
 
-	\item MoreFusion \cite{MoreFusion}: Still need to write a literature review on this.
+	$$ p(\theta | D, M) = \frac{p(D|\theta,M)~p(\theta|M)}{p(D|M)}  $$
+	
+	Where \( p(D| \theta, M) \) is the likelihood of parameters \( \theta \) in 
+	model M. Prior belief or probability of parameters for given model M. And 
+	posterior belief of \( \theta \) given model M and training data D is represented by \( p(\theta | D, M) \).
+	
+	
+	
+	Bayesian Prediction: 
+	
+	$$ p(x| D, M) = \integral p(x| \theta, D, M) p(\theta| D, M) d\theta $$
+	
+	Bayesian Model Comparison: 
+	
+	$$ p(M|D) = \frac{p(D|M)p(M)}{p(D)}$$ 
+	
+	On the other hand, Bayesian Neural Networks or BNN's infer posterior probability distribution frame by frame by marginalizing new likelihood over the distribution of parameters, hence converging to steady state posterior distribution. Moreover, Bayesian deep learning tools presented in \cite{kendall2017uncertainties} and \cite{gal2016uncertainty} allows for study and analysis of \textit{aleatoric} and \textit{epistemic} uncertainties together in one frame work. 
 
-	\item Project Alpe with Nolan: We skipped this week's work session, we were both busy and Nolan had an important deadline.
-	\item Reading list: \cite{lampinen2001bayesian} and \cite{li2019survey}.
-	\item Quaternions:
-	\item UR5e:
+	\textit{Aleatoric}:
+	
+	\textit{Epistemic}:
+	
+	Learned attenuation: 
+	
+	
+	
+	\item ARIAC: For now, I will focus on implementing pose estimation and BayesOD implementations.
+	
+	\item Pose Estimation Survey Paper Feedback:
+        \subitem Need a strong introduction to the problem 
+        \subitem Problem statement needs to be both quantatively and qualatively (figures)
+        
+        Make a to do list of this 
+	
+	The paper is in rough shape and far from complete.  It needs a strong introduction to the problem.  The paper should explain quantitatively (math) and qualitatively (figures) what exactly the pose estimation problem is.  Related work should go back at least 20-30 years.  That does not mean technology/methods from the 1990s have to be described in detail, but it has to at least be mentioned/referenced.
+
+One way to possibly improve the organization/structure is to look at trends/paradigms since the start of the pose estimation problem.  There was obviously a shift in paradigm with the advent of deep learning.  What were the trends prior to that?  Try to organize the paper in chronological order based on those trends.
+
+
+It's a good start, but writing a survey paper requires reading nearly all of the (highly cited) prior work and having an understanding of what that work accomplished.  This work all needs to be briefly described in the survey with references.  Please look at other recent survey papers (e.g., robot learning) and talk to and read Joe's survey on movement primitives as well.
+
+
+\item Joint Probability: 
+
+Joint probability \( p(D,W)\) relates prior belief to posterior belief given new evidence 
+\( p(D)p(W|D) = p(D,W) [joint prob.] = p(W)p(D|W) [conditional prob.] \)
+
+Posterior probability for a particular weight values, W, for given training data D. 
+
+Bayesian approach to deep neural network learning allows for quantafing uncertainties related to model parameters as well as uncertainties rooted in model structure. Uncertainty 
+
+
+	\item TensorFlow \cite{CVTF2}: I am still working through chapter 2. 
+
+
+	\item Project Alpe with Nolan: On pause for right now. 
+	\item UR5e: 
 	\item Fellowship:
-
+	\item System Identification Presentation:
 
 
 
 \end{itemize}
 
-\newpage
+%\newpage
 
 \section{Plans}
 Following items are listed in order of priority:
