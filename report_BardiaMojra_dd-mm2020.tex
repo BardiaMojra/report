@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage{bookmark}
-%\usepackage{algorithm}
-%\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -30,7 +30,6 @@
 \maketitle
 \thispagestyle{empty}
 
-
 \bigskip
 \bigskip
 \begin{center}
@@ -38,10 +37,8 @@ Robotic Vision Lab
 \end{center}
 
 \begin{center}
-University of Texas at Arlington
+The University of Texas at Arlington
 \end{center}
-
-
 
 \newpage
 \section{Long-Term Goals}
@@ -59,7 +56,7 @@ University of Texas at Arlington
 \section{To Do}
 \begin{itemize}
     \item Dissect Kendall's \cite{kendall2017uncertainties}: in progress. 
-    \item Write a literature review for \cite{kendall2017uncertainties}: in progress.
+    \item Write a literature review for \cite{kendall2017uncertainties}: Done.
     \item Dissect BayesOD \cite{harakeh2020bayesod}: in progress.
     \item Write a literature review for \cite{harakeh2020bayesod}: Done.
     \item Implement PoseCNN, DOPE, and BayesOD.
@@ -79,7 +76,18 @@ University of Texas at Arlington
 \section{Progress}
 Following items are listed in order of priority:
 \begin{itemize}
-	\item Pose Estimation with BNN's: I am currently working on dissecting 
+	\item Pose Estimation with BNN's: I am looking into Yarin Gal's work, he is 
+	a leading figure in Bayesian deep learning. His PhD thesis is on Uncertainty
+	 in Deep Learning, \cite{gal2016uncertainty}, and was advised by Zoubin 
+	Ghahramani. I am thinking if would be a good idea to go over his thesis.  
+
+	\item Reading material: This week I read \cite{sunderhauf2018limits} and 
+	\cite{kendall2017uncertainties}. I highlighted important sections of 
+	\cite{sunderhauf2018limits} and I taking notes 
+
+	Moreover, I 
+	
+	I am currently working on dissecting 
 	\cite{kendall2017uncertainties} and write a review for it simultaneously. 
 	Next, I will expand the review I have written for BayesOD and add more 
 	details as I look into the source code. My goal is to do some research every
@@ -89,10 +97,9 @@ Following items are listed in order of priority:
 	 parameters as currently used by CNN's. 
 	
 	
-	\item Bayesian Uncertainty, \cite{kendall2017uncertainties}: Current pose 
-	estimation models with performance comparable with state of the art such as 
-	\cite{posecnn}, \cite{Dope}, \cite{MoreFusion}, and \cite{DenseFusion} all 
-	use CNN's. 
+	\item Bayesian Pose Estimation: Current pose estimation models with 
+	performance comparable with state of the art such as \cite{posecnn}, 
+	\cite{Dope}, \cite{MoreFusion}, and \cite{DenseFusion} all use CNN's. 
 	
 	Although the use of CNN's remains a powerful tool as a mean to compute rich 
 	feature maps by taking advantage of color channels; it has its short 
@@ -138,23 +145,33 @@ Following items are listed in order of priority:
 	
 	Where \( p(D| \theta, M) \) is the likelihood of parameters \( \theta \) in 
 	model M. Prior belief or probability of parameters for given model M. And 
-	posterior belief of \( \theta \) given model M and training data D is represented by \( p(\theta | D, M) \).
+	posterior belief of \( \theta \) given model M and training data D is 
+	represented by \( p(\theta | D, M) \).
 	
 	
 	
 	Bayesian Prediction: 
 	
-	$$ p(x| D, M) = \integral p(x| \theta, D, M) p(\theta| D, M) d\theta $$
+	$$ p(x| D, M) = \int p(x| \theta, D, M) p(\theta| D, M) d\theta $$
 	
 	Bayesian Model Comparison: 
 	
 	$$ p(M|D) = \frac{p(D|M)p(M)}{p(D)}$$ 
 	
-	On the other hand, Bayesian Neural Networks or BNN's infer posterior probability distribution frame by frame by marginalizing new likelihood over the distribution of parameters, hence converging to steady state posterior distribution. Moreover, Bayesian deep learning tools presented in \cite{kendall2017uncertainties} and \cite{gal2016uncertainty} allows for study and analysis of \textit{aleatoric} and \textit{epistemic} uncertainties together in one frame work. 
+	On the other hand, Bayesian Neural Networks or BNN's infer posterior 
+	probability distribution frame by frame by marginalizing new likelihood 
+	over the distribution of parameters, hence converging to steady-state 
+	posterior distribution. Moreover, Bayesian deep learning tools presented 
+	in \cite{kendall2017uncertainties} and \cite{gal2016uncertainty} allows for 
+	study and analysis of \textit{aleatoric} and \textit{epistemic} uncertainties 
+	together in one frame work. 
 
 	\textit{Aleatoric}:
 	
-	\textit{Epistemic}:
+	\textit{Epistemic} uncertainty is what a model does not know due to the 
+	incompleteness of training data. Epistemic uncertainty decreases (but it 
+	will never be equal to zero) as training data is expanded. It is also 
+	referred to as \textbf{model uncertainty}.
 	
 	Learned attenuation: 
 	
@@ -162,28 +179,19 @@ Following items are listed in order of priority:
 	
 	\item ARIAC: For now, I will focus on implementing pose estimation and BayesOD implementations.
 	
-	\item Pose Estimation Survey Paper Feedback:
-        \subitem Need a strong introduction to the problem 
-        \subitem Problem statement needs to be both quantatively and qualatively (figures)
-        
-        Make a to do list of this 
-	
-	The paper is in rough shape and far from complete.  It needs a strong introduction to the problem.  The paper should explain quantitatively (math) and qualitatively (figures) what exactly the pose estimation problem is.  Related work should go back at least 20-30 years.  That does not mean technology/methods from the 1990s have to be described in detail, but it has to at least be mentioned/referenced.
+	\item Pose Estimation Survey Paper Feedback: On hold, I am working on
+	Bayesian Pose Estimation.
 
-One way to possibly improve the organization/structure is to look at trends/paradigms since the start of the pose estimation problem.  There was obviously a shift in paradigm with the advent of deep learning.  What were the trends prior to that?  Try to organize the paper in chronological order based on those trends.
+Joint Probability: Joint probability \(p(D,W)\) relates prior belief to 
+posterior belief given new evidence 
 
-
-It's a good start, but writing a survey paper requires reading nearly all of the (highly cited) prior work and having an understanding of what that work accomplished.  This work all needs to be briefly described in the survey with references.  Please look at other recent survey papers (e.g., robot learning) and talk to and read Joe's survey on movement primitives as well.
-
-
-\item Joint Probability: 
-
-Joint probability \( p(D,W)\) relates prior belief to posterior belief given new evidence 
-\( p(D)p(W|D) = p(D,W) [joint prob.] = p(W)p(D|W) [conditional prob.] \)
+\( p(D)p(W|D) = p(D,W) [joint~prob.] = p(W)p(D|W) [conditional~prob.] \)
 
 Posterior probability for a particular weight values, W, for given training data D. 
 
-Bayesian approach to deep neural network learning allows for quantafing uncertainties related to model parameters as well as uncertainties rooted in model structure. Uncertainty 
+Bayesian approach to deep neural network learning allows for quantafing 
+uncertainties related to model parameters as well as uncertainties rooted in 
+model structure. Uncertainty 
 
 
 	\item TensorFlow \cite{CVTF2}: I am still working through chapter 2. 
@@ -221,3 +229,4 @@ Following items are listed in order of priority:
 \bibliographystyle{ieeetr}
 
 \end{document}
+
