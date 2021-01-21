@@ -33,175 +33,186 @@
 \bigskip
 \bigskip
 \begin{center}
-Robotic Vision Lab
+	Robotic Vision Lab
 \end{center}
 
 \begin{center}
-The University of Texas at Arlington
+	The University of Texas at Arlington
 \end{center}
 
 \newpage
-\section{Long-Term Goals}
-\begin{itemize}
-    \item Agile Manufacturing 
-\end{itemize}
-
-\section{Mid-Term Goals}
-\begin{itemize}
-    \item Bayesian Pose Estimation 
-    \item ARIAC
-    \item Pose Estimation Survey 
-\end{itemize}
 
 \section{To Do}
 \begin{itemize}
-    \item Dissect Kendall's \cite{kendall2017uncertainties}: in progress. 
-    \item Write a literature review for \cite{kendall2017uncertainties}: Done.
-    \item Dissect BayesOD \cite{harakeh2020bayesod}: in progress.
-    \item Write a literature review for \cite{harakeh2020bayesod}: Done.
-    \item Implement PoseCNN, DOPE, and BayesOD.
-	\item Look into transfer learning. 
-	\item Read and write a review for \cite{tobin2017domain}: Done. 
-	\item Look into domain randomization and adaptation techniques.
-	\item MoreFusion \cite{MoreFusion}: Wrote a literature review. Done.
-	\item Reading list: \cite{lampinen2001bayesian} and \cite{li2019survey}.
-    \item Read \cite{choi2013rgb}.
-    \item Search for recent pose estimation survey papers.
-    \item Generate new data set for PoseCNN and DOPE using UE4. 
-	\item Read more papers on deep pose estimation. \item Learn to use UE4. 
-
+	\item Implement DOPE with added dropout before each layer to estimate
+	      variational  Bayesian inference.
+	\item Finish Tensorflow tutorials, \cite{CVTF2}: 4/9 chapters done.
+	\item Learn to implement transfer learning.
+	\item Finish Docker tutorials, \cite{schenker2020learn}: 4/18 chapters done.
 \end{itemize}
 
 
 \section{Progress}
 Following items are listed in order of priority:
 \begin{itemize}
-	\item Pose Estimation with BNN's: I am looking into Yarin Gal's work, he is 
-	a leading figure in Bayesian deep learning. His PhD thesis is on Uncertainty
-	 in Deep Learning, \cite{gal2016uncertainty}, and was advised by Zoubin 
-	Ghahramani. I am thinking if would be a good idea to go over his thesis.  
 
-	\item Reading material: This week I read \cite{sunderhauf2018limits} and 
-	\cite{kendall2017uncertainties}. I highlighted important sections of 
-	\cite{sunderhauf2018limits} and I taking notes 
-
-	Moreover, I 
-	
-	I am currently working on dissecting 
-	\cite{kendall2017uncertainties} and write a review for it simultaneously. 
-	Next, I will expand the review I have written for BayesOD and add more 
-	details as I look into the source code. My goal is to do some research every
-	morning and to end that with a page of written material. I will focus on 
-	Bayesian vision as it offers probabilistic predictions by using per pixel
-	Bayesian inference rather than deterministic output predictions based on MLE
-	 parameters as currently used by CNN's. 
-	
-	
-	\item Bayesian Pose Estimation: Current pose estimation models with 
-	performance comparable with state of the art such as \cite{posecnn}, 
-	\cite{Dope}, \cite{MoreFusion}, and \cite{DenseFusion} all use CNN's. 
-	
-	Although the use of CNN's remains a powerful tool as a mean to compute rich 
-	feature maps by taking advantage of color channels; it has its short 
-	comings, mainly that predictions are deterministic even though the model 
-	is probabilistic. 
-	
-	Classical neural networks and CNN's use maximum likelihood to calculate 
-	network weights and biases which derive network outputs. Such models are 
-	represented by conditional PDF \( p(\textbf{y} | \textbf{x}, \theta) \) 
-	trained on data \( D = \{ \textbf{x}_{i},\textbf{y}_{i} \}_{i = 1}^{N} \) 
-	and converging to a set of learned parameters 
-	\( \theta = \{ \textbf{W}, \textbf{b} \}\) where
-
-	$$ p(D| \theta) = \prod_{i = 1}^{N}  p(\textbf{y}_{i} |\textbf{x}_{i}, \theta)  $$
-	
-	defines that PDF. For training these models, parameters \textbf{W} and 
-	\textbf{b} are learned through back-propagation using Maximum Likelihood 
-	Estimate (MLE) method, as defined by  
-	
-	$$ \hat{\theta}_{MLE} = \underset{\theta}{argMax} \sum_{i = 1}^{N} ln ~p(\textbf{y}_{i} | \textbf{x}_{i}, \theta) $$
-	
-	
-
-	but in bayesian ---- 
-	
-	We start with the two basic rules for Bayesian machine learning, sum rule 
-	and product rule.
-	
-	Sum rule: 
-	
-	$$ p(\textbf{X}) = \sum_{\textbf{y}_{i}}~ p(\textbf{y}_{i} ,\textbf{x}_{i})  $$  
-	
-	Product rule: 
-	
-	$$  p(\textbf{X}_{i}, \textbf{Y}_{i}) = p(x)p(\textbf{y}_{i}|\textbf{x}_{i}) $$ 
-	
-	
-	Bayesian Learning: Learning is done by applying Bayes' rule to the current 
-	state of knowledge as new evidence becomes available throughout the training
-	 process. 
-
-	$$ p(\theta | D, M) = \frac{p(D|\theta,M)~p(\theta|M)}{p(D|M)}  $$
-	
-	Where \( p(D| \theta, M) \) is the likelihood of parameters \( \theta \) in 
-	model M. Prior belief or probability of parameters for given model M. And 
-	posterior belief of \( \theta \) given model M and training data D is 
-	represented by \( p(\theta | D, M) \).
-	
-	
-	
-	Bayesian Prediction: 
-	
-	$$ p(x| D, M) = \int p(x| \theta, D, M) p(\theta| D, M) d\theta $$
-	
-	Bayesian Model Comparison: 
-	
-	$$ p(M|D) = \frac{p(D|M)p(M)}{p(D)}$$ 
-	
-	On the other hand, Bayesian Neural Networks or BNN's infer posterior 
-	probability distribution frame by frame by marginalizing new likelihood 
-	over the distribution of parameters, hence converging to steady-state 
-	posterior distribution. Moreover, Bayesian deep learning tools presented 
-	in \cite{kendall2017uncertainties} and \cite{gal2016uncertainty} allows for 
-	study and analysis of \textit{aleatoric} and \textit{epistemic} uncertainties 
-	together in one frame work. 
-
-	\textit{Aleatoric}:
-	
-	\textit{Epistemic} uncertainty is what a model does not know due to the 
-	incompleteness of training data. Epistemic uncertainty decreases (but it 
-	will never be equal to zero) as training data is expanded. It is also 
-	referred to as \textbf{model uncertainty}.
-	
-	Learned attenuation: 
-	
-	
-	
-	\item ARIAC: For now, I will focus on implementing pose estimation and BayesOD implementations.
-	
-	\item Pose Estimation Survey Paper Feedback: On hold, I am working on
-	Bayesian Pose Estimation.
-
-Joint Probability: Joint probability \(p(D,W)\) relates prior belief to 
-posterior belief given new evidence 
-
-\( p(D)p(W|D) = p(D,W) [joint~prob.] = p(W)p(D|W) [conditional~prob.] \)
-
-Posterior probability for a particular weight values, W, for given training data D. 
-
-Bayesian approach to deep neural network learning allows for quantafing 
-uncertainties related to model parameters as well as uncertainties rooted in 
-model structure. Uncertainty 
+	\item \cite{kendall2017uncertainties}: In recent years dropout has become a
+	      usefull tool in deep learning as \cite{gal2016dropout} and
+	      \cite{kendall2016modelling} demonstrated its potentials as well as
+	      mathematical derivation explaining its internal mechanism. In this paper,
+	      authors expand on their previous work and further define uncertainty in
+	      Bayesian deep CNN's. They divide uncertainty to two groups, Aleatoric and
+	      Epistemic. Aleatoric uncertainty is the observation noise within the system,
+	      this could be camera noise or mobile agent's structural vibration that
+	      induces noise on images. Epistemic uncertainty is the model uncertainty and
+	      converges to zero given expanded dataset. Furthermore, they categorize
+	      Aleatoric uncertainty into two groups, Heteroscedastic and Homoscedastic,
+	      which represent input-dependent and input-independent noise, respectively.
+	      I believe further system identification can be performed efficiently on
+	      robotic vision systems, especially monocular mobile vision systems. As
+	      plainly mentioned in the paper, they use intelligent robust control ideas
+	      with Bayesian convnets to infer a posterior distribution for model \(f\),
+	      for some input image \(x\) and a predicted output mean and variance
+	      \(\hat{y}\) and \( \hat{\sigma^{2}}\) (variance is interpreted as
+	      aleatoric uncertainty). Per intelligent robust control, output predictions
+	      are then fed into a inner feedback loop where model parameters, \(W\),
+	      are updated, \(\hat{W}\), using latest prediction errors. This is why
+	      heteroscedastic uncertainty is referred to as \textit{learned loss attenuation},
+	      because in intelligent robust control effects of a prior input on the
+	      current output is dieluted if it does not become a pattern.
 
 
-	\item TensorFlow \cite{CVTF2}: I am still working through chapter 2. 
+	\item \cite{sunderhauf2018limits}: This paper lays out some of the most important
+	      challenges ahead of researchers in deep learning for robotics, and in
+	      particular robotics vision. Authors present these challenges as three conceptually
+	      orthagonal axes, \textit{learning}, \textit{embodiment}, and \textit{reasoning}.
+	      \textit{Learning} challenges are described by the need for intelligent agents
+	      to learn actively on their own if needed request operator assistance.
+	      Authors believe, with recent development in deep learning, uncertainty
+	      estimation can be used to detect never seen before objects and assign
+	      new labels and classes as needed. This is called Active Learning and
+	      it is a prime goal of machine learning researcher. \textit{embodiment}
+	      challenges are described by the need for vision systems and robotic
+	      agents to better understand and ultimately engage with their environments
+	      in an intuitive way. Temporal and spatial embodiments are used to encode
+	      higher dimension information about a pixel's state over time and its
+	      relation to other pixels. Embodiment of further information extracted
+	      from the environment, if done with computational efficiently, can make
+	      significant progress towards active vision and manipulation as we could
+	      draw posterior probability from them. \textit{Reasoning} challenges
+	      are characterized by the ever growing need for intelligent agents to
+	      perform more sophisticated reasoning. This is investigated at three
+	      tiers, \textit{reasoning about object and scene semantics},
+	      \textit{reasoning about object and scene geometry}, and \textit{joint
+		      reasoning about semantics and geometry} and the idea is to take
+	      advantage many semantic regularities present in real world by using
+	      prior knowledge. In psychology, this is generally referred to as
+	      \textit{schema inference} and schema is defined as a framework or a
+	      pattern of thought and behavior that organizes information and relation
+	      among them. In robotic vision, similar to human behavior, agents need
+	      to make shortcut inferences bases on more prominant prior knowledge and
+	      current environmental and situational needs. This is also referred to
+	      as pixel-to-action learing. Lastly, authors pose the question whether
+	      it is more feasible to pursue model based learning or deep learning for
+	      future research. It is reasonable to belief systems will continue to
+	      develop somewhere in the middle of the spectrum rather than the two ends.
+	\item Object Pose Estimation with Uncertainty: Right now I am trying to put
+	      together BayesianOD and PoseCNN.
+	\item Implement PoseCNN, DOPE, and BayesOD.
+	\item Transfer learning is a powerful tool in deep learning for reusing pre-trained
+	      models (weights and parameters) for training other models. This is done by
+	      removing high level layers and replace them with those of the new model. Then
+	      we freeze the weights of pre-trained model and train the new layers on new
+	      target data.
+	\item Look into domain randomization and adaptation techniques.
+	\item Search for recent pose estimation survey papers: Found this paper,
+	      \cite{du2020vision}, on pose estimation.
+	\item Bayesian Pose Estimation Notes: Current pose estimation models with
+	      performance comparable with state of the art such as \cite{xiang2018posecnn},
+	      \cite{Dope}, \cite{MoreFusion}, and \cite{DenseFusion} all use CNN's.
+
+	      Although the use of CNN's remains a powerful tool as a mean to compute rich
+	      feature maps by taking advantage of color channels; it has its short
+	      comings, mainly that predictions are deterministic even though the model
+	      is probabilistic.
+
+	      Classical neural networks and CNN's use maximum likelihood to calculate
+	      network weights and biases which derive network outputs. Such models are
+	      represented by conditional PDF \( p(\textbf{y} | \textbf{x}, \theta) \)
+	      trained on data \( D = \{ \textbf{x}_{i},\textbf{y}_{i} \}_{i = 1}^{N} \)
+	      and converging to a set of learned parameters
+	      \( \theta = \{ \textbf{W}, \textbf{b} \}\) where
+
+	      $$ p(D| \theta) = \prod_{i = 1}^{N}  p(\textbf{y}_{i} |\textbf{x}_{i}, \theta)  $$
+
+	      defines that PDF. For training these models, parameters \textbf{W} and
+	      \textbf{b} are learned through back-propagation using Maximum Likelihood
+	      Estimate (MLE) method, as defined by
+
+	      $$ \hat{\theta}_{MLE} = \underset{\theta}{argMax} \sum_{i = 1}^{N} ln ~p(\textbf{y}_{i} | \textbf{x}_{i}, \theta) $$
 
 
-	\item Project Alpe with Nolan: On pause for right now. 
-	\item UR5e: 
-	\item Fellowship:
-	\item System Identification Presentation:
 
+	      but in bayesian ----
+
+	      We start with the two basic rules for Bayesian machine learning, sum rule
+	      and product rule.
+
+	      Sum rule:
+
+	      $$ p(\textbf{X}) = \sum_{\textbf{y}_{i}}~ p(\textbf{y}_{i} ,\textbf{x}_{i})  $$
+
+	      Product rule:
+
+	      $$  p(\textbf{X}_{i}, \textbf{Y}_{i}) = p(x)p(\textbf{y}_{i}|\textbf{x}_{i}) $$
+
+
+	      Bayesian Learning: Learning is done by applying Bayes' rule to the current
+	      state of knowledge as new evidence becomes available throughout the training
+	      process.
+
+	      $$ p(\theta | D, M) = \frac{p(D|\theta,M)~p(\theta|M)}{p(D|M)}  $$
+
+	      Where \( p(D| \theta, M) \) is the likelihood of parameters \( \theta \) in
+	      model M. Prior belief or probability of parameters for given model M. And
+	      posterior belief of \( \theta \) given model M and training data D is
+	      represented by \( p(\theta | D, M) \).
+
+	      Bayesian Prediction:
+
+	      $$ p(x| D, M) = \int p(x| \theta, D, M) p(\theta| D, M) d\theta $$
+
+	      Bayesian Model Comparison:
+
+	      $$ p(M|D) = \frac{p(D|M)p(M)}{p(D)}$$
+
+	      On the other hand, Bayesian Neural Networks or BNN's infer posterior
+	      probability distribution frame by frame by marginalizing new likelihood
+	      over the distribution of parameters, hence converging to steady-state
+	      posterior distribution. Moreover, Bayesian deep learning tools presented
+	      in \cite{kendall2017uncertainties} and \cite{gal2016uncertainty} allows for
+	      study and analysis of \textit{aleatoric} and \textit{epistemic} uncertainties
+	      together in one frame work.
+
+	      \textit{Aleatoric}:
+
+	      \textit{Epistemic} uncertainty is what a model does not know due to the
+	      incompleteness of training data. Epistemic uncertainty decreases (but it
+	      will never be equal to zero) as training data is expanded. It is also
+	      referred to as \textbf{model uncertainty}.
+
+	      Learned attenuation:
+
+	      Joint Probability: Joint probability \(p(D,W)\) relates prior belief to
+	      posterior belief given new evidence
+
+	      \( p(D)p(W|D) = p(D,W)~[joint~prob.] = p(W)p(D|W)~[cond.~prob.]\)
+
+	      Posterior probability for a particular weight values, W, for given training data D.
+
+	      Bayesian approach to deep neural network learning allows for quantifying
+	      uncertainties related to model parameters as well as uncertainties rooted in
+	      model structure. Uncertainty
 
 
 \end{itemize}
@@ -213,14 +224,25 @@ Following items are listed in order of priority:
 
 \begin{itemize}
 
-	\item (On pause) Continue with ROS Industrial tutorials and documentation.
+	\item Implement multiple object pose estimation with uncertainty estimation.
+	\item Keep working on Bayesian Pose Estimation paper.
+	\item ARIAC: For now, I will focus on implementing pose estimation and
+	      BayesOD implementations.
 
-	\item (On pause) Resume Robotic Perception course as soon as possible.
+	\item Continue on UE4 tutorials.
 
-	\item (On pause) Read Digital Image Processing by Gonzalez and Woods.
-
+	\item Pose Estimation Survey Paper Feedback: On hold, I am working on
+	      Bayesian Pose Estimation.
+	\item Project Alpe with Nolan: On pause for right now.
+	\item UR5e: Finish ROS Industrial tutorials.
 \end{itemize}
 
+\section{2021 Goals and Target Journals/Conferences}
+\begin{itemize}
+	\item Submit a paper on pose estimation with uncertainty to ICIRS.
+	\item Get comfortable with TensorFlow and related Python modules.
+	\item Keep writing.
+\end{itemize}
 
 
 %Sets the bibliography style to UNSRT and import the
@@ -229,4 +251,3 @@ Following items are listed in order of priority:
 \bibliographystyle{ieeetr}
 
 \end{document}
-
