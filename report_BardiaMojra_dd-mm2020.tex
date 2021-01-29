@@ -44,176 +44,106 @@
 
 \section{To Do}
 \begin{itemize}
+	\item Implement basic estimation and generate a baseline for incremental
+	      advancement: Currently, I can train a basic model using  the randomly
+	      generated data. I am currently working on resolving a visualization
+	      issue.
 	\item Implement DOPE with added dropout before each layer to estimate
-	      variational  Bayesian inference.
+	      variational Bayesian inference.
+	\item Read Data Association and Localization of Classified Objects in Visual
+	      SLAM: in progress.
+	\item Work on Pose Estimation Uncertainty paper.
+	\item Implement PoseCNN, DOPE, and BayesOD.
+	\item Look into domain randomization and adaptation techniques.
+	\item Search for recent pose estimation survey papers: Found this paper,
+	      \cite{du2020vision}, on pose estimation.
+	\item As I read more papers, go back and update Pose Estimation Survey paper.
 	\item Finish Tensorflow tutorials, \cite{CVTF2}: 4/9 chapters done.
 	\item Learn to implement transfer learning.
-	\item Finish Docker tutorials, \cite{schenker2020learn}: 4/18 chapters done.
+	\item (On pause) Finish Docker tutorials, \cite{schenker2020learn}: 4/18
+	      chapters done.
 \end{itemize}
+
+\section{Literature Reviews}
+\subsection{Dropout as a Bayesian Approximation: Representing Model Uncertainty
+	Deep Learning}
+\par In this paper \cite{gal2016dropout}, the authors introduce a mathematical
+framework that casts training deep neural nets with dropout layers as
+approximate Bayesian inference in deep Gaussian processes. They show that dropout
+layers in deep networks can minimize Kullback-Leibler divergence between an
+approximate distribution and the posterior of a deep Gaussian process, \cite{damianou2013deep}.
+This is quite effective since dropout layers preserve Gaussian processes'
+variational distributions.
+
+\par To make posterior weight distribution \(p(\omega|D)\) intractable, columns
+are set to zero at random and we end up with \(q(\omega)\), an approximate
+posterior weight distribution. Moreover,these layers are highly multi-modal and
+induces strong joint correlations over the rows of the network weight matrices
+\(W_i\).
+
+\par The objectice KL divergence minimization is computed by approximating each
+term by Monte Carlo integration with a single sample,\(\widehat{\omega}_n
+\sim q(\omega)\).
+This allows for unbiased estimation of each posterior modality with
+\(-log~p(y_n | x_n,\widehat{\omega_n} ) \) combined with the second summation
+term they obtained the following:
+$$
+	\mathcal{L}_{GP-MC} \propto\frac{1}{N}\sum_{n = 1}^{N}
+	\frac{-log~p(y_n | x_n,\widehat{\omega}_n )}{ \tau }
+	+ \sum_{l = 1}^{L} (\frac{p_i l^2}{2 \tau N} \|\textbf{M}_i\|_{2}^{2}
+	+  \frac{l^2}{2 \tau N} \|\textbf{m}_i \|_{2}^{2})
+$$
+
+Where
+$$
+	E(y_n, \widehat{y}(x_n, \widehat{\omega}_{n})) = -log~p(y_n | x_n,\widehat{\omega}_n )/{ \tau}
+$$
+
+and approximate predictive distribution function represented by:
+$$
+	q(y^* | x^*) = \int p(y^* | x^*, \omega) q(\omega)d\omega
+$$
+
+Which means this Monte Carlo estimation, \textit{MC Dropout}, makes generalized
+predictions by averaging the weights of the network. This would be similar to T
+stochastic forward pass through the network and averaging the outputs but rather
+computationally more efficient.
+
+For regression tasks, predictive log-likelihood estimate is given by:
+$$
+	log~ p(y^* | x^*, X,Y)\approx  logsumexp(-\frac{1}{2} \tau \|y-\widehat{y}_t\|^2)
+	- log~T - \frac{1}{2} log~ 2 \pi - \frac{1}{2} log~\tau^{-1}
+$$
+
+In their experiments, they used a LeNet-5 with dropout layers added. For
+regression, MC Dropout with .1 or.2  probabilities (resulted in identical
+uncertainties) were applied before every weight layer and with TanH activation.
+For classification, they applied a dropout layer before the last fully connected
+inner-product layer. They use probability of .5 for dropout layers in
+classification tasks.
 
 
 \section{Progress}
 Following items are listed in order of priority:
 \begin{itemize}
+	\item Object Pose Estimation with Uncertainty: I started a Tensorflow
+	      \cite{tensorflow2015-whitepaper} project based on a simple implementation
+	      \cite{graphics85:online}. The code is written using Tensorflow Graphics
+	      module which is currently on supported by Google Colab, I am in the
+	      process of porting the code so it will use TensorBoard 3D instead.
+	      Next, I will expand the 3-layer nextwork to five layers, train, test
+	      and compare the results. Later, I will add dropout layers for uncertainty
+	      analysis in regression.
 
-	\item \cite{kendall2017uncertainties}: In recent years dropout has become a
-	      usefull tool in deep learning as \cite{gal2016dropout} and
-	      \cite{kendall2016modelling} demonstrated its potentials as well as
-	      mathematical derivation explaining its internal mechanism. In this paper,
-	      authors expand on their previous work and further define uncertainty in
-	      Bayesian deep CNN's. They divide uncertainty to two groups, Aleatoric and
-	      Epistemic. Aleatoric uncertainty is the observation noise within the system,
-	      this could be camera noise or mobile agent's structural vibration that
-	      induces noise on images. Epistemic uncertainty is the model uncertainty and
-	      converges to zero given expanded dataset. Furthermore, they categorize
-	      Aleatoric uncertainty into two groups, Heteroscedastic and Homoscedastic,
-	      which represent input-dependent and input-independent noise, respectively.
-	      I believe further system identification can be performed efficiently on
-	      robotic vision systems, especially monocular mobile vision systems. As
-	      plainly mentioned in the paper, they use intelligent robust control ideas
-	      with Bayesian convnets to infer a posterior distribution for model \(f\),
-	      for some input image \(x\) and a predicted output mean and variance
-	      \(\hat{y}\) and \( \hat{\sigma^{2}}\) (variance is interpreted as
-	      aleatoric uncertainty). Per intelligent robust control, output predictions
-	      are then fed into a inner feedback loop where model parameters, \(W\),
-	      are updated, \(\hat{W}\), using latest prediction errors. This is why
-	      heteroscedastic uncertainty is referred to as \textit{learned loss attenuation},
-	      because in intelligent robust control effects of a prior input on the
-	      current output is dieluted if it does not become a pattern.
+	      I am currently restructuring the code into modules for model build, train,
+	      and testing. Other modules such as feature extraction can also be added
+	      to further enhance the performance.
 
 
-	\item \cite{sunderhauf2018limits}: This paper lays out some of the most important
-	      challenges ahead of researchers in deep learning for robotics, and in
-	      particular robotics vision. Authors present these challenges as three conceptually
-	      orthagonal axes, \textit{learning}, \textit{embodiment}, and \textit{reasoning}.
-	      \textit{Learning} challenges are described by the need for intelligent agents
-	      to learn actively on their own if needed request operator assistance.
-	      Authors believe, with recent development in deep learning, uncertainty
-	      estimation can be used to detect never seen before objects and assign
-	      new labels and classes as needed. This is called Active Learning and
-	      it is a prime goal of machine learning researcher. \textit{embodiment}
-	      challenges are described by the need for vision systems and robotic
-	      agents to better understand and ultimately engage with their environments
-	      in an intuitive way. Temporal and spatial embodiments are used to encode
-	      higher dimension information about a pixel's state over time and its
-	      relation to other pixels. Embodiment of further information extracted
-	      from the environment, if done with computational efficiently, can make
-	      significant progress towards active vision and manipulation as we could
-	      draw posterior probability from them. \textit{Reasoning} challenges
-	      are characterized by the ever growing need for intelligent agents to
-	      perform more sophisticated reasoning. This is investigated at three
-	      tiers, \textit{reasoning about object and scene semantics},
-	      \textit{reasoning about object and scene geometry}, and \textit{joint
-		      reasoning about semantics and geometry} and the idea is to take
-	      advantage many semantic regularities present in real world by using
-	      prior knowledge. In psychology, this is generally referred to as
-	      \textit{schema inference} and schema is defined as a framework or a
-	      pattern of thought and behavior that organizes information and relation
-	      among them. In robotic vision, similar to human behavior, agents need
-	      to make shortcut inferences bases on more prominant prior knowledge and
-	      current environmental and situational needs. This is also referred to
-	      as pixel-to-action learing. Lastly, authors pose the question whether
-	      it is more feasible to pursue model based learning or deep learning for
-	      future research. It is reasonable to belief systems will continue to
-	      develop somewhere in the middle of the spectrum rather than the two ends.
-	\item Object Pose Estimation with Uncertainty: Right now I am trying to put
-	      together BayesianOD and PoseCNN.
 	\item Implement PoseCNN, DOPE, and BayesOD.
-	\item Transfer learning is a powerful tool in deep learning for reusing pre-trained
-	      models (weights and parameters) for training other models. This is done by
-	      removing high level layers and replace them with those of the new model. Then
-	      we freeze the weights of pre-trained model and train the new layers on new
-	      target data.
 	\item Look into domain randomization and adaptation techniques.
 	\item Search for recent pose estimation survey papers: Found this paper,
 	      \cite{du2020vision}, on pose estimation.
-	\item Bayesian Pose Estimation Notes: Current pose estimation models with
-	      performance comparable with state of the art such as \cite{xiang2018posecnn},
-	      \cite{Dope}, \cite{MoreFusion}, and \cite{DenseFusion} all use CNN's.
-
-	      Although the use of CNN's remains a powerful tool as a mean to compute rich
-	      feature maps by taking advantage of color channels; it has its short
-	      comings, mainly that predictions are deterministic even though the model
-	      is probabilistic.
-
-	      Classical neural networks and CNN's use maximum likelihood to calculate
-	      network weights and biases which derive network outputs. Such models are
-	      represented by conditional PDF \( p(\textbf{y} | \textbf{x}, \theta) \)
-	      trained on data \( D = \{ \textbf{x}_{i},\textbf{y}_{i} \}_{i = 1}^{N} \)
-	      and converging to a set of learned parameters
-	      \( \theta = \{ \textbf{W}, \textbf{b} \}\) where
-
-	      $$ p(D| \theta) = \prod_{i = 1}^{N}  p(\textbf{y}_{i} |\textbf{x}_{i}, \theta)  $$
-
-	      defines that PDF. For training these models, parameters \textbf{W} and
-	      \textbf{b} are learned through back-propagation using Maximum Likelihood
-	      Estimate (MLE) method, as defined by
-
-	      $$ \hat{\theta}_{MLE} = \underset{\theta}{argMax} \sum_{i = 1}^{N} ln ~p(\textbf{y}_{i} | \textbf{x}_{i}, \theta) $$
-
-
-
-	      but in bayesian ----
-
-	      We start with the two basic rules for Bayesian machine learning, sum rule
-	      and product rule.
-
-	      Sum rule:
-
-	      $$ p(\textbf{X}) = \sum_{\textbf{y}_{i}}~ p(\textbf{y}_{i} ,\textbf{x}_{i})  $$
-
-	      Product rule:
-
-	      $$  p(\textbf{X}_{i}, \textbf{Y}_{i}) = p(x)p(\textbf{y}_{i}|\textbf{x}_{i}) $$
-
-
-	      Bayesian Learning: Learning is done by applying Bayes' rule to the current
-	      state of knowledge as new evidence becomes available throughout the training
-	      process.
-
-	      $$ p(\theta | D, M) = \frac{p(D|\theta,M)~p(\theta|M)}{p(D|M)}  $$
-
-	      Where \( p(D| \theta, M) \) is the likelihood of parameters \( \theta \) in
-	      model M. Prior belief or probability of parameters for given model M. And
-	      posterior belief of \( \theta \) given model M and training data D is
-	      represented by \( p(\theta | D, M) \).
-
-	      Bayesian Prediction:
-
-	      $$ p(x| D, M) = \int p(x| \theta, D, M) p(\theta| D, M) d\theta $$
-
-	      Bayesian Model Comparison:
-
-	      $$ p(M|D) = \frac{p(D|M)p(M)}{p(D)}$$
-
-	      On the other hand, Bayesian Neural Networks or BNN's infer posterior
-	      probability distribution frame by frame by marginalizing new likelihood
-	      over the distribution of parameters, hence converging to steady-state
-	      posterior distribution. Moreover, Bayesian deep learning tools presented
-	      in \cite{kendall2017uncertainties} and \cite{gal2016uncertainty} allows for
-	      study and analysis of \textit{aleatoric} and \textit{epistemic} uncertainties
-	      together in one frame work.
-
-	      \textit{Aleatoric}:
-
-	      \textit{Epistemic} uncertainty is what a model does not know due to the
-	      incompleteness of training data. Epistemic uncertainty decreases (but it
-	      will never be equal to zero) as training data is expanded. It is also
-	      referred to as \textbf{model uncertainty}.
-
-	      Learned attenuation:
-
-	      Joint Probability: Joint probability \(p(D,W)\) relates prior belief to
-	      posterior belief given new evidence
-
-	      \( p(D)p(W|D) = p(D,W)~[joint~prob.] = p(W)p(D|W)~[cond.~prob.]\)
-
-	      Posterior probability for a particular weight values, W, for given training data D.
-
-	      Bayesian approach to deep neural network learning allows for quantifying
-	      uncertainties related to model parameters as well as uncertainties rooted in
-	      model structure. Uncertainty
-
 
 \end{itemize}
 
