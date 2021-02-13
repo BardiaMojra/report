@@ -44,192 +44,91 @@
 
 \section{To Do}
 \begin{itemize}
-      \item Implement pose estimation: implement basic object detection and
-            feature extraction using YCB dataset.
-      \item Implement uncertainty.
+      \item Implement pose estimation: Train OD on YCB data.
+      \item Implement pose estimation: Train PE on YCB data.
       \item Implement DOPE with added dropout before each layer to estimate
             variational Bayesian inference.
-      \item Read Data Association and Localization of Classified Objects in Visual
-            SLAM \cite{iqbal2020data}: in progress.
-      \item Work on Pose Estimation Uncertainty paper.
+      \item Data Association and Localization of Classified Objects in Visual
+      SLAM \cite{iqbal2020data}: Finished reading and annotated a virtual copy.
+      \item Pose Estimation Uncertainty paper: I wrote down some ideas
+      and section drafts for the paper.
       \item Implement PoseCNN, DOPE, and BayesOD.
-      \item Look into domain randomization and adaptation techniques.
-      \item Search for recent pose estimation survey papers: Found this paper,
-            \cite{du2020vision}, on pose estimation.
-      \item As I read more papers, go back and update Pose Estimation Survey paper.
-      \item Finish Tensorflow tutorials, \cite{CVTF2}: 4/9 chapters done.
-      \item Learn to implement transfer learning.
-      \item (On pause) Finish Docker tutorials, \cite{schenker2020learn}: 4/18
-            chapters done.
+      \item Pose Estimation Servery: Will begin writing as soon as this weekend.
+      \item Vision-based robotic grasping from object localization, object pose
+      estimation to grasp estimation for parallel grippers - a review,
+      \cite{du2020vision}:
+
 \end{itemize}
 
-\section{Literature Reviews}
-\subsection{Obtaining Well Calibrated Probabilities Using Bayesian Binning}
-
-\begin{itemize}
-      \item code: \url{https://github.com/pakdaman/calibration/}
-      \item paper: \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4410090/}
-      \item citation: \cite{naeini2015obtaining}
-\end{itemize}
-
-      \subsubsection{Introduction}
-      \par In this paper, the authors propose a novel calibration method for
-      probabilistic predictive models. Bayesian Binning into Qualities (BBQ),
-      is a non-parametric and post-processing calibration method. Their
-      proposed method is a binary classifier calibration method is based on the
-      histogram-binning calibration method \cite{zadrozny2001obtaining}. It is
-      important to note this method could be extended to multi-class
-      classification tasks \cite{zadrozny2002transforming}.
-
-      \subsubsection{Problem Statement}
-      \par In machine learning, classification problems are often solved by deploying a
-      a predictive model trained on some given data set but often underperform and
-      make miscalibrated predictions ("classifier score"). Statistically speaking, for
-      a calibrated prediction of i.e. 40\%, there will be an occurrence of 40\% for a
-      give test set that is 1) large enough with respect to solution space size, 2)
-      test data set is randomly selected (for more insight read on
-      \textit{Central Limit Theorem}.
-
-      Figure 1 is a reliability curve \cite{degroot1983comparison}
-      \cite{niculescu2005predicting} that is used as an example of a predictive
-      model with poorly estimated probabilities.
-
-      %\write18{wget https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4410090/bin/nihms679964f1.jpg}
-      %\includegraphics[with=\textwidth]{./nihms679964f1.jpg}
-
-      \subsubsection{Related Work}
-      \par Mainly, calibration is done two ways 1) \textit{ab initio}, by modifying
-      objective function which increases computational cost. 2) It can be done as a
-      post-processing procedure. Post processing can be categorized into parametric
-      and non-parametric. Platt's method is an example of parametric calibration,
-      \cite{platt1999probabilistic}. Non-parametric methods include histogram-
-      binning \cite{zadrozny2001obtaining}, Platt scaling
-      \cite{platt1999probabilistic}, and isotonic regression
-      \cite{zadrozny2002transforming}.
-
-      \subsubsection{Method}
-      \par BBQ is an extension of simple histogram binning method
-      \cite{zadrozny2001obtaining}, with added capability to consider different
-      binning models (different number of bins) and their combinations under a
-      Bayesian framework \cite{heckerman1995learning}. The generated Bayesian
-      score provides further insight into network structure and it is also used
-      when combining binning models.
-
-      $$ \textit{Score}(M) ~=~ P(M)~.~P(D | M) $$
-
-      The marginal likelihood, $P(D | M)$, has a closed form solution under the
-      following 3 conditions, \cite{heckerman1995learning}:
-
-      \begin{enumerate}
-            \item All samples are under i.i.d. assumption and the class
-            distribution $P(Z|B=b)$, which is class distribution for bin b,
-            with a binomial distribution with parameter $\theta_b$.
-            \item Bin distributions are independent.
-            \item The prior distribution over binning model parameters $\theta$'s
-            are modeled using a Beta distribution.
-      \end{enumerate}
-
-      Marginal likelihood in closed form, \cite{heckerman1995learning}:
-
-      $$
-      P(D|M) = \prod_{b=1}^{B} \frac{\Gamma(\frac{N'}{B})}{\Gamma (N_b + \frac{N'}{B})}
-      \frac{\Gamma (m_b + \alpha_b)}{\Gamma (\alpha_b)}
-      \frac{\Gamma (n_b + \beta_b)}{\Gamma (\beta_b)}
-      $$
-
-      Where:
-      \begin{itemize}
-      \item $\Gamma(n) = (n-1)!$
-      \item $N_b$: The total number of training instances in the $b$'th bin.
-      \item $n_b$: The total instances of class \textit{zero} among all training
-      instances $N_b$.
-      \item $m_b$: The total instances of class \textit{one} among all training
-      instances $N_b$.
-      \item $P(M)$: The prior distribution of binning model M, uniform
-      distribution for initial condition.
-      \end{itemize}
-
-      \par The above equation is used for model averaging by BBQ, they point
-      out that mentioned Bayesian scores could be used for model selection. Per
-      \cite{hoeting1999bayesian}, model averaging is superior to model
-      selection methods.
-
-      \subsubsection{BBQ}
-      BBQ framework defines calibrated prediction as:
-
-      $$
-      P(z=1|y) = \sum_{i=1}^{T} \frac{\textit{Score}(M_i)}{\sum_{j=1}^{T} \textit{Score}(M_j)}
-      ~.~ P(z=1 | y, M_i)
-      $$
-
-      Where:
-      \begin{itemize}
-            \item $T$ : total number of binning models considered
-            \item $P(z=1 | y, M_i)$ : probability estimate using model $M_i$ for uncalibrated
-      classifier output y.
-      \end{itemize}
-
-
-      \subsubsection{Calibration Measures}
-      \begin{itemize}
-            \item ECE: Expected Calibration Error is calculated over the bins.
-            \item MCE: Maximum Calibration Error is calculated among the bins.
-      \end{itemize}
-
-      $$
-      ECE = \sum_{i=1}^{K}P(i).|o_i - e_i| ~~,~~ MCE= \max\limits_{i=1}^{K}(|o_i-e_i|),
-      $$
-
-      Where:
-      \begin{itemize}
-            \item $o_i$: true fraction of positive instances in the i$^{th}$ bin.
-            \item $e_i$: mean of the post-calibrated probabilities in the i$^{th}$ bin.
-            \item $P(i)$: empirical probability (fraction) of all instances in the i$^{th}$ bin.
-
-      \end{itemize}
-      \subsubsection{Empirical Results}
-      \begin{itemize}
-            \item Acc: accuracy
-            \item AUC: area under the ROC curve (receiver operator characteristic curve).
-            \item RMSE
-            \item ECE
-            \item MCE
-      \end{itemize}
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Object Pose Estimation with Uncertainty: After talking to Chris, it
-      seems like using Tensorflow Graphics module may not be the simplest
-      route. He recommended using  OpenCV and NumPy for import-export and
-      processing, respectively. I have some familiarity with both modules and
-      it seems straight forward.
+      \item Instead of writing a review on \cite{pinto2016curious}, I thought
+      it would be better if I focus on my primary task and write down my ideas
+      for pose estimation. I need to stay focused.
+      \item Object Pose Estimation with Uncertainty: I finished setting up
+      basic object detection, next I will train a
+      model on YCB dataset. I went over PoseCNN and BayesOD code once again and
+      it slightly more sense to me. At some point I want to add an object motion
+      classification feature where
+      the OD subsystem makes predictions about whether each object is
+      stationary, moving passively, or moving actively. This object level
+      classification feature will help with more advanced pose estimations by
+      providing informative priors.
 
-      I recently learned a better way to keep track of my environment
-      requirements. Python package manager (Pip) and Anaconda have built-in
-      tools that if used properly could solve a large portion of my issues.
-      There are features where once the environment is setup and operation,
-      you can list and log all installed package with complete version number.
-      This way I won't have to deal with Docker, for now at least.
+      I believe pose estimation becomes much easer task if there are known
+      dimensions within the frame. Given known objects, or even some known
+      objects in the image frame, one should be able to make accurate inference
+      about most unknown linear dimensions in the image frame. To reduce
+      computational load, I will train a network to detect keypoints for each
+      segmented object and only perform pose estimation inference for those
+      keypoints.
 
-      \item YCB Dataset \cite{calli2015ycb}: I converted the provided download
-      script from Python 2 to Python 3 and added it to the repository. I will
-      use YCB as my main realistic dataset. I will have to some sort of
-      semantic segmentation to isolate each object. For now, I can use
-      pixel-wise Hough voting but later I will change to the method used by
-      \cite{Wang_2019_CVPR}.
+      Keypoint Pose Estimation:
+      I believe overall object pose estimation could increase considerably with
+      this proposed method, especially in occlusion cases. Once keypoints are
+      detected, another network estimates xyz pose for each point with
+      uncertainty which I will explain in sections bellow.
 
-      \item Pose Estimation in Simulation: Chris recommended Nvidia Isaac SDK
-      \cite{NVIDIAIs75:online} and seems fairly realistic and is developed by
-      Nvidia to tackle the \textit{sim-to-reality} problem. Given my limited
-      processing power and skillset, it seems to be a more feasible approach in
-      comparison to using Unreal Engine.
+      Keypoint Pose Uncertainty:
+      Once keypoints are segmented in each frame, a certainty region is then
+      defined about that point in 3D. This region is divided into regions
+      either as a hypercube or hypersphere. We do the same for all keypoints
+      of all objects present in the scene and connect the keypoints for each
+      object. This method eliminates the need to make a similar angular
+      classification regions.
 
+      For each frame, detected objects with high confidence are considered as
+      acceptable predictions by the system and draw a 3D box containing all
+      keypoints for each object. A network would be trained to predict a 3D bounding
+      box given keypoint corners depth, dimensions of the known object, spatial
+      relationship of high confidence objects (need to develop more) in form
+      of embeddings. An IoU loss function \cite{yu2016unitbox} could be
+      implemented to optimize 3D bounding boxes.
+
+      This method mitigates uncertainty in pose estimation by only considering
+      new evidence if the previous process made high confidence predictions and that
+      new evidence should be \textit{consistent} with all previous evidence or
+      this could increase uncertainty of the priors which is an inherent
+      problem in all \textit{chaotic systems}. Robust
+      control tackles this issue by assigning more weight to new evidence and
+      slowly forgetting older evidence. Similar approaches in computer science
+      have become more prominent in machine learning with the introduction
+      transformers (long-short memory, I am not sure).
+
+      Similar to weights of a neuron, certainty about a prior should decrease
+      over time unless new supporting evidence is observed or it is classified
+      as an anchor with lasting weight and high certainty. Anchors would be
+      used to track keypoint from frame to frame. This brings me to embodiment
+      and expansion into active learning where the agent interacts with the
+      environment, seeks to reduce uncertainty and approaches similar to
+      Next Best View (cite Chris's paper).
+
+      \item YCB Dataset \cite{calli2015ycb}: Right now I am trying to figure
+      out how to train a model using this dataset.
+      \item Normalized Objects \cite{Wang_2019_CVPR}:
       \item Implement features from PoseCNN, DOPE, and BayesOD.
-      \item Look into domain randomization and adaptation techniques.
-      \item Search for recent pose estimation survey papers: Found this paper,
-      \cite{du2020vision}, on pose estimation.
-
 \end{itemize}
 
 %\newpage
@@ -238,13 +137,9 @@ The following items are listed in the order of priority:
 The following items are listed in the order of priority:
 
 \begin{itemize}
-      \item Use Nvidia Isaac SDK for pose estimation training.
-      \item Keep working on Bayesian Pose Estimation paper.
-      \item ARIAC: For now, I will focus on implementing pose estimation and
-            BayesOD implementations.
-      \item Continue on UE4 tutorials.
-      \item Pose Estimation Survey Paper Feedback: On hold, I am working on
-            Bayesian Pose Estimation.
+      \item Pose Estimation in Simulation \cite{NVIDIAIs75:online}: Use Nvidia
+      Isaac SDK for in-simulation pose estimation training.
+      \item Look into domain randomization and adaptation techniques.
       \item Project Alpe with Nolan: On pause for right now.
       \item UR5e: Finish ROS Industrial tutorials.
 \end{itemize}
