@@ -44,89 +44,65 @@
 
 \section{To Do}
 \begin{itemize}
-      \item Implement pose estimation: Train OD on YCB data.
+      \item Implement pose estimation: Implement PVNet, based on ResNet.
       \item Implement pose estimation: Train PE on YCB data.
       \item Implement DOPE with added dropout before each layer to estimate
-            variational Bayesian inference.
-      \item Data Association and Localization of Classified Objects in Visual
-      SLAM \cite{iqbal2020data}: Finished reading and annotated a virtual copy.
-      \item Pose Estimation Uncertainty paper: I wrote down some ideas
-      and section drafts for the paper.
-      \item Implement PoseCNN, DOPE, and BayesOD.
-      \item Pose Estimation Servery: Will begin writing as soon as this weekend.
+            variational Bayesian inference (not sure if this is applicable anymore).
+      \item Implement PoseCNN, DOPE, and BayesOD. (No longer applicable - maybe
+      for pose estimation paper?)
+      \item Pose Estimation Servery: Working on different methods, Hollistic,
+      Dense, and Keypoint-based.
       \item Vision-based robotic grasping from object localization, object pose
       estimation to grasp estimation for parallel grippers - a review,
-      \cite{du2020vision}:
+      \cite{du2020vision}: Will read after PVNet implementation.
+\end{itemize}
 
+\section{Reading List}
+\begin{itemize}
+      \item \cite{du2020vision}
+      \item \cite{he2015deep}
+      \item \cite{ferraz2014leveraging}
 \end{itemize}
 
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Instead of writing a review on \cite{pinto2016curious}, I thought
-      it would be better if I focus on my primary task and write down my ideas
-      for pose estimation. I need to stay focused.
-      \item Object Pose Estimation with Uncertainty: I finished setting up
-      basic object detection, next I will train a
-      model on YCB dataset. I went over PoseCNN and BayesOD code once again and
-      it slightly more sense to me. At some point I want to add an object motion
-      classification feature where
-      the OD subsystem makes predictions about whether each object is
-      stationary, moving passively, or moving actively. This object level
-      classification feature will help with more advanced pose estimations by
-      providing informative priors.
+      \item Pose Estimation: Thank you for this paper. I read and fully
+      annotated the paper. For a single shot, this is exactly what I was thinking
+      about. I have been trying to implement the clean-pvnet version from authors'
+      repository with no avail so. Last night, I installed CUDA-9.0 to run the
+      project but it failed when I tested the provided sample code. When I started
+      my computer this morning, it asked for updates related to GCC-6 and NVidia
+      which are both related to CUDA-9.0. I will try to get to work one more time,
+      then I will move on to the provided Docker implementation. That should be
+      fairly simple. Then, I will start implementing the code as a base, I already
+      have some ideas for improvements. Their pixel-wise voting scheme has no
+      analytical supporting evidence as to why it should work or why it works.
+      Besides that, I think it is very well written paper. After reading it,
+      I think I have a clear picture of what to write on for the pose estimation
+      survey paper. I started based on PVNet paper, but instead of explanding the
+      related work here, I am developing it under pose estimation survey paper.
 
-      I believe pose estimation becomes much easer task if there are known
-      dimensions within the frame. Given known objects, or even some known
-      objects in the image frame, one should be able to make accurate inference
-      about most unknown linear dimensions in the image frame. To reduce
-      computational load, I will train a network to detect keypoints for each
-      segmented object and only perform pose estimation inference for those
-      keypoints.
+      \item PVNet \cite{peng2019pvnet}:Although 6D pose estimation has been the
+      subject of research for many
+      years and great accuracy has been achieved, many states of the art solutions
+      do not take advantage of uncertainty among observed features.
+      In this paper, the authors propose a novel two-stage pose estimation
+      framework, Pixel-wise Voting Network or PVNet, which generates and uses
+      keypoint features uncertainty data. First, they estimate the 2D
+      keypoints for each object in a RANSAC-like fashion which enables uncertainty
+      measurement in the following stage. In the second stage, they use a
+      modified EPnP algorithm \cite{lepetit2009epnp} that leverages feature
+      uncertainty \cite{ferraz2014leveraging} to calculate estimated object 6D
+      position.
 
-      Keypoint Pose Estimation:
-      I believe overall object pose estimation could increase considerably with
-      this proposed method, especially in occlusion cases. Once keypoints are
-      detected, another network estimates xyz pose for each point with
-      uncertainty which I will explain in sections bellow.
+      \item YCB Dataset \cite{calli2015ycb}: PVNet used a trained ResNet as a
+      base for their model. I will follow their example as they used YCB dataset
+      as well. More importantly, instead of Object Detections, they used ResNet's
+      segmentation feature which allows for pixel-wise voting (and other
+      uncertainty-type implementations).
 
-      Keypoint Pose Uncertainty:
-      Once keypoints are segmented in each frame, a certainty region is then
-      defined about that point in 3D. This region is divided into regions
-      either as a hypercube or hypersphere. We do the same for all keypoints
-      of all objects present in the scene and connect the keypoints for each
-      object. This method eliminates the need to make a similar angular
-      classification regions.
-
-      For each frame, detected objects with high confidence are considered as
-      acceptable predictions by the system and draw a 3D box containing all
-      keypoints for each object. A network would be trained to predict a 3D bounding
-      box given keypoint corners depth, dimensions of the known object, spatial
-      relationship of high confidence objects (need to develop more) in form
-      of embeddings. An IoU loss function \cite{yu2016unitbox} could be
-      implemented to optimize 3D bounding boxes.
-
-      This method mitigates uncertainty in pose estimation by only considering
-      new evidence if the previous process made high confidence predictions and that
-      new evidence should be \textit{consistent} with all previous evidence or
-      this could increase uncertainty of the priors which is an inherent
-      problem in all \textit{chaotic systems}. Robust
-      control tackles this issue by assigning more weight to new evidence and
-      slowly forgetting older evidence. Similar approaches in computer science
-      have become more prominent in machine learning with the introduction
-      transformers (long-short memory, I am not sure).
-
-      Similar to weights of a neuron, certainty about a prior should decrease
-      over time unless new supporting evidence is observed or it is classified
-      as an anchor with lasting weight and high certainty. Anchors would be
-      used to track keypoint from frame to frame. This brings me to embodiment
-      and expansion into active learning where the agent interacts with the
-      environment, seeks to reduce uncertainty and approaches similar to
-      Next Best View (cite Chris's paper).
-
-      \item YCB Dataset \cite{calli2015ycb}: Right now I am trying to figure
-      out how to train a model using this dataset.
       \item Normalized Objects \cite{Wang_2019_CVPR}:
       \item Implement features from PoseCNN, DOPE, and BayesOD.
 \end{itemize}
