@@ -44,14 +44,10 @@
 
 \section{To Do}
 \begin{itemize}
-      \item Implement pose estimation: Implement PVNet, based on ResNet.
-      \item Implement pose estimation: Train PE on YCB data.
-      \item Implement DOPE with added dropout before each layer to estimate
-            variational Bayesian inference (not sure if this is applicable anymore).
-      \item Implement PoseCNN, DOPE, and BayesOD. (No longer applicable - maybe
-      for pose estimation paper?)
-      \item Pose Estimation Servery: Working on different methods, Hollistic,
-      Dense, and Keypoint-based.
+      \item PVNet implementation: Update Cuda 9.0 code to 11.2.
+      \item Implement pose estimation: Keypoint uncertainty, understand RANSAC.
+      \item Look into methods of generating uncertainty data.
+      \item Pose Estimation Servery: On pause.
       \item Vision-based robotic grasping from object localization, object pose
       estimation to grasp estimation for parallel grippers - a review,
       \cite{du2020vision}: Will read after PVNet implementation.
@@ -59,52 +55,94 @@
 
 \section{Reading List}
 \begin{itemize}
-      \item \cite{du2020vision}
-      \item \cite{he2015deep}
       \item \cite{ferraz2014leveraging}
+      \item \cite{he2015deep}
+      \item \cite{du2020vision}
 \end{itemize}
+
+\section{Reinforcement Learning of Active Vision for Manipulating Objects under
+      Occlusions}
+
+      \subsection{Metadata}
+      \begin{itemize}
+            \item Authors: Ricson Cheng, Arpit Agarwal, Katerina Fragkiadaki
+            \item Code: \url{https://github.com/ricsonc/ActiveVisionManipulation}
+            \item Paper: \url{https://arxiv.org/pdf/1811.08067.pdf}
+      \end{itemize}
+
+      \subsection{Introduction}
+      \par In this paper, the authors propose a novel reinforcement learning method
+      for monocular RGB grasping systems where camera pose is controlled through
+      visual feedback to reduce occlusions. The task of simple object grasping has been fairly achieved
+      but in the real world, there are often occlusions with other objects that needs .
+      First, the authors pose the question of learning manipulation policies under
+      occlusions and propose agents capable of hand-eye movement coordination with
+      various distractors present in the scene. Secondly, they introduce a \textbf{modular
+      actor-critic network architecture} based on \cite{andrychowicz2017hindsight}
+      for active perception and action in Mujoco simulation environment, \cite{todorov2012mujoco}.
+      This paper examines various reinforcement learning modalities and highlights the
+      importance of environment difficulty (distractors) in \textbf{curriculum learning}
+      methods.
+
+      \subsection{Problem Statement}
+      \par The authors focus on the task of pushing an object to target locations in
+      environments with distractors where an actor-critic architecture is deployed for
+      eye-hand coordination. Hand-eye or camera-griper coordination is base on
+      \cite{soatto2013actionable} and by integrating it, the authors, aim to achieve
+      state estimation easier (train faster) by reducing an \textbf{information gap}
+      or deficiency caused by static camera. First, they trained a vanilla CNN for the
+      task of pushing an object with minimal distractors present, which failed. Then
+      they integrated an object detector module in the actor-critic architecture which
+      enabled effective learning. Secondly, they trained state-of-the-art reinforcement
+      learning models with simple distractors present and occasionally occluded the
+      target object, which also failed to learn. Then, they initialized the actor-critic
+      network weights from policies learned in environments without distractors. This
+      reinforces what is hypothesized by \textit{curriculum learning}.
+
+      \subsection{Method}
+      The authors represent the mentioned problem in form a multi-goal Partially
+      Observable Markov Decision Process (POMDP) which is a constraint satisfaction
+      problem formulation. The reinforcement learning environment is modelled by the
+      observations ($\mathcal{O}$), states ($\mathcal{S}$), goals ($\mathcal{G}$),
+      gripper actions ($\mathcal{A^G}$) and camera actions ($\mathcal{A^C}$) spaces.
+
+      The critic network (a CNN) take RGB images as input and encodes low dimensional
+      embeddings using what-where decomposition which is presents object appearances
+      $f_t$.
+      Moreover, a faster-RCNN \cite{ren2015faster} is used for object detection,
+      followed by PnP for target object pose estimation, $\hat{o_t}$.
+
+      The authors use HER's \cite{andrychowicz2017hindsight} object-centric
+      representation as it is shown to result in faster learning based on empirical
+      data. HER also introduces the powerful idea of learning from failed experiences
+      are encoded and stored in an \textbf{experience buffer} to draw heuristics from
+      in possible future states. This allows the agent to extract much greater level
+      of information from previously seen data.
 
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation: Thank you for this paper. I read and fully
-      annotated the paper. For a single shot, this is exactly what I was thinking
-      about. I have been trying to implement the clean-pvnet version from authors'
-      repository with no avail so. Last night, I installed CUDA-9.0 to run the
-      project but it failed when I tested the provided sample code. When I started
-      my computer this morning, it asked for updates related to GCC-6 and NVidia
-      which are both related to CUDA-9.0. I will try to get to work one more time,
-      then I will move on to the provided Docker implementation. That should be
-      fairly simple. Then, I will start implementing the code as a base, I already
-      have some ideas for improvements. Their pixel-wise voting scheme has no
-      analytical supporting evidence as to why it should work or why it works.
-      Besides that, I think it is very well written paper. After reading it,
-      I think I have a clear picture of what to write on for the pose estimation
-      survey paper. I started based on PVNet paper, but instead of explanding the
-      related work here, I am developing it under pose estimation survey paper.
+      \item Pose Estimation: Next I will update PVNet Cuda codes from 9.0 to 11.2
+      so I can compile those modules and test rest of the code.
 
-      \item PVNet \cite{peng2019pvnet}:Although 6D pose estimation has been the
-      subject of research for many
-      years and great accuracy has been achieved, many states of the art solutions
-      do not take advantage of uncertainty among observed features.
-      In this paper, the authors propose a novel two-stage pose estimation
-      framework, Pixel-wise Voting Network or PVNet, which generates and uses
-      keypoint features uncertainty data. First, they estimate the 2D
-      keypoints for each object in a RANSAC-like fashion which enables uncertainty
-      measurement in the following stage. In the second stage, they use a
-      modified EPnP algorithm \cite{lepetit2009epnp} that leverages feature
-      uncertainty \cite{ferraz2014leveraging} to calculate estimated object 6D
-      position.
+      \item PVNet \cite{peng2019pvnet}: I tried reinstalling Cuda 9.0 again but
+      I made a mistake and tried to install an old driver which comes with each
+      Cuda package. This corrupts NVidia graphics driver and it is easier to
+      reinstall ubuntu. I just did that once again. After talking to Quan, I decided to start working on the code
+      and for Cuda parts I can either update the code to newer version or replace
+      that module with a different implementation. It is not worth the time
+      trying to get Cuda 9.0 code running; if anything, learning the latest
+      version makes more sense. Quan mentioned updating Cuda from v9.0 to 11.2
+      should not be that difficult and I think he is right. Playing with GCC and
+      G++ 6 (current version 9) is not worth it since it will disrupt every other
+      build on the system.
 
-      \item YCB Dataset \cite{calli2015ycb}: PVNet used a trained ResNet as a
-      base for their model. I will follow their example as they used YCB dataset
-      as well. More importantly, instead of Object Detections, they used ResNet's
-      segmentation feature which allows for pixel-wise voting (and other
-      uncertainty-type implementations).
+      \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
+      Berk Calli's work.
 
       \item Normalized Objects \cite{Wang_2019_CVPR}:
-      \item Implement features from PoseCNN, DOPE, and BayesOD.
+      \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
 
 %\newpage
