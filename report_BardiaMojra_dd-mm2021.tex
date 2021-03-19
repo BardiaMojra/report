@@ -44,7 +44,7 @@
 
 \section{To Do}
 \begin{itemize}
-      \item PVNet implementation: Update Cuda 9.0 code to 11.2.
+      \item PVNet implementation: Debugging Cuda modules.
       \item Implement pose estimation: Keypoint uncertainty, understand RANSAC.
       \item Look into methods of generating uncertainty data.
       \item Pose Estimation Servery: On pause.
@@ -60,87 +60,26 @@
       \item \cite{du2020vision}
 \end{itemize}
 
-\section{Reinforcement Learning of Active Vision for Manipulating Objects under
-      Occlusions}
-
-      \subsection{Metadata}
-      \begin{itemize}
-            \item Authors: Ricson Cheng, Arpit Agarwal, Katerina Fragkiadaki
-            \item Code: \url{https://github.com/ricsonc/ActiveVisionManipulation}
-            \item Paper: \url{https://arxiv.org/pdf/1811.08067.pdf}
-      \end{itemize}
-
-      \subsection{Introduction}
-      \par In this paper, the authors propose a novel reinforcement learning method
-      for monocular RGB grasping systems where camera pose is controlled through
-      visual feedback to reduce occlusions. The task of simple object grasping has been fairly achieved
-      but in the real world, there are often occlusions with other objects that needs .
-      First, the authors pose the question of learning manipulation policies under
-      occlusions and propose agents capable of hand-eye movement coordination with
-      various distractors present in the scene. Secondly, they introduce a \textbf{modular
-      actor-critic network architecture} based on \cite{andrychowicz2017hindsight}
-      for active perception and action in Mujoco simulation environment, \cite{todorov2012mujoco}.
-      This paper examines various reinforcement learning modalities and highlights the
-      importance of environment difficulty (distractors) in \textbf{curriculum learning}
-      methods.
-
-      \subsection{Problem Statement}
-      \par The authors focus on the task of pushing an object to target locations in
-      environments with distractors where an actor-critic architecture is deployed for
-      eye-hand coordination. Hand-eye or camera-griper coordination is base on
-      \cite{soatto2013actionable} and by integrating it, the authors, aim to achieve
-      state estimation easier (train faster) by reducing an \textbf{information gap}
-      or deficiency caused by static camera. First, they trained a vanilla CNN for the
-      task of pushing an object with minimal distractors present, which failed. Then
-      they integrated an object detector module in the actor-critic architecture which
-      enabled effective learning. Secondly, they trained state-of-the-art reinforcement
-      learning models with simple distractors present and occasionally occluded the
-      target object, which also failed to learn. Then, they initialized the actor-critic
-      network weights from policies learned in environments without distractors. This
-      reinforces what is hypothesized by \textit{curriculum learning}.
-
-      \subsection{Method}
-      The authors represent the mentioned problem in form a multi-goal Partially
-      Observable Markov Decision Process (POMDP) which is a constraint satisfaction
-      problem formulation. The reinforcement learning environment is modelled by the
-      observations ($\mathcal{O}$), states ($\mathcal{S}$), goals ($\mathcal{G}$),
-      gripper actions ($\mathcal{A^G}$) and camera actions ($\mathcal{A^C}$) spaces.
-
-      The critic network (a CNN) take RGB images as input and encodes low dimensional
-      embeddings using what-where decomposition which is presents object appearances
-      $f_t$.
-      Moreover, a faster-RCNN \cite{ren2015faster} is used for object detection,
-      followed by PnP for target object pose estimation, $\hat{o_t}$.
-
-      The authors use HER's \cite{andrychowicz2017hindsight} object-centric
-      representation as it is shown to result in faster learning based on empirical
-      data. HER also introduces the powerful idea of learning from failed experiences
-      are encoded and stored in an \textbf{experience buffer} to draw heuristics from
-      in possible future states. This allows the agent to extract much greater level
-      of information from previously seen data.
-
-
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation: Next I will update PVNet Cuda codes from 9.0 to 11.2
-      so I can compile those modules and test rest of the code.
+      \item Pose Estimation: I am still working on PVNet Cuda modules, the code
+      written in Cuda/C++ style, so I have been reading on that. Based on my
+      understanding, I need to update Cuda and C++ API syntax. I learned about
+      Clang, which is used for compiling and debugging C++ source code. I
+      cloned, built and made the LLVM project, \cite{TheLLVMC47:online}, which
+      took longer than I expected. It comes with an extensive test suite
+      \cite{testsuit42:online} containing over
+      thirdy two compilation tests and only a few failed which tells me I
+      should be okay. I installed this because it is the recommended tool used
+      with Visual Studio Code for debugging Cuda. CLang provides helpful
+      warning and error messages and seems well documented.
 
-      \item PVNet \cite{peng2019pvnet}: I tried reinstalling Cuda 9.0 again but
-      I made a mistake and tried to install an old driver which comes with each
-      Cuda package. This corrupts NVidia graphics driver and it is easier to
-      reinstall ubuntu. I just did that once again. After talking to Quan, I decided to start working on the code
-      and for Cuda parts I can either update the code to newer version or replace
-      that module with a different implementation. It is not worth the time
-      trying to get Cuda 9.0 code running; if anything, learning the latest
-      version makes more sense. Quan mentioned updating Cuda from v9.0 to 11.2
-      should not be that difficult and I think he is right. Playing with GCC and
-      G++ 6 (current version 9) is not worth it since it will disrupt every other
-      build on the system.
+
+      \item PVNet \cite{peng2019pvnet}:
 
       \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
       Berk Calli's work.
-
       \item Normalized Objects \cite{Wang_2019_CVPR}:
       \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
