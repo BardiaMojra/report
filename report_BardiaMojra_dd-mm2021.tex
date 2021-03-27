@@ -63,31 +63,12 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation, PVNet \cite{peng2019pvnet}: After successfully
-      setting up Cuda 9.0 and GCC 6.3 on my machine, I tried to compile PVNet's
-      Cuda source code once again and it failed due to other deprecated
-      dependencies. I
-      finally reached out to Joe, explained the situation to him, and
-      mentioned I had to disable Ubuntu's automatic package manager through
-      universal repositories. He recommended using the Docker implementation as
-      fixing the long chain of dependency issues is not worth the time or the
-      effort.
-
-      I followed the Docker implementation for PVNet-Clean, which is still based
-      Cuda 9.0 (PVNet Docker implementation is updated to Cuda 10.2 but it is
-      messier) and setup
-      the environment successfully. I confirmed the setup by running PVNet
-      Docker with the appropriate Nvidia container and compiled all five Cuda
-      source code modules without any errors or significant warnings.
-
-      Moreover, I downloaded the dataset and the pretrained models and setup them
-      up to be used by the project. Next, I will perform some testing, document
-      the results in a systematic fashion and then continue and propagate the
-      same
-      procedure throughout the entire code base. In the process, I will most
-      likely come up with ideas for improvement and naturally begin a rewrite.
-      Nevertheless, I should do a full rewrite because at this point, it will
-      only make me implement and analyze source code faster.
+      \item Pose Estimation, PVNet \cite{peng2019pvnet}: This week I ran their
+      test samples. One of them fails and I am investigating the root cause.
+      Moreover, I have been spending most of time coding as much as I can. I
+      am working on a generalized batch gradient descent and a datalogger.
+      Besides learning, I try to use best practices and write this code with
+      proper documentation and reuse in mind.
 
       \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
       Berk Calli's work.
