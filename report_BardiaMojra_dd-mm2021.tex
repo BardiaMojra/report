@@ -63,38 +63,23 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation, PVNet \cite{peng2019pvnet}: Today, I sat down with
-      Joe, we ran PVNet Docker and tried to run the tests and recreated the
-      same issue. It turns out Cuda 9 is not supported on my GPU (RTX-2060) and
-      he suggested I run it on lab computer. I looked into that, it seems to
-      have weird issue with Cuda again where it thinks it is installed but it
-      cannot find it. Quan suggested I implement the code from scratch and I
-      agree. After recent assignments from Dr. Huber's class I feel much more
-      confident implementing from scratch.
+      \item NBV Grasping Project: I met with Chris this week to discuss my role
+      in his new project. As discussed, I reinstalled Ubuntu and ROS on my
+      workstation. Next, I will design a mount for Intel RealSense D415 to be
+      install it on UR5. Our goal is to submit the paper to ICRA 2022 with
+      submission deadline of September 14, 2021. If it gets rejected, we will
+      make approperiate changes and submit it to IROS 2022 with submission
+      deadline of March 1, 2022.
 
-      PVNet architecture is based on a pretrained ResNet-18 \cite{he2015deep}
-      and consists of 9 sections, where each section consists of two to three
-      layers. First section consists of a Conv-BN-ReLU followed by a max pooling
-      layer, with skip connection to ninth section. Second section consists of
-      two residual blocks with skip connection to the eighth section. Third
-      section consists of a residual block with stridden convolutions with
-      skip connection to the seventh block. Fourth section consists of a
-      residual block with stridden convolutions followed by a residual block
-      with a skip connection to the sixth section. Fifth section consists of two
-      residual blocks with dilated convolutions. Sixth section consists of
-      two conv-BN-ReLU layers followed by a bilinear upscaling layer. Seventh
-      and eighth sections each consist of a conv-BN-ReLU layer followed by a
-      bilinear upsampling layer. This network outputs both semantic labels and
-      vector-field predictions estimating center of the object.
+      \item Joe, Chris, and I will hold weekly meeting to form a robotics team.
+      I am not sure if this involves NBV Grasping Project.
 
+      \item UTARI: I accepted Dr. Gans' offer for this summer. I am thinking
+      maybe I was too frank.
 
-      I read on RANSAC \cite{fischler1981random}, it is very straight forward.
-      There are many variations of it and I found Neural-Guided RANSAC
-      \cite{brachmann2019neural} which allows for optimization of arbitrary task
-      loss functions. They claim it results in large improvement on classic
-      visual tasks.
+      \item Pose Estimation: I will scale back to semantic segmentation for now.
 
-      PyTorch: I started doing some tutorials on PyTorch.
+      \item PyTorch: I started doing some tutorials on PyTorch.
 
       \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
       Berk Calli's work.
