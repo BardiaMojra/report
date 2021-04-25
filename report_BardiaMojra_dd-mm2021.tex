@@ -51,6 +51,9 @@
       \item Vision-based robotic grasping from object localization, object pose
       estimation to grasp estimation for parallel grippers - a review,
       \cite{du2020vision}: Will read after PVNet implementation.
+      \item Look into PyBullet for RL.
+      \item Look into Facebook Flashlight C++ library, \cite{flashlig35:online}.
+      \item Look into Nvidia Omniverse, \cite{NVIDIAOm1:online}.
 \end{itemize}
 
 \section{Reading List}
@@ -63,23 +66,35 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item NBV Grasping Project: I met with Chris this week to discuss my role
-      in his new project. As discussed, I reinstalled Ubuntu and ROS on my
-      workstation. Next, I will design a mount for Intel RealSense D415 to be
-      install it on UR5. Our goal is to submit the paper to ICRA 2022 with
-      submission deadline of September 14, 2021. If it gets rejected, we will
-      make approperiate changes and submit it to IROS 2022 with submission
-      deadline of March 1, 2022.
+      \item PyTorch Tutorials: I did more tutorials on custom neural network,
+      CNN, image classification, and Tensorboard. Next, I will work on image
+      segmentation and transfer learning tutorials.
 
-      \item Joe, Chris, and I will hold weekly meeting to form a robotics team.
-      I am not sure if this involves NBV Grasping Project.
+      \item PVNet: I plan on recreating the algorithm with PyTorch and other
+      available machine learning modules such as \cite{openmmla99:online}.
 
-      \item UTARI: I accepted Dr. Gans' offer for this summer. I am thinking
-      maybe I was too frank.
+      \item NBV Grasping Project: I ended up converting STEP files to STL format
+      and used SketchUp's web app to design a mount for RealSense L515. I sent
+      the initial draft to Chris for review. I still need to add final touches
+      for zipties to be placed flush to the edge of the mount. Next, I will do
+      ROS-UR5 tutorials to prepare for this project.
 
-      \item Pose Estimation: I will scale back to semantic segmentation for now.
+      \item NASA MSI Fellowship: I plan on writing a proposal on robotic
+      arm manipulation for multiple applications. I can incorporate ideas from pose
+      estimation with uncertainty to make it an attractive proposal. The topic
+      is of interest to NASA per their 2020 technology taxonomy plan, \cite{2020nasa40:online}. In the
+      document, they refer to grappling technologies capable of capturing natural
+      and man-made free flying objects. Moreover, they seem to be interested in
+      dexterous manipulation where a robot can handle various types of object
+      while achieving compliant force control for safe operation near human
+      operators and in deep-space environments. These topics are well inline with
+      our work at Robotic Vision Lab and hold great potential commercial and
+      social impacts as such areas are encouraged by NASA MSI grant program.
+      There is a general call for proposals in MSI grant solicitation for robotic
+      technologies inline with NASA missions. I will write an initial draft,
+      after some review, I can reach out to find a technical advisor.
 
-      \item PyTorch: I started doing some tutorials on PyTorch.
+      \item UTARI: No new development.
 
       \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
       Berk Calli's work.
