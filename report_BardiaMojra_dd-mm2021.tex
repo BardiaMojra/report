@@ -44,10 +44,12 @@
 
 \section{To Do}
 \begin{itemize}
-      \item PVNet implementation: Test and document, learn and rewrite.
-      \item Implement pose estimation: Keypoint uncertainty, understand RANSAC.
+      \item PIL tutorial: Next.
+      \item PyTorch tutorials: On-going.
+      \item Implement a dense pose estimation algorithm with keypoint estimation:
+      next.
+      \item PVNet implementation: Paused.
       \item Look into methods of generating uncertainty data.
-      \item Pose Estimation Servery: On pause.
       \item Vision-based robotic grasping from object localization, object pose
       estimation to grasp estimation for parallel grippers - a review,
       \cite{du2020vision}: Will read after PVNet implementation.
@@ -58,6 +60,7 @@
 
 \section{Reading List}
 \begin{itemize}
+      \item \cite{roadmap251:online}
       \item \cite{ferraz2014leveraging}
       \item \cite{he2015deep}
       \item \cite{du2020vision}
@@ -66,39 +69,25 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item PyTorch Tutorials: I did more tutorials on custom neural network,
-      CNN, image classification, and Tensorboard. Next, I will work on image
-      segmentation and transfer learning tutorials.
+      \item NASA MSI Fellowship: Next, I need to read papers from NASA
+      \cite{NASATech44:online} and develop the proposal.
+      \item PyTorch Tutorials: I did a tutorial on image semantic segmentation,
+      \cite{TorchVis74:online}. I also read Mask R-CNN paper, \cite{he2017mask}
+      by FAIR.
+      \item Normalized Objects \cite{Wang_2019_CVPR}: This is to be implemented.
+      \item PVNet: Currently working on PyTorch tutorials. I will continue this
+      in parallel until I finish it.
 
-      \item PVNet: I plan on recreating the algorithm with PyTorch and other
-      available machine learning modules such as \cite{openmmla99:online}.
+      \item NBV Grasping Project: We installed the mounting piece onto UR5.
+      Next, I will install ROS client on UR5 and my lab station.
 
-      \item NBV Grasping Project: I ended up converting STEP files to STL format
-      and used SketchUp's web app to design a mount for RealSense L515. I sent
-      the initial draft to Chris for review. I still need to add final touches
-      for zipties to be placed flush to the edge of the mount. Next, I will do
-      ROS-UR5 tutorials to prepare for this project.
 
-      \item NASA MSI Fellowship: I plan on writing a proposal on robotic
-      arm manipulation for multiple applications. I can incorporate ideas from pose
-      estimation with uncertainty to make it an attractive proposal. The topic
-      is of interest to NASA per their 2020 technology taxonomy plan, \cite{2020nasa40:online}. In the
-      document, they refer to grappling technologies capable of capturing natural
-      and man-made free flying objects. Moreover, they seem to be interested in
-      dexterous manipulation where a robot can handle various types of object
-      while achieving compliant force control for safe operation near human
-      operators and in deep-space environments. These topics are well inline with
-      our work at Robotic Vision Lab and hold great potential commercial and
-      social impacts as such areas are encouraged by NASA MSI grant program.
-      There is a general call for proposals in MSI grant solicitation for robotic
-      technologies inline with NASA missions. I will write an initial draft,
-      after some review, I can reach out to find a technical advisor.
 
       \item UTARI: No new development.
 
       \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
       Berk Calli's work.
-      \item Normalized Objects \cite{Wang_2019_CVPR}:
+
       \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
 
