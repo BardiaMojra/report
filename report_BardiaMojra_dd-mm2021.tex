@@ -44,11 +44,16 @@
 
 \section{To Do}
 \begin{itemize}
-      \item PIL tutorial: Next.
+      \item MSI Fellowship: Read NASA papers. Develop proposal package.
+      \item Setup ROC Client on UR5e.
       \item PyTorch tutorials: On-going.
       \item Implement a dense pose estimation algorithm with keypoint estimation:
       next.
+      \item UR5e: Finish ROS Industrial tutorials.
+      \item Look into Berk Calli's work \cite{calli2015ycb}.
       \item PVNet implementation: Paused.
+      \item Normalized objects \cite{Wang_2019_CVPR}.
+      \item Universal pose estimation.
       \item Look into methods of generating uncertainty data.
       \item Vision-based robotic grasping from object localization, object pose
       estimation to grasp estimation for parallel grippers - a review,
@@ -69,46 +74,59 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item NASA MSI Fellowship: Next, I need to read papers from NASA
-      \cite{NASATech44:online} and develop the proposal.
-      \item PyTorch Tutorials: I did a tutorial on image semantic segmentation,
-      \cite{TorchVis74:online}. I also read Mask R-CNN paper, \cite{he2017mask}
-      by FAIR.
-      \item Normalized Objects \cite{Wang_2019_CVPR}: This is to be implemented.
-      \item PVNet: Currently working on PyTorch tutorials. I will continue this
-      in parallel until I finish it.
-
-      \item NBV Grasping Project: We installed the mounting piece onto UR5.
-      Next, I will install ROS client on UR5 and my lab station.
-
-
-
+      \item I did tutorials on PIL, Pickle
+      \item NASA MSI Fellowship: Next, I will read papers from NASA
+      \cite{NASATech44:online} and develop a proposal.
+      \item PyTorch Tutorials: Next: Transfer learning.
+      \item PVNet: Next: Use transfer learning and ResNet to train a model for
+      semantic segmentation on YCB dataset.
+      \item NBV Grasping Project: Next, I will install ROS client on UR5 and
+      my lab station.
       \item UTARI: No new development.
-
-      \item YCB Dataset \cite{calli2015ycb}: Start with YCB data and look into
-      Berk Calli's work.
-
       \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
 
 %\newpage
 
-\section{Plans}
+\section{Immediate Plans - Summer 2021:}
 The following items are listed in the order of priority:
 
 \begin{itemize}
-      \item Pose Estimation in Simulation \cite{NVIDIAIs75:online}: Use Nvidia
-      Isaac SDK for in-simulation pose estimation training.
-      \item Look into domain randomization and adaptation techniques.
-      \item Project Alpe with Nolan: On pause for right now.
-      \item UR5e: Finish ROS Industrial tutorials.
+      \item Algorithms and Data Structures: I need to strengthen my algorithms
+      and data structure implementation skills. I have
+      noticed that my implementation could be a lot cleaner and could perhand
+      process data more efficiently. I will focus on commonly used algorithms
+      as I believe proficiency on this topic will decrease my average
+      development time and make my code less prone to software bugs.
+      \item Pose estimation: First, I will implement a simple pose estimation
+      model and gradually will add feature extraction and other techniques for
+      robust and fast pose estimation. I will have to learn how to extract
+      features from ground truth data, i.g. label, bounding box, center, position,
+      orientation and more. Some of these features are given but some need to
+      calculated. So far, I have become familiar with Python development
+      environment and 2D data manipulation. Next, I need to seek guidance on
+      how to process 3D data sets. Coupled with what I have learned in CSE-6363
+      and PyTorch tutorials, I am confident I can quickly develop a simple
+      pose estimation model and improve it over the summer. I want to start
+      writing a paper on this topic but it is difficult to set a timeline
+      without a working implementation. Right after finals, I will resume working
+      on this and read paper from CVPR and ICRA on the topic.
+      \item NBV-Grasping: I will follow up with Chris and Joe and will try to
+      assist and learn as much as I can. The goal is to write the paper by mid
+      to end of the summer.
+      \item UTARI: It depends on Dr. Gans' plan for the summer. Most likely, I will
+      be working on phased array radar project.
 \end{itemize}
 
-\section{2021 Goals and Target Journals/Conferences}
+\section{Intermediate Goals - Fall 2021:}
 \begin{itemize}
-      \item Submit a paper on pose estimation with uncertainty to ICIRS.
-      \item Get comfortable with TensorFlow and related Python modules.
-      \item Keep writing.
+      \item Pose estimation: I must be finished with implementation, perhaps
+      make some improvements, and should be working on a paper for ICRA or CVPR.
+      \item Scene understanding and active learning: After pose estimation, I
+      want to expand my research into scene understanding and active learning in
+      the context of advanced manifacturing.
+      \item ARIAC: Once I am up to speed, I will do the ARIAC workshops/tutorials
+      and will talk to Jerry about possible contributions.
 \end{itemize}
 
 

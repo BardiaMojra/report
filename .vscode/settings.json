@@ -77,5 +77,27 @@
     "cSpell.words": [
         "convolutional"
     ],
+    "grammarly.overrides": [
+        {
+            "files": [
+                "**/report_BardiaMojra_dd-mm2021.tex"
+            ],
+            "config": {
+                "audience": "knowledgeable",
+                "dialect": "american",
+                "domain": "academic",
+                "emotions": [
+                    "neutral",
+                    "confident",
+                    "respectful",
+                    "analytical"
+                ],
+                "goals": [
+                    "inform",
+                    "describe"
+                ]
+            }
+        }
+    ],
    
 }
