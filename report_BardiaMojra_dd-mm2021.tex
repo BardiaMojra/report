@@ -44,48 +44,83 @@
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item PVNet: Implement and improve.
-      \item NBV-Grasping: Integrate PVNet pose estimation for experimentation
-      with UR5.
+      \item Pose Estimation: Implement and improve.
+      \item NBV-Grasping.
       \item Pose estimation survey.
+      \item Universal pose estimation.
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-      \item MSI Fellowship: Read NASA papers. Develop proposal package.
-      \item Setup ROC Client on UR5e.
-      \item Implement a dense pose estimation algorithm with keypoint estimation:
-      next.
-      \item Look into Berk Calli's work \cite{calli2015ycb}.
-      \item PVNet implementation: Paused.
-      \item Normalized objects \cite{Wang_2019_CVPR}.
-      \item Universal pose estimation.
+      \item Catch up with my reading list.
+      \item OpenCV: Get comfortable using it.
+      \item NBV-Grasping: Update URDF file, add camera. Write two inverse kinematic
+      function for the gripper and the camera.
+      \item PVNet implementation: Paused. Working on a simple pose estimation for now.
+      \item MSI Fellowship: On pause. Deadline was too close. Will read NASA papers
+      and write up something for next opportunity.
       \item Look into methods of generating uncertainty data.
-      \item Vision-based robotic grasping from object localization, object pose
-      estimation to grasp estimation for parallel grippers - a review,
-      \cite{du2020vision}: Will read after PVNet implementation.
 \end{itemize}
 
 \section{Reading List}
 \begin{itemize}
-      \item \cite{roadmap251:online}
-      \item \cite{ferraz2014leveraging}
-      \item \cite{he2015deep}
-      \item \cite{du2020vision}
+      \item VEst \cite{5160698}
+      \item NASA papers \cite{NASATech44:online}
+      \item Leveraging feature uncertainty in the pnp problem \cite{ferraz2014leveraging}
+      \item Vision-based robotic grasping from object localization, object pose
+      estimation to grasp estimation for parallel grippers - a review \cite{du2020vision}
+      \item Berk Calli's YCB \cite{calli2015ycb}
+      \item Normalized objects \cite{Wang_2019_CVPR}
+      \item Roadmap \cite{roadmap251:online}
+
 \end{itemize}
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item I did tutorials on PIL and Pickle.
+      \item Pose Estimation: I am working on extracting key points and features
+      from YCB dataset. I also looked into camera calibration. I had some difficulties
+      but Joe and Chris recommended using a ROS package so I will pursue that.
+
+      \item OpenCV: I have dome some basic tutorials. I need to become intimate
+      with this.
+
+      \item QuEst \cite{QuEst}: In this paper, authers cleverly use Quaternion notation
+      to derive and develop a 5-point pose estimation scheme that is more robust to noise.
+      Quaternion notation increases dimensions of the problem but rather preserve
+      more numerical precision in computation. This become apparent as QuEst
+      performs better that SOTA for image sequences under noisy conditions.
+      Moreover, this method computes translation and rotation independently which
+      also eliminates error propagation from translation estimation to rotation
+      estimation. For similar reasons, they based their algorithm on a 5-point
+      or more pose estimation algorithm which is explained in more detail in
+      \cite{ma2012invitation}.
+
       \item NASA MSI Fellowship: Next, I will read papers from NASA
       \cite{NASATech44:online} and develop a proposal.
-      \item PyTorch Tutorials: Next: Transfer learning.
+
+      \item PyTorch Tutorials: Transfer learning: I did this tutorial on PyTorch
+      but I think I was too tired when I did that last week. I will do it again.
+
       \item PVNet: Next: Use transfer learning and ResNet to train a model for
-      semantic segmentation on YCB dataset.
-      \item NBV Grasping Project: Next, I will install ROS client on UR5 and
-      my lab station.
-      \item UTARI: No new development.
+      semantic segmentation on YCB dataset. -- I was working on this when over
+      write my boot section. I welcome problems. I was copying YCB dataset from
+      my internal backup drive to my partion when I used rsync without a
+      destination. Rsync is powerfull command that allows for files to be copied
+      using the entire communication bus bandwidth. I started writing a shell
+      script to automate the recovery procedure.
+
+      \item NBV Grasping Project: Joe and I setup ROS Client on UR5e and were
+      able to control it via my workstation. We had to downgrade to Ubuntu 18
+      because ROS Client driver uses ROS Melodic. After discussing this Chris,
+      he recommended we move to Noetic and build the driver from source because
+      ROS communication messages should match between Melodic and Noetic. I will
+      test this on my computer first then implement it on my workstation. I don't
+      want to undo Joe's work without a robust solution.
+
+      \item UTARI: I found the source code for QuEst. I will convert it from
+      Matlab code to Python and will play with it.
+
       \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
 
@@ -95,12 +130,6 @@ The following items are listed in the order of priority:
 The following items are listed in the order of priority:
 
 \begin{itemize}
-      \item Algorithms and Data Structures: I need to strengthen my algorithms
-      and data structure implementation skills. I have
-      noticed that my implementation could be a lot cleaner and could perhand
-      process data more efficiently. I will focus on commonly used algorithms
-      as I believe proficiency on this topic will decrease my average
-      development time and make my code less prone to software bugs.
       \item Pose estimation: First, I will implement a simple pose estimation
       model and gradually will add feature extraction and other techniques for
       robust and fast pose estimation. I will have to learn how to extract
@@ -114,6 +143,7 @@ The following items are listed in the order of priority:
       writing a paper on this topic but it is difficult to set a timeline
       without a working implementation. Right after finals, I will resume working
       on this and read paper from CVPR and ICRA on the topic.
+
       \item NBV-Grasping: I will follow up with Chris and Joe and will try to
       assist and learn as much as I can. The goal is to write the paper by mid
       to end of the summer.
