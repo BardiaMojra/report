@@ -1,0 +1,22 @@
+
+
+Tasks:
+- Catch up on my reading list.
+- Pose Estimation:
+  - Read VEst \cite{dani2009position}.
+  - Implement QuEst in Python.
+  - OpenCV: Get comfortable using it.
+  - Key point feature extraction.
+  - Evaluate various pose estimation methods: PnP, QuEst, and else.
+  - PVNet implementation: Paused. Working on a simple pose estimation for now.
+  - Look into ARKit \cite{Augmente8:online}.
+  - Look into ARCore \cite{Buildnew97:online}.
+- NBV-Grasping:
+  - Update URDF and Xacro files for UR5e to include sensor, sensor mount (with offset), and the gripper.
+  - Add movement constrains for tables and scene.
+  - Write two IK functions for gripper and sensor, one for each. It should plug-in with MoveIt configurator.
+  - Research and implement point-cloud data to training TensorFlow models.
+  - UR5e in simulation: Joe might consider.
+  - Learn and implement GraspIt package.
+- MSI Fellowship: On pause.
+- Look into methods of generating uncertainty data.
