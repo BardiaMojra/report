@@ -55,22 +55,20 @@
   \item Catch up on my reading list.
   \item Pose Estimation:
   \begin{itemize}
-      \item Read VEst \cite{dani2009position}.
+      \item Read \cite{ma2012invitation}, up to chapter 5.
+      \item Key point feature extraction: ORB, SIFT, SURF.
+      \item Read VEst \cite{dani2009position}. - Done
       \item Implement QuEst in Python.
-      \item OpenCV: Get comfortable using it.
-      \item Key point feature extraction.
+      \item Survey: I need start working on this.
       \item Evaluate various pose estimation methods: PnP, QuEst, and else.
       \item PVNet implementation: Paused. Working on a simple pose estimation for now.
-      \item Look into ARKit \cite{Augmente8:online}.
-      \item Look into ARCore \cite{Buildnew97:online}.
   \end{itemize}
   \item NBV-Grasping:
       \begin{itemize}
       \item Update URDF and Xacro files for UR5e to include sensor,
 sensor mount (with offset), and the gripper.
-      \item Add movement constrains for tables and scene.
-      \item Write two IK functions for gripper and sensor, one for each. It
-should plug-in with MoveIt configurator.
+      \item Add movement constraints for tables and scenes.
+      \item Write two IK functions for gripper and sensor, one for each. It should plug-in with MoveIt configurator.
       \item Research and implement point-cloud data to training TensorFlow models.
       \item UR5e in simulation: Joe might consider.
       \item Learn and implement GraspIt package.
@@ -82,64 +80,35 @@ should plug-in with MoveIt configurator.
 
 \section{Reading List}
 \begin{itemize}
-      \item VEst \cite{dani2009position} - On-going
-      \item Vision-based robotic grasping from object localization, object pose
-      estimation to grasp estimation for parallel grippers - a review \cite{du2020vision}
+      \item VEst \cite{dani2009position} - Done.
+      \item Vision-based robotic grasping from object localization, object pose estimation to grasp estimation for parallel grippers - a review \cite{du2020vision} - On-going.
       \item NASA papers \cite{NASATech44:online}
       \item Leveraging feature uncertainty in the pnp problem \cite{ferraz2014leveraging}
       \item Berk Calli's YCB \cite{calli2015ycb}
       \item Normalized objects \cite{Wang_2019_CVPR}
       \item Roadmap \cite{roadmap251:online}
-
 \end{itemize}
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation: I continued with my OpenCV tutorial. At this point,
-      I am trying to learn how to extract key features from objects as the primary
-      step in object pose estimation. My goal is to develop a robust pose estimator
-      that is primarily based on classical approach and to leverage Neural Network
-      where it is absolutely necessary or where its benefits outweight the training
-      time, intraceability, and inference time costs.
+      \item Pose Estimation: I am working my way through \cite{du2020vision}.
+      It covers many topics in both Pose Estimation and Grasping but it does not go deep into Pose Estimation methods and could be written better. It provides a general view and I am using the information structure they provided for my survey paper. So far, I have been making annotations and taking notes.
 
-      Moreover, I came across Objectron \cite{ahmadyan2020objectron} which is
-      developed by a team at Google. The authors provide their precompiled library
-      as part of MediaPipe \cite{lugaresi2019mediapipe} module. I tested the module
-      and was able to detect bounding box of a cup using webcam (live feed)
-      with about roughly 30 frames per second being processed. The performance
-      is good as it works in a plug-and-play fashion but it is jumpy and could
-      use some anchoring to stabilize the predicted bounding box from frame to
-      frame. The authors
-      contribute the fast inference time to available AR tool kits, e.g. ARKit
-      \cite{Augmente8:online} and
-      ARCore \cite{Buildnew97:online}, that provide sparse point clouds in 3D.
-      They provide their data set containing 4 million densely annotated
-      images and nearly 15 thousand video clips collected from 10 countries.
-      I think this is an import work and I might want to familiarize myself with
-      the mentioned toolboxes and make use of the data set they provided.
+      I read Objectron \cite{ahmadyan2020objectron} and will use their assessment of the current datasets for my survey paper.
 
       \item QuEst \cite{QuEst}: I still need to implement this in Python.
 
-      \item VEst \cite{dani2009position}: I am working my way through this paper.
-      I reviewed Homography and SVD in detail. I went over EKF as well.
+      \item VEst \cite{dani2009position}: I finished reading the paper and discussed it with Dr. Gans. He answered many of my questions which helps a lot.
 
       \item NASA MSI Fellowship: Need to read more NASA papers.
 
       \item PyTorch Tutorials: Transfer learning:
 
 
-      \item NBV Grasping Project: On Wednesday, Joe helped me build UR driver
-      code from source on my computer which is a great news. This allows us to
-      proceed with ROS Noetic which has Python3 natively integrated. Moreover,
-      I am working on updating URDF file to meet our needs. Today, I am updating
-      rvl-workstation with Ubuntu 20.04 and ROS Noetic. I also created a channel
-      on Teams where we keep a record of our discussions and decisions. Additionally,
-      I created a MS OneNote that allows us to seemlessly share notes and development
-      documentations. OneNote and GitHub for this project are accessable through
-      NBV-Grasping channel on Teams.
+      \item NBV Grasping Project: I finally fixed a compilation bug that I had been working on since last week. It was preventing us from using ROS Noetic, which was a major problem. I am working URDF file now.
 
-      \item UTARI:
+      \item UTARI: I will be working on my reading list, from what I received from Dr. Gans. I think he sees what I see when it comes to the importance of Lie Algebra. Our discussion helped me understand some of the differences between Essential Matrix and Homography pose estimation techniques and more.
 
       \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
@@ -157,13 +126,9 @@ The following items are listed in the order of priority:
 
 \section{Intermediate Goals - Fall 2021:}
 \begin{itemize}
-      \item Pose estimation: I must be finished with implementation, perhaps
-      make some improvements, and should be working on a paper for ICRA or CVPR.
-      \item Scene understanding and active learning: After pose estimation, I
-      want to expand my research into scene understanding and active learning in
-      the context of advanced manufacturing.
-      \item ARIAC: Once I am up to speed, I will do the ARIAC workshops/tutorials
-      and will talk to Jerry about possible contributions.
+      \item Pose estimation: I must be finished with implementation, perhaps make some improvements, and should be working on a paper for ICRA or CVPR.
+      \item Scene understanding and active learning: After pose estimation, I want to expand my research into scene understanding and active learning in the context of advanced manufacturing.
+      \item ARIAC: Once I am up to speed, I will do the ARIAC workshops/tutorials and will talk to Jerry about possible contributions.
 \end{itemize}
 
 
