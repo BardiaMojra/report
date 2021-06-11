@@ -55,7 +55,7 @@
   \item Catch up on my reading list.
   \item Pose Estimation:
   \begin{itemize}
-      \item Read \cite{ma2012invitation}, up to chapter 5.
+      \item Read \cite{ma2012invitation}, up to chapter 5. Finished chapeter 3.
       \item Key point feature extraction: ORB, SIFT, SURF.
       \item Read VEst \cite{dani2009position}. - Done
       \item Implement QuEst in Python.
@@ -80,7 +80,6 @@ sensor mount (with offset), and the gripper.
 
 \section{Reading List}
 \begin{itemize}
-      \item VEst \cite{dani2009position} - Done.
       \item Vision-based robotic grasping from object localization, object pose estimation to grasp estimation for parallel grippers - a review \cite{du2020vision} - On-going.
       \item NASA papers \cite{NASATech44:online}
       \item Leveraging feature uncertainty in the pnp problem \cite{ferraz2014leveraging}
@@ -92,25 +91,16 @@ sensor mount (with offset), and the gripper.
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation: I am working my way through \cite{du2020vision}.
-      It covers many topics in both Pose Estimation and Grasping but it does not go deep into Pose Estimation methods and could be written better. It provides a general view and I am using the information structure they provided for my survey paper. So far, I have been making annotations and taking notes.
+      \item Pose Estimation: On reading \cite{du2020vision}, I finished chapter 3 and will finish reading chapter 4 over the weekend. I plan on meeting Dr. Gans on Monday and discuss next step. He wants me to read QuEst and VEst papers again which will be helpful.
 
-      I read Objectron \cite{ahmadyan2020objectron} and will use their assessment of the current datasets for my survey paper.
-
-      \item QuEst \cite{QuEst}: I still need to implement this in Python.
-
-      \item VEst \cite{dani2009position}: I finished reading the paper and discussed it with Dr. Gans. He answered many of my questions which helps a lot.
-
+      \item QuEst \cite{QuEst}: Will read again.
+      \item VEst \cite{dani2009position}: Will read again.
       \item NASA MSI Fellowship: Need to read more NASA papers.
+      \item PyTorch Tutorials: Transfer learning.
 
-      \item PyTorch Tutorials: Transfer learning:
+      \item NBV Grasping Project: With Chris' help, now I can open URDF file with ROS MoveIt package, configure it, and generate corresponding configuration files. Now, I am watching tutorials and reading the documentation on how to use MoveIt package. I need to add a link, gripper, depth sensor, and the surrounding environment such as the table to our URDF model. Next, I will generate inverse kinematic files for both Gripper and Sensor.
 
-
-      \item NBV Grasping Project: I finally fixed a compilation bug that I had been working on since last week. It was preventing us from using ROS Noetic, which was a major problem. I am working URDF file now.
-
-      \item UTARI: I will be working on my reading list, from what I received from Dr. Gans. I think he sees what I see when it comes to the importance of Lie Algebra. Our discussion helped me understand some of the differences between Essential Matrix and Homography pose estimation techniques and more.
-
-      \item Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
+      \item PE Survey: Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
 
 %\newpage
@@ -119,9 +109,9 @@ The following items are listed in the order of priority:
 The following items are listed in the order of priority:
 
 \begin{itemize}
-      \item Pose estimation:
+      \item UTARI: Dr. Gans' pose and velocity estimation paper.
       \item NBV-Grasping:
-      \item UTARI:
+      \item Pose estimation: Survey paper.
 \end{itemize}
 
 \section{Intermediate Goals - Fall 2021:}
