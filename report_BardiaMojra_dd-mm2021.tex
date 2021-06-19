@@ -55,52 +55,55 @@
   \item Catch up on my reading list.
   \item Pose Estimation:
   \begin{itemize}
-      \item Read \cite{ma2012invitation}, up to chapter 5. Finished chapeter 3.
-      \item Key point feature extraction: ORB, SIFT, SURF.
-      \item Read VEst \cite{dani2009position}. - Done
-      \item Implement QuEst in Python.
+      \item Read \cite{ma2012invitation}, up to chapter 5. Done.
+      \item Implement key point feature extraction: ORB, SIFT, SURF.
+      \item QEKF \cite{6577984}: Go over implementation with Cody.
       \item Survey: I need start working on this.
-      \item Evaluate various pose estimation methods: PnP, QuEst, and else.
-      \item PVNet implementation: Paused. Working on a simple pose estimation for now.
+      \item Survey implementation: Classical, 2-stage, and end-to-end methods. PnP, QuEst, PVNet and else.
   \end{itemize}
   \item NBV-Grasping:
       \begin{itemize}
       \item Update URDF and Xacro files for UR5e to include sensor,
-sensor mount (with offset), and the gripper.
+sensor mount (with offset), and the gripper. - On-going.
       \item Add movement constraints for tables and scenes.
       \item Write two IK functions for gripper and sensor, one for each. It should plug-in with MoveIt configurator.
       \item Research and implement point-cloud data to training TensorFlow models.
-      \item UR5e in simulation: Joe might consider.
       \item Learn and implement GraspIt package.
       \end{itemize}
 
   \item MSI Fellowship: On pause.
-  \item Look into methods of generating uncertainty data.
+  \item Look into methods of generating uncertainty data for pose estimation.
 \end{itemize}
 
 \section{Reading List}
 \begin{itemize}
       \item Vision-based robotic grasping from object localization, object pose estimation to grasp estimation for parallel grippers - a review \cite{du2020vision} - On-going.
-      \item NASA papers \cite{NASATech44:online}
-      \item Leveraging feature uncertainty in the pnp problem \cite{ferraz2014leveraging}
-      \item Berk Calli's YCB \cite{calli2015ycb}
-      \item Normalized objects \cite{Wang_2019_CVPR}
-      \item Roadmap \cite{roadmap251:online}
+      \item Leveraging feature uncertainty in the pnp problem \cite{ferraz2014leveraging}.
+      \item Normalized objects \cite{Wang_2019_CVPR}.
+      \item Berk Calli's YCB \cite{calli2015ycb}.
+      \item NASA papers \cite{NASATech44:online}.
+      \item Roadmap \cite{roadmap251:online}.
 \end{itemize}
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Pose Estimation: On reading \cite{du2020vision}, I finished chapter 3 and will finish reading chapter 4 over the weekend. I plan on meeting Dr. Gans on Monday and discuss next step. He wants me to read QuEst and VEst papers again which will be helpful.
+      \item UTARI: I finished reading \cite{ma2012invitation} assignment.
+      On Monday, I met with Dr. Gans and Reza and discussed \cite{QuEst} and \cite{dani2009position}. Moreover, I reviewed EKF design and read QEKF paper \cite{6577984}. In this paper, the authors derive kinematic state equations for a four legged robot and define system state with the following variables, the robot body's linear position as \textbf{\textit{r}}, the corresponding linear velocity as \textbf{v}, and its rotation in quaternions \textbf{q} with respect to body's inertial coordinate frame
+      \textbf{I}. Robot's leg kinematic models are represented by $p_i$ variables; followed by additive white Gaussian noise for linear acceleration and angular velocity as two bias terms, $b_f$ and $b_w$, respectively. Per standard EKF procedure, state derivatives are used as state estimators or prediction model. Moreover, the system's measurement noise is modeled by adding Gaussian noise representation to encoder and foot position readings. In this work, the authors derive and compute rotational state variables in Quaternion form while defined by a singular state along with linear variables.
 
-      \item QuEst \cite{QuEst}: Will read again.
-      \item VEst \cite{dani2009position}: Will read again.
+      Next week, I will go over the code with Cody and begin working on the theoretical derivation.
+
+      \item Idea: EKF is an online full state estimator (in concept it would be similar to a Bayesian filter or calibrated predictor) but for very low dimensional non-linear systems. It works because it tries to model, estimate and improve the system it tries to control with every data sample or input as it exploits the system dynamics (Newtonian dynamics is well contrianted and very easy to work with, in comparison to stochastic systems). In theory, this should work for any number of dimensions so long it is computationally feasible. There is a chapter on Sparse Extended Information Filter in Probabilistic Robotics, \cite{books/daglib/0014221}, that formulates this idea but it could be exploited for perhaps scene understanding tasks where shadow or color gradient of an object can give us some information about the object and its expected behavior.
+
       \item NASA MSI Fellowship: Need to read more NASA papers.
       \item PyTorch Tutorials: Transfer learning.
+      \item NBV Grasping Project: I am still working on URDF modification. I had some setup issues where I tried to install MoveIt Tutorials on the same OS boot as NBV-G OS boot and that caused everything to stop working. I took Chris' recommendation and created three separate OS boots for different ROS projects and tutorials but I erased my boot table in the process. I had to redo the whole thing again. Fortunately, I documented the setup and debugging session I had with Joe after Friday's meeting. I know what I did wrong now. I am still learning ROS.
+      \item PE Survey: I continued reading \cite{du2020vision}.
+      I keep taking notes and make annotations.
+      \item SD Team: I talked to Thomas Vu, person of contact, yesterday evening.
+      I asked him to setup routine and short update meetings with me and the team and that they should send you an email and introduce themself, and setup a call per your request. I made it clear that I will play a mentor role and I will be glad to help with aspects of the project that is relevant to my work. Dr. Conly also mentioned they can get involved in research but it is not required. I told them they need to pick up ROS as soon as possible and they seem excited and interested. Please let me know at any time if there are any Do's and Dont's or ground rules we/they need to follow, besides what you already have mentioned. I also told them to be respectful of your time, the lab and all researchers and students. I will be there with them whenever they need to use UR5e.
 
-      \item NBV Grasping Project: With Chris' help, now I can open URDF file with ROS MoveIt package, configure it, and generate corresponding configuration files. Now, I am watching tutorials and reading the documentation on how to use MoveIt package. I need to add a link, gripper, depth sensor, and the surrounding environment such as the table to our URDF model. Next, I will generate inverse kinematic files for both Gripper and Sensor.
-
-      \item PE Survey: Implement features from PoseCNN, DOPE, and BayesOD. - On pause.
 \end{itemize}
 
 %\newpage
@@ -124,7 +127,7 @@ The following items are listed in the order of priority:
 
 %Sets the bibliography style to UNSRT and import the
 \newpage
-\bibliography{references}
+\bibliography{ref}
 \bibliographystyle{ieeetr}
 
 \end{document}
