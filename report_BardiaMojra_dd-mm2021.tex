@@ -44,34 +44,37 @@
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item Pose Estimation: Implement and improve.
-      \item NBV-Grasping.
+      \item VPQEKF: Combine QuEst and Vest with QEKF paper.
       \item Pose estimation survey.
+      \item NBV-Grasping.
       \item Universal pose estimation.
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
   \item Catch up on my reading list.
-  \item Pose Estimation:
+  \item PVQEKF:
   \begin{itemize}
-      \item Implement QEKF.
+      \item Replace data input to QEKF, remore IMU data with QuEst and Vest data. -- On going.
+      \item Update state definition and measurement matrices.
+      \item Get ROS environment up and running. -- On going.
+  \end{itemize}
+  \item Pose Estimation Survey:
+  \begin{itemize}
+      \item Categorize pose estimation research and create a mind map. -- On going.
       \item Implement key point feature extraction: ORB, SIFT, SURF.
-      \item Survey: I need start working on this.
+      \item Survey: I need start working on this. -- On going.
       \item Survey implementation: Classical, 2-stage, and end-to-end methods. PnP, QuEst, PVNet and else.
   \end{itemize}
   \item NBV-Grasping:
       \begin{itemize}
-      \item Update URDF and Xacro files for UR5e to include sensor,
-sensor mount (with offset), and the gripper. - On-going.
+      \item Update URDF and Xacro files for UR5e to include sensor, sensor mount (with offset), and the gripper.
       \item Add movement constraints for tables and scenes.
       \item Write two IK functions for gripper and sensor, one for each. It should plug-in with MoveIt configurator.
       \item Research and implement point-cloud data to training TensorFlow models.
       \item Learn and implement GraspIt package.
       \end{itemize}
-
   \item MSI Fellowship: On pause.
-  \item Look into methods of generating uncertainty data for pose estimation.
 \end{itemize}
 
 \section{Reading List}
@@ -87,24 +90,20 @@ sensor mount (with offset), and the gripper. - On-going.
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item UTARI: This week I worked on setting up OpenCV git submodules and building it from source.
-      I had to repeat the process multiple times and made sure to learn it and document it.
-      Moveover, I am almost done debugging catkin-make process that build and bind ROS packages for this project.
-      So far, I have been able to debug everything myself.
-      This is a major achievement as it aligns with my robotic gaols.
-      I have gone over angular and linear EKF modules with Cody and currently I am
-      trying to compile it and run the ROS packages to able to test it on data.
-      Next, I will finish debugging Catkin-make process.
-      It  currently build up to 96 percent and is missing a dependency. Moreover, I need to reach out Asif for the latest QEKF code, I asked him last night and he was making some improvements. In deriving the H and F matrices there are so dimension reduction that I find intriging.
+      \item VPQEKF: I had some issue setting up ROS environment, where I did not properly uninstall OpenCV-3.2 and it was causing dependency conflict with OpenCV-3.4.9 installation. Next, I will purge all ROS related packages and install the barebone version.
+      Then, I should be able to build the package without any problems.
 
-      \item In \cite{cranmer2020discovering}, the authors introduce a novel framework as well as a Python library for representing learned high dimensional deep neural model using strong inductive basis. They train Graph Neural Network (GNN) to develop sparse latent representation of learned features. This is done by deploying genetic algorithm to test and evalute variations of short closed-form symbolic expression describing each learned feature. This forces the deep neural network to represent high dimensional data in a much lower dimesion represation while maintaining accuracy. This is very similar to how we describe physical phenomena using math, we tailor math to match physics. The authors were able to extract Newtonian and Hamiltonian dynamics equations in their experiments. Newtonian dynamics describe forces acting on objects which is summarized best by $F=ma$. Hamiltonian dynamics describe a system in terms of total energy with the constraint that total energy is always conserved. Hamiltonian is best described by $H=E_k+E_p$.
+      Moreover, I worked on QEKF implementation that I received from Asif. I cleaned up the code and I am currently trying to run it with existing dataset to make sure it runs as intended. Next, I will take out IMU state data and add in state data from QuEst and VEst.
+
+      I am not sure how it will work since without acceleration data we will lose the second order approximation term.
 
       \item NASA MSI Fellowship: Need to read more NASA papers.
       \item PyTorch Tutorials: Transfer learning.
-      \item NBV Grasping Project: I did not get to this project at all this week. Starting this week, I am dedicating Tuesdays this project. Please let me know what you think of this. I think I am most productive when I am on strict schedule.
-      \item PE Survey: Starting this week, I will dedicate Mondays to write this paper. Please let me know if you think it is a good idea.
+      \item NBV Grasping Project: I did not get to work on this project this week.
+      \item PE Survey: I started a mind map of pose estimation research. I am currently listing papers and categorizing them as well as attaching a short brief to each. It is still early in the work.
+
       \item SD Team: No update.
-      \item EE Autonobots: Cody has ordered 4 TurtleBot-3 robots and student members are to pick a date to meet up and if I can I will go help and mentor them.
+      \item EE Autonobots: No update.
 \end{itemize}
 
 %\newpage
