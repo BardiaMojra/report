@@ -55,11 +55,11 @@
   \item Catch up on my reading list.
   \item PVQEKF:
   \begin{itemize}
-      \item Replace data input to QEKF, remore IMU data with QuEst and Vest data. -- On going.
-      \item Update state definition and measurement matrices.
-      \item Get ROS environment up and running. -- On going.
+      \item Replace data input to QEKF, remore IMU data with QuEst and Vest data. -- Done.
+      \item Update state definition and measurement matrices. -- On going.
+      \item Get ROS environment up and running. -- Next: test header include bug theory.
   \end{itemize}
-  \item Pose Estimation Survey:
+  \item Pose Estimation Survey: -- On pause.
   \begin{itemize}
       \item Categorize pose estimation research and create a mind map. -- On going.
       \item Implement key point feature extraction: ORB, SIFT, SURF.
@@ -90,17 +90,16 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF: I had some issue setting up ROS environment, where I did not properly uninstall OpenCV-3.2 and it was causing dependency conflict with OpenCV-3.4.9 installation. Next, I will purge all ROS related packages and install the barebone version.
-      Then, I should be able to build the package without any problems.
+      \item VPQEKF: I finished working on data visualization and handling. Next,
+      I will work on re-purposing QEKF section of the code. For the ROS implementation, I think I know what the issue may be. The error says, \textit{hdf5.h} file is not found when building the Quest package. So, it might be resolved if I include the mentioned header file in the \textit{package.xml} file.
 
-      Moreover, I worked on QEKF implementation that I received from Asif. I cleaned up the code and I am currently trying to run it with existing dataset to make sure it runs as intended. Next, I will take out IMU state data and add in state data from QuEst and VEst.
+      Moreover, I read the first three chapters of \cite{escriva2019building}. It definitely helped.
 
-      I am not sure how it will work since without acceleration data we will lose the second order approximation term.
+      \item NBV Grasping Project: I did not work on this project this week. I will come back to this after I make more progress with VPQEKF.
 
-      \item NASA MSI Fellowship: Need to read more NASA papers.
+      \item NASA MSI Fellowship: Need to read more NASA papers. -- On pause.
       \item PyTorch Tutorials: Transfer learning.
-      \item NBV Grasping Project: I did not get to work on this project this week.
-      \item PE Survey: I started a mind map of pose estimation research. I am currently listing papers and categorizing them as well as attaching a short brief to each. It is still early in the work.
+      \item PE Survey (On pause): I think it might be that it is not worth the time to work on a pose estimation survey paper at this point. It is too much work for a journal paper. I have gained enough knowledge and skill to implement some new idea in regards to pose estimation. I can work on this after VPQEKF paper or even after NBV-Grasping.
 
       \item SD Team: No update.
       \item EE Autonobots: No update.
