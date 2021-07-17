@@ -45,7 +45,6 @@
 \section{Specific Research Goals}
 \begin{itemize}
       \item VPQEKF: Combine QuEst and Vest with QEKF paper.
-      \item Pose estimation survey.
       \item NBV-Grasping.
       \item Universal pose estimation.
 \end{itemize}
@@ -55,16 +54,8 @@
   \item Catch up on my reading list.
   \item PVQEKF:
   \begin{itemize}
-      \item Replace data input to QEKF, remore IMU data with QuEst and Vest data. -- Done.
       \item Update state definition and measurement matrices. -- On going.
       \item Get ROS environment up and running. -- Next: test header include bug theory.
-  \end{itemize}
-  \item Pose Estimation Survey: -- On pause.
-  \begin{itemize}
-      \item Categorize pose estimation research and create a mind map. -- On going.
-      \item Implement key point feature extraction: ORB, SIFT, SURF.
-      \item Survey: I need start working on this. -- On going.
-      \item Survey implementation: Classical, 2-stage, and end-to-end methods. PnP, QuEst, PVNet and else.
   \end{itemize}
   \item NBV-Grasping:
       \begin{itemize}
@@ -90,12 +81,9 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF: I finished working on data visualization and handling. Next,
-      I will work on re-purposing QEKF section of the code. For the ROS implementation, I think I know what the issue may be. The error says, \textit{hdf5.h} file is not found when building the Quest package. So, it might be resolved if I include the mentioned header file in the \textit{package.xml} file.
+      \item VPQEKF: I had a meeting with Dr. Gans and Asif, we went over State Transform and Observation matrices and updated them according to QuEst and Vest as input data. I went over Kalman filter and Extended Kalman Filter in detail and took some notes. I am working on updating QEKF matrices.
 
-      Moreover, I read the first three chapters of \cite{escriva2019building}. It definitely helped.
-
-      \item NBV Grasping Project: I did not work on this project this week. I will come back to this after I make more progress with VPQEKF.
+      \item NBV Grasping Project: I spent couple hours this week and went over what I have done so far, which is basic setup. I have the \textit{URDF.XACRO} file where it holds default values and macros for \textit{UR5e}. Next, I need to update it by adding the mount and the table.
 
       \item NASA MSI Fellowship: Need to read more NASA papers. -- On pause.
       \item PyTorch Tutorials: Transfer learning.
