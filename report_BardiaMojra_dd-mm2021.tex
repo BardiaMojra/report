@@ -46,7 +46,7 @@
 \begin{itemize}
       \item VPQEKF: Combine QuEst and Vest with QEKF paper.
       \item NBV-Grasping.
-      \item Universal pose estimation.
+      \item Universal pose estimation or a novel and superior approach.
 \end{itemize}
 
 \section{To Do}
@@ -54,12 +54,12 @@
   \item Catch up on my reading list.
   \item PVQEKF:
   \begin{itemize}
-      \item Update state definition and measurement matrices. -- On going.
+      \item Update state definition and measurement matrices. -- Done.
       \item Get ROS environment up and running. -- Next: test header include bug theory.
   \end{itemize}
   \item NBV-Grasping:
       \begin{itemize}
-      \item Update URDF and Xacro files for UR5e to include sensor, sensor mount (with offset), and the gripper.
+      \item Update URDF and Xacro files for UR5e to include sensor, sensor mount (with offset), and the gripper. -- Next
       \item Add movement constraints for tables and scenes.
       \item Write two IK functions for gripper and sensor, one for each. It should plug-in with MoveIt configurator.
       \item Research and implement point-cloud data to training TensorFlow models.
@@ -81,14 +81,19 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF: I had a meeting with Dr. Gans and Asif, we went over State Transform and Observation matrices and updated them according to QuEst and Vest as input data. I went over Kalman filter and Extended Kalman Filter in detail and took some notes. I am working on updating QEKF matrices.
+      \item VPQEKF: I finished updating state transition model and observation model
+      matrices. I am currently debugging data handling and computation.
 
-      \item NBV Grasping Project: I spent couple hours this week and went over what I have done so far, which is basic setup. I have the \textit{URDF.XACRO} file where it holds default values and macros for \textit{UR5e}. Next, I need to update it by adding the mount and the table.
+      EKF is a low dimensional joint probability distribution robust estimator. It essentially combines dynamically constrained robust estimator with i.i.d. random variable noise assumption to create a more accurate model the real world, a chaotic system. It makes \textit{full state estimations} with tuned noise variance tolerances that allows for random noise conspensation. An observation is made and EKF update it's \textit{belief} according to both \textit{prior belief} and \textit{current observation}. In a low dimensional context, the weights assigning proportionality to \textit{prior belief} and \textit{current observation} for every state (dimension) are called \textbf{the Kalman
+      gain}.
 
+
+      EKF's update step computes \textit{the residual} -- finished section at a later time.
+
+      \item NBV Grasping Project: No update.
       \item NASA MSI Fellowship: Need to read more NASA papers. -- On pause.
       \item PyTorch Tutorials: Transfer learning.
-      \item PE Survey (On pause): I think it might be that it is not worth the time to work on a pose estimation survey paper at this point. It is too much work for a journal paper. I have gained enough knowledge and skill to implement some new idea in regards to pose estimation. I can work on this after VPQEKF paper or even after NBV-Grasping.
-
+      \item Pose Estimation: On pause.
       \item SD Team: No update.
       \item EE Autonobots: No update.
 \end{itemize}
