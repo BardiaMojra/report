@@ -54,9 +54,11 @@
   \item Catch up on my reading list.
   \item PVQEKF:
   \begin{itemize}
-      \item Update state definition and measurement matrices. -- Done.
+      \item Keep improving and debugging the QEKF code.
       \item Get ROS environment up and running. -- Next: test header include bug theory.
   \end{itemize}
+  \item RVL profile material.
+  \item Real-time pose estimation demo.
   \item NBV-Grasping:
       \begin{itemize}
       \item Update URDF and Xacro files for UR5e to include sensor, sensor mount (with offset), and the gripper. -- Next
@@ -81,14 +83,24 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF: I finished updating state transition model and observation model
-      matrices. I am currently debugging data handling and computation.
+      \item VPQEKF: I continued working QEKF code and create graphs for residual
+      (\textit{v}) and measurement (\textit{z}) vs posterior estimate (\textit{x-post}) translation.
+      I implemented these  routines that any vector or matrix could be logged and plotted.
+      I am still debugging the code as the quaternion estimations are still rubbish and it is oscillating about the origin.
 
-      EKF is a low dimensional joint probability distribution robust estimator. It essentially combines dynamically constrained robust estimator with i.i.d. random variable noise assumption to create a more accurate model the real world, a chaotic system. It makes \textit{full state estimations} with tuned noise variance tolerances that allows for random noise conspensation. An observation is made and EKF update it's \textit{belief} according to both \textit{prior belief} and \textit{current observation}. In a low dimensional context, the weights assigning proportionality to \textit{prior belief} and \textit{current observation} for every state (dimension) are called \textbf{the Kalman
-      gain}.
+      \begin{figure}
+            \includegraphics[width=\linewidth]{fig_09_v_residual.png}
+            \caption{residual vector (\textit{v}).}
+            \label{fig:residual}
+      \end{figure}
+      \begin{figure}
+            \includegraphics[width=\linewidth]{fig_10_z_vs_x_posterior_translation.png}
+            \caption{measurement (\textit{z}) vs posterior estimate (\textit{x-post}) translation.}
+            \label{fig:meas_vs_post}
+      \end{figure}
 
-
-      EKF's update step computes \textit{the residual} -- finished section at a later time.
+      Figure \ref{fig:residual} shows the residual vector (\textit{v}).
+      Figure \ref{fig:meas_vs_post} shows measurement vector (\textit{z}) vs estimate (\textit{x-post}).
 
       \item NBV Grasping Project: No update.
       \item NASA MSI Fellowship: Need to read more NASA papers. -- On pause.
