@@ -44,7 +44,8 @@
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item VPQEKF: Combine QuEst and Vest with QEKF paper.
+      \item VPQEKF: Write and submit paper by September 14th (ICRA)
+      \item AFRL Proposal:
       \item NBV-Grasping.
       \item Universal pose estimation or a novel and superior approach.
 \end{itemize}
@@ -55,9 +56,10 @@
   \item PVQEKF:
   \begin{itemize}
       \item Keep improving and debugging the QEKF code.
+      \item Develop object tracking and robust-to-truncation feature.
       \item Get ROS environment up and running. -- Next: test header include bug theory.
   \end{itemize}
-  \item RVL profile material.
+  \item AFRL: Controls and DNN research.
   \item Real-time pose estimation demo.
   \item NBV-Grasping:
       \begin{itemize}
@@ -83,24 +85,34 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF: I continued working QEKF code and create graphs for residual
-      (\textit{v}) and measurement (\textit{z}) vs posterior estimate (\textit{x-post}) translation.
-      I implemented these  routines that any vector or matrix could be logged and plotted.
-      I am still debugging the code as the quaternion estimations are still rubbish and it is oscillating about the origin.
+      \item VPQEKF: This week, I mostly worked on the QEKF project and I am still getting
+      inconsistent results. Figure 1, shows measurements vs. estimated translation where estimation moves in the opposite direction. Figure 2 shows translation measured and estimated values for the first 15 steps and it appears and it turns early on in the navigation process.
+      Figure 3 shows full state measurements vs. estimations for QEKF.
 
       \begin{figure}
-            \includegraphics[width=\linewidth]{fig_09_v_residual.png}
-            \caption{residual vector (\textit{v}).}
-            \label{fig:residual}
-      \end{figure}
-      \begin{figure}
-            \includegraphics[width=\linewidth]{fig_10_z_vs_x_posterior_translation.png}
-            \caption{measurement (\textit{z}) vs posterior estimate (\textit{x-post}) translation.}
+            \includegraphics[width=\linewidth]{fig01.png}
+            \caption{KITTI 001 - Measurement vs Posterior Est. Translation.}
             \label{fig:meas_vs_post}
       \end{figure}
 
-      Figure \ref{fig:residual} shows the residual vector (\textit{v}).
-      Figure \ref{fig:meas_vs_post} shows measurement vector (\textit{z}) vs estimate (\textit{x-post}).
+      \begin{figure}
+            \includegraphics[width=\linewidth]{fig02.png}
+            \caption{KITTI 001 - Measurement vs Posterior Est. Translation Zoom.}
+            \label{fig:meas_vs_post_zoom}
+      \end{figure}
+
+      \begin{figure}
+            \includegraphics[width=\linewidth]{fig03.png}
+            \caption{KITTI 001 - Measurement (\textit{z}) vs Posterior Estimate (\textit{x-post}).}
+            \label{fig:meas_vs_post_iso}
+      \end{figure}
+
+
+      Figure \ref{fig:meas_vs_post} shows translation measurement (\textit{z}) vs estimate (\textit{x-post}) translation in 3D.
+      Figure \ref{fig:meas_vs_post_zoom} shows translation measurement (\textit{z}) vs estimate (\textit{x-post}) in 3D for the first 15 samples.
+      Figure \ref{fig:meas_vs_post_iso} shows all measurements vs estimations.
+
+      \item AFRL: I think I would be most excited about combining controls and DNN methods for perception, odometry, navigation or manufacturing applications.
 
       \item NBV Grasping Project: No update.
       \item NASA MSI Fellowship: Need to read more NASA papers. -- On pause.
