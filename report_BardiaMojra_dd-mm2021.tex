@@ -51,10 +51,10 @@
 
 \section{To Do}
 \begin{itemize}
-  \item Grant Proposal: I will work on this every day for the next 2-3 weeks, then I will move back on VPQEKF project.
+  \item Grant Proposal: Find three scientific questions to be researched.
   \item PVQEKF:
   \begin{itemize}
-      \item Write equations in LateX with description. --- Done.
+      \item Go over code and write matrix equations.
       \item I will go over the paper once every morning and expand sections for 30 minutes to an hour.
       \item Double-check my data prep implementation. Use KITTI Python module.
       \item Test with Hilti dataset.
@@ -75,126 +75,21 @@
       \end{itemize}
 \end{itemize}
 
-\section{Reading List}
-\begin{itemize}
-      \item Leveraging feature uncertainty in the pnp problem \cite{ferraz2014leveraging}.
-      \item Normalized objects \cite{Wang_2019_CVPR}.
-      \item NASA papers \cite{NASATech44:online}.
-\end{itemize}
-
-
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Fellowship: I have already prepared an execution plan with steps and instructions. I prioritize this task moving forward until the end of the month. I am working on dissecting \cite{sintov2020motion}, \cite{doi:10.1177/0278364912473169}, and \cite{bergou2008discrete}. \cite{doi:10.1177/0278364912473169} and \cite{bergou2008discrete}provide a relatively simple framework for modeling and estimating system behavior for \textit{discrete elastic rods}. \cite{sintov2020motion} introduces a straightforward and effective approach for manipulating cables and wires for harnessing applications. It is my understanding that the source code for these papers is available.
-      \item VPQEKF: I continued working on the paper. It is still in the early stages; I will continue to review it and provide updates regularly. I wrote a section on Quaternion Algebra based on a book with the same name. It is added to this report in the next section. I also started working on the Hilti dataset.
-      \item NBV Grasping Project: No updates. We are going to work on this project every Friday afternoon.
+      \item Fellowship: I updated the execution plan and made sure it contains the correct fellowship requirements. This weekend, I will remove personal material and make it available to other students in a separate repository. Perhaps, it would be forked to the lab repository.\\
+      Moreover, I spent most of my time this week reading about the nature of the problem with wiring harness manufacturing. The issue seems to be a matter of manufacturing agility and increased labor costs rather than a scientific one. Dr. Gans recommended I read more into the scientific aspect of it and come up with three questions or problems to be researched for the proposal. \\
+      Dr. Gans recommended I work on data-driven approaches.
+      I started writing my research statement and have enough for the background paragraph. I added other notes from papers I have read so far. I will be focusing on research problem questions this week as I am still working on \cite{nguyen2021manufacturing}, \cite{dualMotionERods} and \cite{Quasi-static}.
+      \item VPQEKF: I added some background material and fixed some of the errors. I haven't done much with Hilti dataset after downloading it.
+      \item NBV Grasping Project: No updates.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: On pause.
       \item SD Team: No update.
       \item EE Autonobots: No update.
 \end{itemize}
-
-\section{QUATERNION ALGEBRA} \label{sec:QuatAlg}
-
-Quaternion space is a non-minimal representation belonging to \textit{SO(3)} Lie group.
-
-\subsection{Unit Quaternion}
-Moreover, the quaternion term from the dataset has \textit{four terms} with $xyzw$
-format.
-Hamilton's quaternion defined by 3 perpendicular imaginary axes $i,j,k$ with
-real scalars $x,y,z$ and a real term $w$ which constraints other 3 dimension to
-a \textit{unit magnitude}. Thus, the fourth term normalizes the vector's magnitude
-conveniently and preserves the 3D rotation (3 DOF). We define \textbf{Unit Hamiltonian}
-or \textbf{Unit Quaternion} as,
-
-
-\begin{eqnarray}\nonumber
-\label{eq:9}
-\mathbb{H}^{1} &:=&\left\{ q_{wxyz}=w+xi+yj+zk~\in \mathbb{H}~| \right.\\
-                   && \left.~w^{2}+x^{2}+y^{2}+z^{2}=1 \right\}
-\end{eqnarray}
-% page 27, sec 2.4.2 of "Quaternion Algebra"
-
-Where superscript 1 in $\mathbb{H}^{1}$ denotes a unit quaternion space with 4
-terms. There are two equal representations for $\mathbb{H}^{1}$ subgroup; thus,
-we provide a concise definition and notation for both to avoid confusion. The first representation is shown in \ref{eq:5} where the four terms of the
-quaternion are arranged in $wxyz$ order and it is represented by $q_{wxyz}$.
-The second quaternion is arranged in $xyzw$ format and is represented by $q_{xyzw}$.
-It is important to note the difference as both are used in our derivation and
-implementation.
-
-\begin{equation}
-\label{eq:12}
-q_{wxyz} = q_{xyzw} ~; ~~~ q_{wxyz},~q_{xyzw} \in \mathbb{H}^{1}
-\end{equation}
-
-
-\subsection{Pure Quaternion}
-As previously mentioned, the three imaginary terms of the quaternion represent the
-3D angles of interest in radians and the fourth dimension constraints the vector
-magnitude. Thus to avoid computational errors, in the prediction step, we use
-the unit quaternion where it only has its three imaginary terms, $xyz$.
-This quaternion space representation is defined by $\mathbb{H}^{0}$ and
-denoted by $q_xyz$ variables.
-
-
-
-\begin{eqnarray}\nonumber
-\label{eq:11}
-\mathbb{H}^{0} &:=& \left\{ q_{xyz}=xi+yj+zk~ \in \mathbb{H}~| \right.\\
-&& \left. ~x,y,z \in \mathbb{R} \right\} \backsimeq  \mathbb{R}^3
-\end{eqnarray}
-% page 27, sec 2.4.2 of "Quaternion Algebra"
-
-
-
-\subsection{Exponential Map}
-
-For calculating incremental rotation in
-
-Incremental rotation estimation using the skew-symmetric matrix obtained form
-the rotational rate vector and matrix exponential mapping function, [QEKF01].
-Gamma, $\Gamma$, represents incremental
-
-\begin{equation}
-\label{eq:2}
-\Gamma_{0} := \sum_{i=0}^{\infty} \frac{ \left( \Delta t^{i+n}  \right)}{ \\
-\left( i + n \right) \! } \\
-\omega^{\times i},
-\end{equation}
-
-Where $(.)^{\times}$ represents skew-symmetry matrix of a vector
-
-
-\subsection{Updating Quaternion State}
-\begin{equation}
-\label{eq:13}
-q_{i+1} = \delta q_{i} \otimes \widehat{q}_{i}
-\end{equation}
-
-
-
-\subsection{Capturing Quaternion Error}
-We use the mapping function $\zeta(.)$ to calculate the quaternion
-state error from the error rotation vector, [QEKF01].
-
-\begin{equation}
-\label{eq:14}
-\delta q = \zeta(\delta \phi),
-\end{equation}
-
-\begin{equation}
-\label{eq:15}
-\zeta : v \rightarrow \zeta(v) =
-        \begin{bmatrix}
-        \sin(\frac{1}{2}\|v\|) \frac{v}{\|v\|} \\
-        \cos(\frac{1}{2}\|v\|)
-        \end{bmatrix}
-\end{equation}
-
-
 
 %\newpage
 
