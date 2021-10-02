@@ -81,87 +81,8 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Fellowship: Here is a selection of what I have been working on.
-
-      \textbf{Background:} Automation and advanced manufacturing in the automotive
-      industry has been researched for decades and yet the wiring harness production
-      and integration remains up to 90\% dependant on manual labor \cite{nguyen2021manufacturing}.
-      With the emergence of electric vehicles (EV), the wiring harness has become
-      a safety-critical component as it is responsible for power delivery, steering,
-      braking, and sensing.
-
-      To achieve higher levels of safety and quality,
-      more fundamental scientific tools must be developed for adequate handling of wiring harness tasks.
-      The wiring harness problem can be characterized by manipulation,
-      bundling, cavity insertion or handling of deformable linear objects or Kirchhoff's elastic rods as it is known in the literature.
-
-      The automotive wiring harness has a tree-like structure with thousands of wire pieces, components, terminals, etc \cite{Log-linearLearnMan}.
-      Wires with different gauges and lengths are bundled together to form the trunk of the tree and branches deliver power and data connection to the submodules such as exterior cameras, entertainment systems, brakes, etc.
-
-      In recent years, there has been a growing interest in achieving autonomous manufacturing and technologies with robotic manipulation be among the highly researched topics. Although robotic manipulators have found a prominent place on the production line, the automotive wire harnessing task remains up to 90\% dependant on manual labor \cite{nguyen2021manufacturing}.
-
-      Due to low and fluctuating volumes, automotive manufacturers tend to implement some form of JIT (just-in-time) production to avoid logistical complications.
-
-      \noindent
-      \textbf{Bridge Background to Problem Statement}
-      Degrees of automation deployed vary among the three stages with the first being most heavily automated and the last being the least automated. The human-machine production rate disparity is clear here\\
-      Current elastic rod manipulation approaches could be categorized to two main groups, classical and data-driven. Classical methods such as...\\
-
-      Currently, 70\% of wiring harness manufacturing time is spent on the final step and in some areas it is up to 90\% manual labor \cite{nguyen2021manufacturing}.
-
-      \noindent
-      \textbf{Hypothesis:} Although there has been considerable effort made towards resolving a multitude
-      of issues regarding handling of deformable linear objects, there are gaps in
-      our fundamental scientific toolbox. These include but not limited to, 1) the lack of
-      necessary engineering tools for rapid reconfiguration and deployment of such
-      systems. In 1996, Kavraki introduced a method, \cite{pRoad96}, for computing
-      \emph{probabilistic roadmaps for path-planning in high-dimensional configuration space}
-      for stationary workspaces. In her method, first a sparse map is computed offline
-      and stored as a graph whose nodes corresponds to collusion-free configurations and
-      whose edges represent collusion-free paths between the nodes. Then, while in
-      operation the robot searches for a path connecting its initial to destination
-      configuration.
-
-      \noindent
-      In \cite{briggsWire}, Briggs for modeling a Krichhoff's elastic rod by considering a dual-arm approach to form
-      a closed-loop geometric control
-
-      \noindent
-      In \cite{Quasi-static}, Bretl and McCarthy expanded Briggs' approach by reducing
-      high-dimensional space representation of Krichhoff's elastic rods to $\R^6$ [SOURCE??]
-      Moreover, they showed that the set of equilibrium configurations for an elastic rod
-      is a smooth manifold of finite dimension that can be represented by a single global chart.
-
-      data set available to researchers, effective tools
-      \noindent
-      \textbf{Question 1 - Current Limitations - }
-
-      Current state-of-the-art technologies are difficult to implement and computation-heavy to reconfigure to even deploy an existing mapping for cable handling in the production environment.
-
-      \noindent
-      \textbf{Question 2 - Knowledge Gaps - Empirical and Simulated Data Set}
-
-      \noindent
-      \textbf{Question 3 - Implementation Difficulties}
-
-      Moreover, it is essential to develop easily reconfigurable wire harnessing manufacturing processes and systems. Currently, it involves long computational processes to model and tune or perform transfer learning techniques.
-
-
-      \noindent
-      Despite the lack of long research history in this area, recent development have shown promising results. [cite cable harnessing papers]\\
-
-      Relative developments that makes my proposal ideal next step..\\
-
-      Multiple model based and model-free systems have been develop for robotic are
-      manipulation.
-      Current limitations?
-      How can our contribution advance SOTA? 
-      Assumption is that the research is not done yet! We don’t know the solution and that's okay.
-
-      mention the gap\\
-      how are we training\\
-      Cost functions and rewards\\
-
+      \item Fellowship: I read more papers on deformable object shape and pose estimation, as
+      well as handling and control. Robotics researchers at Google recently published a paper where they introduced DeformableRavens, \cite{seita2020learning}, an open-source simulated benchmark for 1D, 2D and 3D object manipulation. Although Google's publication is both notable and insufficient, it is worth discussing another paper, \cite{hashempour2020data}. The authors present an empirical data set for a dual-arm surgical suturing application using the Da Vinchi robot. I need to read the paper more in the detail, I am interested in their method and approach. I plan on keeping the proposal focused on deformable linear objects (1D) as well as 1) to develop an empirical data-set for shape deformity estimation, 2) to develop an empirical data-set for object state dynamic estimation through \textit{a series of well defined dynamic tests} in dual-arm configuration, 3) to investigate the best methods for learning latent space representation with loss functions that penalize for shape deformity and dynamics estimation errors.
       \item VPQEKF: No update. I haven't done much with Hilti dataset after downloading it.
       \item NBV Grasping Project: No updates.
       \item PyTorch Tutorials: Transfer learning.
