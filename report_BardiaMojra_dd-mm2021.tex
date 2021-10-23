@@ -44,51 +44,40 @@
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item Grant Proposal (Oct 14th): Keep working on this.
-      \item VPQEKF (IROS - Mar. 1st): Work on the paper, focus on this in October.
-      \item NBV-Grasping (IROS - Mar. 1st): Work on tasks assigned by Chris, one day a week. Focus on this from November till March.
+      \item VPQEKF (IROS - Mar. 1st): Work on the paper.
+      \item DLO Manipulation Proposal: Work on a persoal statement.
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-  \item Grant Proposal: Find three scientific questions to be researched. - Done
-  \item Grant Proposal: Finish the first complete draft of the proposal over the weekend.
-  \item Grant Proposal: Next week, start working on the personal statement, use UTA SOP as the initial draft.
   \item PVQEKF:
   \begin{itemize}
       \item Go over code and write matrix equations.
       \item I will go over the paper once every morning and expand sections for 30 minutes to an hour.
       \item Double-check my data prep implementation. Use KITTI Python module.
       \item Test with Hilti dataset.
-      \item Add L2-norm and L2 loss features.
-      \item I need to separate the state observation and control input vectors from the
+      \item Add L2-norm and L2 loss features. -- On-going.
+      \item I need to separate the state observation and control input vectors from the z matrix.
       \item Develop object tracking and robust-to-truncation feature.
       \item Get ROS environment up and running. I need to install Armadillo (C++) with a certain dependency configuration.
   \end{itemize}
-
-  \item Real-time pose estimation demo.
-  \item NBV-Grasping:
-      \begin{itemize}
-      \item Update URDF and Xacro files for UR5e to include a sensor, sensor mount (with offset), and the gripper. -- Next
-      \item Add movement constraints for tables and scenes.
-      \item Write two IK functions for gripper and sensor, one for each. It should plug-in with MoveIt configurator.
-      \item Research and implement point-cloud data to training TensorFlow models.
-      \item Learn and implement GraspIt package.
-      \end{itemize}
 \end{itemize}
 
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Fellowship: I read more papers on deformable object shape and pose estimation, as
-      well as handling and control. Robotics researchers at Google recently published a paper where they introduced DeformableRavens, \cite{seita2020learning}, an open-source simulated benchmark for 1D, 2D and 3D object manipulation. Although Google's publication is both notable and insufficient, it is worth discussing another paper, \cite{hashempour2020data}. The authors present an empirical data set for a dual-arm surgical suturing application using the Da Vinchi robot. I need to read the paper more in the detail, I am interested in their method and approach. I plan on keeping the proposal focused on deformable linear objects (1D) as well as 1) to develop an empirical data-set for shape deformity estimation, 2) to develop an empirical data-set for object state dynamic estimation through \textit{a series of well defined dynamic tests} in dual-arm configuration, 3) to investigate the best methods for learning latent space representation with loss functions that penalize for shape deformity and dynamics estimation errors.
-      \item VPQEKF: No update. I haven't done much with Hilti dataset after downloading it.
+      \item Fellowship: I finished the research proposal with Dr. Gans' help, but
+      I had not thought about the personal statement. I will develop that on the
+      side and share it with you for review. I will also put together a budget
+      for the project. A copy of the final proposal is attached.
+      \item VPQEKF: I am working on the L1 and L2 loss functions. I am debugging it
+      at the moment. Moreover, I went over the paper again, added more
+      material and fixed some issues. I am reading \cite{zinsser2006writing} once
+      again.
       \item NBV Grasping Project: No updates.
       \item PyTorch Tutorials: Transfer learning.
-      \item Pose Estimation: On pause.
-      \item SD Team: No update.
-      \item EE Autonobots: No update.
+      \item Pose Estimation: I will need it for DLO segment localization.
 \end{itemize}
 
 %\newpage
@@ -97,7 +86,7 @@ The following items are listed in the order of priority:
 \begin{itemize}
       \item QEKF: Finish paper.
       \item Active Learning.
-      \item ARIAC: Once I am up to speed, I will do the ARIAC workshops/tutorials and will talk to Jerry about possible contributions.
+      \item UR5e: Do the tutorials.
 \end{itemize}
 
 
