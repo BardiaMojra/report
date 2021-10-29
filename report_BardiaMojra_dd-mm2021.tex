@@ -45,19 +45,26 @@
 \section{Specific Research Goals}
 \begin{itemize}
       \item VPQEKF (IROS - Mar. 1st): Work on the paper.
-      \item DLO Manipulation Proposal: Work on a persoal statement.
+      \item DLO Manipulation Proposal: Work on a personal statement.
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
+  \item Fellowship:
+  \begin{itemize}
+      \item Develop a well-written personal statement. --- On-going.
+      \item Seek other graduate fellowship opportunities. --- On-going.
+      \item Develop multiple versions of research and personal statements for
+      submission to different opportunities.
+  \end{itemize}
   \item PVQEKF:
   \begin{itemize}
-      \item Go over code and write matrix equations.
-      \item I will go over the paper once every morning and expand sections for 30 minutes to an hour.
+      \item Go over code and write matrix equations. --- On-going
+      \item Write daily. --- On-going.
       \item Double-check my data prep implementation. Use KITTI Python module.
       \item Test with Hilti dataset.
-      \item Add L2-norm and L2 loss features. -- On-going.
-      \item I need to separate the state observation and control input vectors from the z matrix.
+      \item Add L2-norm and L2 loss features. --- Done.
+      \item I need to separate the state observation and control input vectors from the z matrix. --- Task under review.
       \item Develop object tracking and robust-to-truncation feature.
       \item Get ROS environment up and running. I need to install Armadillo (C++) with a certain dependency configuration.
   \end{itemize}
@@ -67,15 +74,32 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Fellowship: I finished the research proposal with Dr. Gans' help, but
-      I had not thought about the personal statement. I will develop that on the
-      side and share it with you for review. I will also put together a budget
-      for the project. A copy of the final proposal is attached.
-      \item VPQEKF: I am working on the L1 and L2 loss functions. I am debugging it
-      at the moment. Moreover, I went over the paper again, added more
-      material and fixed some issues. I am reading \cite{zinsser2006writing} once
-      again.
-      \item NBV Grasping Project: No updates.
+      \item Fellowship:  Per Dr. Gans' recommendation, we should target \cite{AM_Opt}. It is a
+      broad call for proposals by NSF, without a deadline, which may signify its necessity. Next, NDSEG \cite{NDSEG27}
+      seems to be right fit for our proposal. After that, NASA's Robonaut program \cite{Robonaut95:online} seem to benefit
+      greatly from the outcome of our proposal.
+
+      I have been going over my personal statement almost everyday now and
+      each day I add a few lines. The following is the latest iteration of the introduction
+      paragraph. I was five years old when I was introduced to electronics.
+      I watched in fascination as my father examined and repaired my brother's
+      remote-control car. That experience triggered me, I became curious how electronics
+      work and decided to become an electrical engineer.
+      At eight, I used available
+      parts around the house to wire up a tent I made in my bedroom with lights, a fan
+      and switches. In junior high, I kept to myself, perhaps because I
+      stutter, so I decided to join an after-school robotics program. With help from my
+      teacher, I built my first autonomous robot at thirteen. It was an analog firefighter
+      robot with a differential drive system and a running water pump. One wheel turned at all times
+      and the other was controlled by an IR sensor installed in front of the robot. The
+      robot would turn until it faced fire, which dissipates some of its energy by
+      emitting electromagnetic signals in the infra-red band, causing the other
+      wheel to start to turn and the robot would
+      move toward the fire.
+      \item VPQEKF: I finished integrating L1 and L2 norm loss functions. Moreover, I
+      have been writing up the equations corresponding to QEKF implementation
+      for debugging purposes. The latest version is available on Overleaf.
+      \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: I will need it for DLO segment localization.
 \end{itemize}
