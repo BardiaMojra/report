@@ -99,9 +99,26 @@ The following items are listed in the order of priority:
       \item VPQEKF: I finished integrating L1 and L2 norm loss functions. Moreover, I
       have been writing up the equations corresponding to QEKF implementation
       for debugging purposes. The latest version is available on Overleaf.
+
+
+
+
+      This is very interesting and useful. Usually, such details are dismissed because of the locality of linearization but differentiation and linearization may not directly apply to non-euclidean spaces. The authors in this paper introduce a linear model for estimating orientation parameter (quaternion) distribution in their true space (SO(3) with Quat representation), resulting in more accurate pose estimations.
+      http://www.roboticsproceedings.org/rss13/p16.pdf
+
+      I think this paper is pure genius. Instead of linearizing their estimation model, they used a particle filter to learn and estimate Bigham distributions for both translations and orientations (with dual quaternion representation - I'm still learning that part), hence estimating the pose for rigid body motion in  SE(3) (I expected something like SO(6)) with better performance.
+      https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9125962
+
+
+      and here is dual-quaternion representation.
+
+Remember, Quaternion was invented by Hamilton to represent rotations in a computationally efficient manner. To do that, quaternions use i, j, and k unit vectors as unit scalars which allows for using higher multiples to keep coefficients numerically simpler while maintaining numerical accuracy (this is huge deal if you're used to solving dynamics equations by hand, even with a calculator 🙂 sigfigs, error propagation and more.. - you generally want to avoid decimals). The fourth term, w, is added as a scalar constraint to keep the quaternion magnitude at 1, while preserving the ratio of i, j, k coefficients hence preserving the rotation and discarding the arbitrary magnitude/
+
+
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: I will need it for DLO segment localization.
+
 \end{itemize}
 
 %\newpage
