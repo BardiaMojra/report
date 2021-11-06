@@ -57,14 +57,14 @@
       \item Develop multiple versions of research and personal statements for
       submission to different opportunities.
   \end{itemize}
+  \item ICRA 2022 Paper Review: On-going.
   \item PVQEKF:
   \begin{itemize}
-      \item Go over code and write matrix equations. --- On-going
+      \item Go over code and write matrix equations. --- Done.
       \item Write daily. --- On-going.
       \item Double-check my data prep implementation. Use KITTI Python module.
       \item Test with Hilti dataset.
-      \item Add L2-norm and L2 loss features. --- Done.
-      \item I need to separate the state observation and control input vectors from the z matrix. --- Task under review.
+      \item I need to separate the state observation and control input vectors from the z matrix. --- Done.
       \item Develop object tracking and robust-to-truncation feature.
       \item Get ROS environment up and running. I need to install Armadillo (C++) with a certain dependency configuration.
   \end{itemize}
@@ -74,46 +74,26 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Fellowship:  Per Dr. Gans' recommendation, we should target \cite{AM_Opt}. It is a
-      broad call for proposals by NSF, without a deadline, which may signify its necessity. Next, NDSEG \cite{NDSEG27}
-      seems to be right fit for our proposal. After that, NASA's Robonaut program \cite{Robonaut95:online} seem to benefit
-      greatly from the outcome of our proposal.
+      \item Fellowship: I worked on my personal statement on two occasions. I will
+      write an outline for the DLO manipulation project and break it down into smaller
+      projects.
+      \item VPQEKF: I discovered a new bug in the algorithm where it used ground truth
+      rotation instead of the previous state's posterior belief. It seems to work fine now, there are L1 and L2 errors ranging from single digit to six digit values.
 
-      I have been going over my personal statement almost everyday now and
-      each day I add a few lines. The following is the latest iteration of the introduction
-      paragraph. I was five years old when I was introduced to electronics.
-      I watched in fascination as my father examined and repaired my brother's
-      remote-control car. That experience triggered me, I became curious how electronics
-      work and decided to become an electrical engineer.
-      At eight, I used available
-      parts around the house to wire up a tent I made in my bedroom with lights, a fan
-      and switches. In junior high, I kept to myself, perhaps because I
-      stutter, so I decided to join an after-school robotics program. With help from my
-      teacher, I built my first autonomous robot at thirteen. It was an analog firefighter
-      robot with a differential drive system and a running water pump. One wheel turned at all times
-      and the other was controlled by an IR sensor installed in front of the robot. The
-      robot would turn until it faced fire, which dissipates some of its energy by
-      emitting electromagnetic signals in the infra-red band, causing the other
-      wheel to start to turn and the robot would
-      move toward the fire.
-      \item VPQEKF: I finished integrating L1 and L2 norm loss functions. Moreover, I
-      have been writing up the equations corresponding to QEKF implementation
-      for debugging purposes. The latest version is available on Overleaf.
-
-
-
-
-      This is very interesting and useful. Usually, such details are dismissed because of the locality of linearization but differentiation and linearization may not directly apply to non-euclidean spaces. The authors in this paper introduce a linear model for estimating orientation parameter (quaternion) distribution in their true space (SO(3) with Quat representation), resulting in more accurate pose estimations.
-      http://www.roboticsproceedings.org/rss13/p16.pdf
-
-      I think this paper is pure genius. Instead of linearizing their estimation model, they used a particle filter to learn and estimate Bigham distributions for both translations and orientations (with dual quaternion representation - I'm still learning that part), hence estimating the pose for rigid body motion in  SE(3) (I expected something like SO(6)) with better performance.
-      https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9125962
-
-
-      and here is dual-quaternion representation.
-
-Remember, Quaternion was invented by Hamilton to represent rotations in a computationally efficient manner. To do that, quaternions use i, j, and k unit vectors as unit scalars which allows for using higher multiples to keep coefficients numerically simpler while maintaining numerical accuracy (this is huge deal if you're used to solving dynamics equations by hand, even with a calculator 🙂 sigfigs, error propagation and more.. - you generally want to avoid decimals). The fourth term, w, is added as a scalar constraint to keep the quaternion magnitude at 1, while preserving the ratio of i, j, k coefficients hence preserving the rotation and discarding the arbitrary magnitude/
-
+      \item ICRA 2022 - Pose Estimation with Double Quaternion Particle Filter:
+      I have read through half of the paper and I am enjoying it very much. I
+      familiarized myself with dual quaternion representation and I find it preferable
+      over normal quaternion representation. Normal quaternion representation uses
+      \textit{unit lines} or \textit{unit vectors} \textbf{i}, \textbf{j},
+      \textbf{k} to represent a point (when \(w=0\)) or rotation vector (when \(||q||=1\)).
+      Simply put, Clifford extended Hamilton's quaternion to dual quaternion by using
+      a second quaternion to represented \textbf{ \(\Delta i\)},
+      \textbf{\(\Delta j\)}, \textbf{\(\Delta k\)} with \(w=0\). Furthermore, this
+      SO(6) representation is reduced SE(3) by defining \(\epsilon^2 = 0\) and using
+      the Euler's screw axis. Dual quaternion simplifies pose and motion
+      computation since it enables concatenation of translation and rotation
+      matrices for batch computation while
+      maintataining high numerical accuracy.
 
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
