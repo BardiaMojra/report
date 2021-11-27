@@ -50,7 +50,7 @@
 
 \section{To Do}
 \begin{itemize}
-  \item Fellowship - DLO: No update.
+  \item Fellowship - DLO:
   \begin{itemize}
       \item Unity dataset
       \item Real dataset
@@ -59,14 +59,18 @@
       \item Develop multiple versions of research and personal statements for
       submission to different opportunities.
   \end{itemize}
-  \item PVQEKF:
+  \item PVQEKF (Paper deadline March 1st.):
   \begin{itemize}
-      \item Read over Quest and Vest. --- Done.
-      \item Write daily. --- On-going.
-      \item Kitti tutorial. --- On-going.
-      \item Kitti and Hilti dataset: low priority, use as control.
-      \item Develop object tracking and robust-to-truncation feature.
-      \item Get ROS environment up and running. I need to install Armadillo (C++) with a certain dependency configuration.
+      \item Setup ROS environment -- (1) -- due 12/7
+      \item Restore github access
+      \item Replace EKF with QEKF -- (2) -- due 12/7
+      \item Feature point extraction:
+      \item Depth to scale
+      \item BigC (where we solve Q+V together) --> regarding depth scale issue
+      \item Quat: switching problem is fixed
+      \item 35 solutions (start here)
+      \item Noise issue: noise cannot be modelled
+      \item Chaining step: when feature points come in and out of the frame dependency configuration.
   \end{itemize}
 \end{itemize}
 
@@ -75,29 +79,33 @@
 The following items are listed in the order of priority:
 \begin{itemize}
       \item Fellowship: No update.
-      \item VPQEKF: Reza, Asif, and I went over the new QEKF results. Today, we met
-      again and reviewed the code with Dr. Gans. Next, I will work on setting
-      up ROS environment
-      for the QuEst+VEst \cite{QuEst} part of the project but I am not sure why we need to
-      use ROS as it runs offline. I also initiate a push for adopting Docker
-      across the board. Dr.
-      Gans seemed very open-minded and we held an open discussion this morning,
-      that is the reason I was late to our meeting today. Cody was not there so
-      we will continue the discussion later. Moving forward, I will use docker
-      for any ROS-related project. I will work on solution selection for QuEst+VEst,
-      feature extraction, and the chaining step.
-      \item DLO: Upon further reading, I realized that it was never my intention
-      to fully simulate DLO's rather estimate their state dynamics and shape deformity efficiently and accurately. Currently, I am deriving state dynamics for an
-      inverted pendulum with two degrees of freedom. My idea is to expand this
-      notion to a \emph{unit segment} with 2 rotational degrees of freedom. Elastic
-      rods could be considered a chain of \emph{unit segments} with identical
-      properities representing an isomorphic elastic rod. Data-driven learning
-      models can make clever use of physics-based simulation and constraint-satisfaction
-      optimization. For example, a model could be trained on predicting largest
-      unit segment while maintaining highest accuracy possible. This should result
-      in increased computational efficiency as redundant segments are replaced with
-      a single larger unit segment. Therefore, after the finals I will work on
-      Unity tutorials and empirical dataset.
+      \item VPQEKF: Dr. Gans, Cody, and I met and discussed QuEst+Vest
+      side of the paper and went over the code. In the next two weeks and perhaps
+      after finals, I will 1, resolve the pending issue with environment setup,
+      and 2, replace the EKF implementation with my latest QEKF module.
+      There is currently an issue with my setup or it could be due to a lack of
+      proper installation documentation where I can not build the ROS package.
+      This is the same
+      issue where I got stuck and had to move on in the
+      summer. I asked Jerry for help and he kindly tried with no success. During
+      the meeting on Tuesday, I brought up the idea of rewriting the code and
+      Dockerizing the ROS environment. We are considering omitting
+      the ROS portion of the code in order to make the IROS deadline and
+      to use timestamps instead.
+      Cody and Dr. Gans
+      seemed open-minded and somewhat intrigued with the idea of \emph{containers}
+       as a technology.
+      We discussed using Unity for deep learning data acquisition tasks \cite{quest}.
+
+
+      \item DLO: I have been reading papers with derivation, simulation, and code
+      on controlling double inverted pendulum. There are two main approaches
+      to this problem, \emph{the LaGrange-Euler formulation} and \emph{Robust
+      Lyapunov Control Function}. I successfully derived, simulated,
+      and controlled a single inverted pendulum in simulation by deploying the
+      \emph{LaGrange-Euler} approach. For the double inverted pendulum, I plan
+      on using \emph{Robust Lyapunov Control Function}.
+
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: I will need it for DLO segment localization.
