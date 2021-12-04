@@ -79,32 +79,26 @@
 The following items are listed in the order of priority:
 \begin{itemize}
       \item Fellowship: No update.
-      \item VPQEKF: Dr. Gans, Cody, and I met and discussed QuEst+Vest
-      side of the paper and went over the code. In the next two weeks and perhaps
-      after finals, I will 1, resolve the pending issue with environment setup,
-      and 2, replace the EKF implementation with my latest QEKF module.
-      There is currently an issue with my setup or it could be due to a lack of
-      proper installation documentation where I can not build the ROS package.
-      This is the same
-      issue where I got stuck and had to move on in the
-      summer. I asked Jerry for help and he kindly tried with no success. During
-      the meeting on Tuesday, I brought up the idea of rewriting the code and
-      Dockerizing the ROS environment. We are considering omitting
-      the ROS portion of the code in order to make the IROS deadline and
-      to use timestamps instead.
-      Cody and Dr. Gans
-      seemed open-minded and somewhat intrigued with the idea of \emph{containers}
-       as a technology.
-      We discussed using Unity for deep learning data acquisition tasks \cite{quest}.
+      \item VPQEKF: I received a new dataset from Asif with acceleration features.
+      I will have to write new data handler, update the dynamic model and QEKF
+      materices. I will most likely have it done by next Thursday. Regarding
+      implementation of QuEst and Vest \cite{quest}, it would be more convenient
+      and faster if I rewrite the original Matlab implementation in Python. The
+      current QEKF implementation is in Python as well.
 
-
-      \item DLO: I have been reading papers with derivation, simulation, and code
-      on controlling double inverted pendulum. There are two main approaches
-      to this problem, \emph{the LaGrange-Euler formulation} and \emph{Robust
-      Lyapunov Control Function}. I successfully derived, simulated,
-      and controlled a single inverted pendulum in simulation by deploying the
-      \emph{LaGrange-Euler} approach. For the double inverted pendulum, I plan
-      on using \emph{Robust Lyapunov Control Function}.
+      \item DLO: I wrote the initial draft for \emph{Stable Control of Double
+      Inverted Pendulum via Feedback Linearization} paper. I derived the
+      \emph{Equations of Motion} for the mentioned system and simulated it
+      in Python. In order to prove the controller is \emph{Optimal}, I will have
+      to derive the \emph{Lyapunov Control Function}, use \emph{Robust Control}
+      formulation, and show it is \emph{stable in finite time}. I will probably
+      not have the time to derive the \emph{Optimal Solution Proof} in full by
+      end of the semester. Dr. Gans and I discussed the possibility of extending
+      this work with addition of novel contributions and publishing it in a
+      control systems conference. To finish the assignment, I will develop
+      multiple test scenarios, run the experiment and discuss the results.
+      Moreover, there will be a section dedicated to studying the \emph{Chaos
+      Within} and show how quickly it appears in experiments.
 
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
