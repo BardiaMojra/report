@@ -12,11 +12,82 @@
 % {\includegraphics{university.jpg}}
 }
 \author{Bardia Mojra}
-\date{Day Month Year}
+\date{\today}
 \maketitle
 
 \begin{document}
 % \newpage
+% \chapter{System Architecture}
+% \input{chapters/ch04_sys_arch.tex}
+
+\chapter*{Notes and Task List}
+Notes: I need to create a more developed Gantt chart,
+routinely brainstorm new ideas, and dedicate time to the progress of the
+project. Below is a brief initial task list:
+\begin{itemize}
+  \item Create Gantt chart
+  \item Write paragraphs on separate ideas and edit later
+      \item Real dataset:
+      \begin{itemize}
+            \item Design, discuss and build a data collection and test rig
+            \item Define DLO classes and specs
+            \item Purchase DLO samples for data collection
+            \item Create data collection pipeline with capture, preprocessing,
+            annotation, and storage modules.
+            \item Develop a series of easy-to-perform standard dynamic tests
+            for system identification of DLO's.
+      \end{itemize}
+      \item Unity dataset:
+      \begin{itemize}
+            \item Recreate virtual duplicates of physical test material
+            \item Model dynamics and deformity
+      \end{itemize}
+      \item Develop "Optimal Real-Time Dynamic Model and Control" theory:
+      \begin{itemize}
+            \item Definition: Define what is to be optimized, over what domain,
+            and with respect to what parameters and constraints. A robust
+            ranking system or method is needed for almost all parameters.
+            \item Define "Unit Segment" for deformable objects: define clearly
+            with literature review.
+            \item Estimated Parameters: estimated parameters of the object of
+            interest which may \textit{slowly} change over time, permanently
+            or temporarily' i.e. DLO stiffness due to repetitive bending or
+            ambient temperature.
+            \item Estimated Features: These are estimated constant features of
+            the objects that do not change over time i.e. estimated length of a
+            relatively short DLO in an environment with stable ambient
+            temperature.
+            \item Fundamental Features: These are the known characteristic
+            parameters of a DLO that in some cases would be given to the system.
+            These fundamental factors will not
+            change over time, i.e. length of the DLO, cross-section thickness,
+            and other known constant physical and dynamic characteristic
+            features. If one fundamental parameter of an object changes (with
+            specifics to be defined), we will treat it as a new object.
+            \item Limiting Factors: These would be imposed or assumed constraints
+            that limit the control state solution space i.e. unstable and
+            impossible configurations, self-occlusion, and controller real-time
+            compute time and real-time performance metric (for real-time and
+            online self-evaluation).
+            \item Other constraints such as external forces, lighting, DLO
+            variations.
+            \item Online Control Performance Self-Evaluation: This is needed for
+            accurate evaluation and optimization of control performance in
+            real-time.
+      \end{itemize}
+  \item Problem setup and reformulation: closed-loop geometric control
+      system for real-time and stable feedback of the physical system.
+  \item Optimization of dynamic system model for the most accurate
+      real-time state estimation, control, and object manipulation.
+  \item DLO parameter initialization on first sight: The nonlinear
+      nature of DNN's could be exploited to train an adaptive model that
+      predicts object parameters from a single image. Such quick estimation
+      of the system's characteristic parameters (i.e. unknown spring and
+      damping constants) could enable quick and precise control of DLO's.
+      Moreover, these parameters will be tuned online using
+      adaptive learning and control.
+\end{itemize}
+
 \chapter*{Abstract}
 Abstract goes here
 
