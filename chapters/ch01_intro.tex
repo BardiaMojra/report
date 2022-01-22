@@ -1,0 +1,32 @@
+I set up a thesis latex project where I briefly describe the
+      scope of the project. The project can be best described as quasi-static
+      manipulation of elastic rods. There is a subtle difference between elastic
+      rods and deformable linear objects (DLO's). Elastic rods can be described as a
+      subset of DLO's and exhibit deformation and elasticity in fewer degrees of
+      freedom. For my thesis, I will focus on solving elastic rod manipulation
+      as it would be sufficient to resolve many existing bottlenecks in the
+      industry. The thesis will be divided into five major sub-systems where
+      each could be comprised of smaller research projects and papers.
+      The five main systems are perception, tracking, chaos estimator,
+      control and planning, and manipulation.
+      The perception module is responsible for receiving, preprocessing and
+      fusing raw data from RGB and depth sensors to provide rich, concise and
+      persistent features to tracking and chaos estimator modules.
+      The tracking module uses observation metadata such as the pose and velocity
+      of each segment of the elastic rod. Moreover, it deploys a EKF estimator
+      with a known dynamic model to accurately track the object in space. Chaos
+      estimator module acts as a central and responsive node where it selectively
+      picks what observations to tune into which ones to react to. Its output
+      has priority over the control and planning module and it outputs directly
+      to manipulation module.
+      My current research project aims to start with a simple double pendulum simulation in python and gradually extend its degrees of freedom.
+      Moreover, I will spring terms to the dynamic equations to simulate elasticity. I am currently working on a 2D simulation of a double pendulum and
+      I am almost done. I am having trouble saving the animation but I should be able to resolve it very soon. A double pendulum can be extended and held
+      stationary at the other end to form a quasi-static configuration. The more
+      'particles' or 'nodes' that are added to the model the smoother the elasticity
+      of the object becomes. Additionally, to simulate kirchhoff's elastic rod,
+      we need to add a degree of freedom on the roll axes to each edge with its
+      own rotational spring force. In a 3D space and with the elastic rod placed
+      on a planar workbench, we form the \(\mathbb{R}^6\) configuration space
+      mentioned in Dr. Bretl's paper that can express quasi-static configurations
+      sufficiently, \cite{Quasi-static}.
