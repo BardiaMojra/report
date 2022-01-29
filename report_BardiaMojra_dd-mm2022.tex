@@ -44,25 +44,43 @@
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item VPQEKF (IROS - Mar. 1st): Work on the paper.
-      \item DLO Manipulation Proposal: Work on a personal statement.
+      \item VPQEKF (April 1st): Work on the paper.
+      \item DLO Manipulation Dataset (September - ICRA)
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-  \item Fellowship: Need finish my personal statement.
+  \item QEKF Paper (April 1st):
   \begin{itemize}
-      \item EERE (DoE-AMO) - 1/25/22
-      \item Maverick Merit - 2/11/22
-      \item TACC - 2/18/22
-      \item Maverick Doctoral Bridge - 4/29/22
+      \item Related work
+      \item Introduction
+      \item QuEst + VEst description
+      \item QEKF description
+      \item Experiments
+      \item Conclusion
+  \end{itemize}
+  \item QEKF/DR Implementation (Feb. 2st):
+  \begin{itemize}
+      \item Finish updating QEKF code
+      \item Add Vicon data as ground truth
+      \item Test on multiple datasets
+  \end{itemize}
+  \item QEKF/QuEst+VEst Implementation (Feb. 11th):
+  \begin{itemize}
+      \item Integrate and confirm update QEKF works
+      \item Address scale factor (depth-scale) issues
+      \item Address "hand off" issue when objects enter or leave field of view
+      \item Real-time streaming images for real-time operation (optional)
+      \item Experiments
+      \item Feature point extraction
+      \item Noise issue: noise cannot be modeled
   \end{itemize}
   \item  DLO Manipulation:
   \begin{itemize}
-      \item Write paragraphs on separate ideas and edit later
-      \item Real dataset
+      \item Related work literature review
+      \item Real dataset + paper (September 2022 - ICRA):
       \begin{itemize}
-            \item Design, discuss and build a data collection and test rig
+            \item Design, discuss and build a data collection and test rig (on-going)
             \item Define DLO classes and specs
             \item Purchase DLO samples for data collection
       \end{itemize}
@@ -70,20 +88,7 @@
       \begin{itemize}
             \item Recreate virtual duplicates of physical test material
             \item Model dynamics and deformity
-  \end{itemize}
-  \item PVQEKF (Paper deadline March 1st.):
-  \begin{itemize}
-      \item Finish Dead Reckoning code -- ASAP
-      \item DON'T DO PVQEKF WITH ROS, SKIP FOR NOW, USE PYTHON
-      \item Setup ROS environment -- (1) --
-      \item Replace EKF with QEKF -- (2) --
-      \item Feature point extraction:
-      \item Depth to scale
-      \item BigC (where we solve Q+V together) --> regarding depth scale issue
-      \item Quat: switching problem is fixed
-      \item 35 solutions (start here)
-      \item Noise issue: noise cannot be modelled
-      \item Chaining step: when feature points come in and out of the frame dependency configuration.
+      \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -91,92 +96,18 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Fellowship: I updated my resume this week and familiarized myself
-      with EERE application process. Other opportunities, i.e. summer internships
-      and departmental fellowships are under consideration. They are EERE summer
-      internship (DoE-AMO-1/25/22), Maverick Merit fellowship (2/11/22), TACC
-      fellowship (2/18/22), and Maverick Doctoral Bridge fellowship (4/29/22),
-      with deadlines stated in parenthesis. EERE is initiated and managed by
-      Automation Management Office (AMO), as a part Department of Energy (DoE).
-      This opportunity seems most in line with my research and I will focus on
-      applying this weekend. For the Maverick Merit fellowship; essentially,
-      I need to convince the department to nominate me because my 'academic
-      preparation and accomplishments exceed attainments of students who the
-      program typically admits unconditionally by a significant margin." I
-      believe I might have a chance but I don't have any publications yet. What
-      do you think?
-      \item Dead Reckoning (March 1st, 2022): I worked on preprocessing raw
-      sensor data collected from an android device. I learned about Unix epoch
-      format and used Matlab to resample interpolated measurements to create a
-      unified-time dataset. Currently, I am working on state estimation (QEKF)
-      part of the project by trying to integrate acceleration and gyro data.
-      \item VPQEKF (March 1st, 2022): I need to start working on feature points
+      \item Dead Reckoning (Feb. 2nd, 2022): I am almost done updating the QEKF
+      module. After this, I will update QuEst+VEst implementation.
+      \item VPQEKF (April 1st, 2022): I need to start working on feature points
       extraction done by Quest+Vest code \cite{quest}.
-      \item DLO Manipulation: I need to create a more developed Gantt chart,
-      routinely brainstorm new ideas, and dedicate time to the progress of the
-      project. Below is a brief initial task list:
-      \begin{itemize}
-            \item Write paragraphs on separate ideas and edit later
-            \item Real dataset:
-            \begin{itemize}
-                  \item Design, discuss and build a data collection and test rig
-                  \item Define DLO classes and specs
-                  \item Purchase DLO samples for data collection
-                  \item Create data collection pipeline with capture, preprocessing,
-                  annotation, and storage modules.
-                  \item Develop a series of easy-to-perform standard dynamic tests
-                  for system identification of DLO's.
-            \end{itemize}
-            \item Unity dataset
-            \begin{itemize}
-                  \item Recreate virtual duplicates of physical test material
-                  \item Model dynamics and deformity
-            \end{itemize}
-            \item Develop "Optimal Real-Time Dynamic Model and Control" theory:
-            \begin{itemize}
-                  \item Definition: Define what is to be optimized, over what domain,
-                  and with respect to what parameters and constraints. A robust
-                  ranking system or method is needed for almost all parameters.
-                  \item Define "Unit Segment" for deformable objects: define clearly
-                  with literature review.
-                  \item Estimated Parameters: estimated parameters of the object of
-                  interest which may \textit{slowly} change over time, permanently
-                  or temporarily' i.e. DLO stiffness due to repetitive bending or
-                  ambient temperature.
-                  \item Estimated Features: These are estimated constant features of
-                  the objects that do not change over time i.e. estimated length of a
-                  relatively short DLO in an environment with stable ambient
-                  temperature.
-                  \item Fundamental Features: These are the known characteristic
-                  parameters of a DLO that in some cases would be given to the system.
-                  These fundamental factors will not
-                  change over time, i.e. length of the DLO, cross-section thickness,
-                  and other known constant physical and dynamic characteristic
-                  features. If one fundamental parameter of an object changes (with
-                  specifics to be defined), we will treat it as a new object.
-                  \item Limiting Factors: These would be imposed or assumed constraints
-                  that limit the control state solution space i.e. unstable and
-                  impossible configurations, self-occlusion, and controller real-time
-                  compute time and real-time performance metric (for real-time and
-                  online self-evaluation).
-                  \item Other constraints such as external forces, lighting, DLO
-                  variations.
-                  \item Online Control Performance Self-Evaluation: This is needed for
-                  accurate evaluation and optimization of control performance in
-                  real-time.
-            \end{itemize}
-      \end{itemize}
-      \item Problem setup and reformulation: closed-loop geometric control
-            system for real-time and stable feedback of the physical system.
-      \item Optimization of dynamic system model for the most accurate
-            real-time state estimation, control, and object manipulation.
-      \item DLO parameter initialization on first sight: The nonlinear
-            nature of DNN's could be exploited to train an adaptive model that
-            predicts object parameters from a single image. Such quick estimation
-            of the system's characteristic parameters (i.e. unknown spring and
-            damping constants) could enable quick and precise control of DLO's.
-            Moreover, these parameters will be tuned online using
-            adaptive learning and control.
+      \item DLO Manipulation: I designed a test fixture for the DLO data
+      collection paper and submitted the BOM for purchase. Moreover, I purchased
+      several wires from Home Depot; they are 3' long and in 4 types. All the
+      wires are for contruction applications and that is all they had. It might
+      be best if we keep the test objects easily available and selected the
+      objects from Home Depot and specific to car manufacturers. Nonetheless,
+      I will pursue solutions to the general handling, routing, and insertion
+      problems regarding DLO manipulation.
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: I will need it for DLO segment localization.
@@ -187,7 +118,6 @@ The following items are listed in the order of priority:
 \section{Intermediate Goals - Fall 2021:}
 \begin{itemize}
       \item QEKF: Finish paper.
-      \item Active Learning.
       \item UR5e: Do the tutorials.
 \end{itemize}
 

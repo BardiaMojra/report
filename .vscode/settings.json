@@ -44,7 +44,7 @@
   ],
   "cSpell.allowCompoundWords": true,
   "cSpell.diagnosticLevel": "Warning",
-  "cSpell.enableFiletypes": ["json", "tex", "c", "py", "bib"],
+  "cSpell.enableFiletypes": ["bib", "bibtex", "c", "json", "py", "tex"],
   "cSpell.words": ["convolutional", "VPQEKF"],
   "grammarly.overrides": [
     {
