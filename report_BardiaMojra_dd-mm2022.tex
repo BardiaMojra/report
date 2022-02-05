@@ -17,7 +17,7 @@
 \usepackage{wrapfig}
 \usepackage{url}
 \usepackage[table]{xcolor}
-%
+\graphicspath{{images/}}
 \setlength{\parindent}{0.25in}
 \setlength{\parskip}{.05in}
 \pagestyle{plain}
@@ -61,8 +61,8 @@
   \end{itemize}
   \item QEKF/DR Implementation (Feb. 2st):
   \begin{itemize}
-      \item Finish updating QEKF code
-      \item Add Vicon data as ground truth
+      \item Finish updating QEKF code - done
+      \item Add Vicon data as ground truth - overdue
       \item Test on multiple datasets
   \end{itemize}
   \item QEKF/QuEst+VEst Implementation (Feb. 11th):
@@ -96,24 +96,32 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Dead Reckoning (Feb. 2nd, 2022): I am almost done updating the QEKF
-      module. After this, I will update QuEst+VEst implementation.
+      \item Dead Reckoning (Feb. 2nd, 2022): I debugged the DR code and was able
+      to get some initial results. State estimate which is orientation in
+      Quaternion seems to be noisy and highly inaccurate, see figure 1.
+      With a closer examination, we suspect low observation noise on angular
+      velocity might be a cause, see figure [2]. Angular velocity is measured but
+      in EKF formulation, it is considered input and is a part vector \(u\).
+      Dr. Gans and I suspect input signal noise \(u_Wrpy\)
+      and computational errors may be
+      the root causes for these issues. Thus, I am working on importing Vicon
+      data to be used as ground truth. Moreover, I will try to apply a smoothing
+      function
+      or a moving-average filter to angular velocity signal \(u_Wrpy\) since it is
+      considered input and is not expected to have noise.
       \item VPQEKF (April 1st, 2022): I need to start working on feature points
       extraction done by Quest+Vest code \cite{quest}.
-      \item DLO Manipulation: I designed a test fixture for the DLO data
-      collection paper and submitted the BOM for purchase. Moreover, I purchased
-      several wires from Home Depot; they are 3' long and in 4 types. All the
-      wires are for contruction applications and that is all they had. It might
-      be best if we keep the test objects easily available and selected the
-      objects from Home Depot and specific to car manufacturers. Nonetheless,
-      I will pursue solutions to the general handling, routing, and insertion
-      problems regarding DLO manipulation.
+      \item DLO Manipulation: I looked into getting a wiring harness assembly
+      'formboard', figures 3 and 4.
+      The boards are custom and are made-to-order, so we either
+      have to get an old one or build one ourselves. I explained the situation
+      to Dr. Gans and he said he know some senior people at GM and he is gonna
+      talk to them. Additionally, I looked into a formboard stand and it costs
+      about \$2,500, I will look for cheaper alternatives.
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: I will need it for DLO segment localization.
 \end{itemize}
-
-%\newpage
 
 \section{Intermediate Goals - Fall 2021:}
 \begin{itemize}
@@ -121,6 +129,33 @@ The following items are listed in the order of priority:
       \item UR5e: Do the tutorials.
 \end{itemize}
 
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{/fig01.png}
+      \caption{Measured and state estimate of orientation in Quaternion.}
+\end{figure}
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{/fig02.png}
+      \caption{Input angular velocity signal and orientation state estimate in
+      Quaternion.}
+\end{figure}
+\newpage
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{/fig03.jpg}
+      \caption{Wiring harness assembly on a designated formboard.}
+\end{figure}
+
+\begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{/fig04.jpg}
+      \caption{A formboard close up.}
+\end{figure}
+\newpage
 
 %Sets the bibliography style to UNSRT and import the
 \newpage
