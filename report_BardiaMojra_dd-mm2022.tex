@@ -52,18 +52,16 @@
 \begin{itemize}
   \item QEKF Paper - 30\% extension (April 1st):
   \begin{itemize}
-      \item Read QuEst and VEst again.
       \item Edit VEst section and add updates.
   \end{itemize}
   \item QEKF Implementation (Feb. 15th):
   \begin{itemize}
-      \item Add Vicon data as ground truth - done
-      \item Collect Vicon data (Feb. 15th)
+      \item Collect Vicon data (Feb. 15th) - Done
       \item Test on multiple datasets
   \end{itemize}
   \item QEKF/QuEst+VEst Implementation (Feb. 28th):
   \begin{itemize}
-      \item Implement QuEst 5-point (Feb. 15th)
+      \item Implement QuEst 5-point (Feb. 15th) - On-going
       \item Implement VEst (Feb. 15th)
       \item Address scale factor (depth-scale) issues
       \item Address "hand off" issue when objects enter or leave field of view
@@ -79,7 +77,6 @@
       \begin{itemize}
             \item Watch IROS manipulation workshop videos.
             \item Design, discuss and build a data collection and test rig (on-going)
-            \item Define DLO classes and specs
             \item Purchase DLO samples for data collection
       \end{itemize}
       \item Unity dataset
@@ -94,19 +91,12 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item Dead Reckoning (Feb. 2nd, 2022): Dr. Gans, Asif, Reza, and I met and
-      went over the data, and concluded the IMU data is questionable and we
-      should move on from Dead Reckoning project for now.
-      \item VPQEKF (April 1st, 2022): I talked to Dr. Gans about starting on the
-      paper and me said the is no need. He will send me the tex files and I
-      need to make update to VEst section and add a new section for making
-      \cite{quest} and \cite{vest} work together. Currently, I am reading
-      \cite{quest} and \cite{vest}, and I have received the Matlab
-      implementations from Dr. Gans.
-      \item DLO Manipulation: Dr. Gans forwarded my email to one of his former
-      students and we had a short exchange. He said he will let us know if he
-      hears anything about formboard. I watched IROS conference call for 2021
-      competition and next I will watch the workshop videos on grasping.
+      \item VPQEKF (April 1st, 2022): I finished updating QEKF to use
+      Numpy-Quaternion instead of PyQuaternion.
+      Currently, I am rewriting Quest 5-point algorithm and I should be complete
+      by next weekend. Moreover, Dr. Gans and I went over the algorithm and he
+      helped me understand it.
+      \item DLO Manipulation: No update.
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
       \item Pose Estimation: I will need it for DLO segment localization.
