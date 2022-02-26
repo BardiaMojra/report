@@ -54,15 +54,14 @@
   \begin{itemize}
       \item Edit VEst section and add updates.
   \end{itemize}
-  \item QEKF Implementation (Feb. 15th):
+  \item QEKF Implementation (Feb. 15th): - Done
   \begin{itemize}
-      \item Collect Vicon data (Feb. 15th) - Done
-      \item Test on multiple datasets
+      \item Test on multiple datasets - Done
   \end{itemize}
   \item QEKF/QuEst+VEst Implementation (Feb. 28th):
   \begin{itemize}
-      \item Implement QuEst 5-point (Feb. 15th) - On-going
-      \item Implement VEst (Feb. 15th)
+      \item Implement QuEst 5-point (Feb. 28th) - On-going
+      \item Implement VEst (Feb. 28th)
       \item Address scale factor (depth-scale) issues
       \item Address "hand off" issue when objects enter or leave field of view
       \item Real-time streaming images for real-time operation (optional)
@@ -91,11 +90,20 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF (April 1st, 2022): I finished updating QEKF to use
-      Numpy-Quaternion instead of PyQuaternion.
-      Currently, I am rewriting Quest 5-point algorithm and I should be complete
-      by next weekend. Moreover, Dr. Gans and I went over the algorithm and he
-      helped me understand it.
+      \item VPQEKF (April 1st, 2022): I continued working on rewriting QuEst
+      code. I finished the data handler module for KITTI dataset but have trouble
+      with running the SURF detector routine. I couldn't find a binary version
+      of OpenCV with SURF compiled-in. Next, I will install latest version of
+      OpenCV from source. Apparently, as of September 2020 the patent on SURF
+      has ran out. I have done this previously when I was trying to set the ROS
+      environment that code had created. Moreover, I read on \emph{Radial distortion} and
+      \emph{Tangential distortion} coefficients and how they relate to the
+      \emph{distortion vector}. This is important if you try to convert
+      calibration code and parameters between Matlab and OpenCV based source
+      codes. Additionally, I stumbled upon \cite{bar2000new} which is a feature
+      built into Numpy as a solution to the non-unique Quaternion solution. I
+      discusses this with Dr. Gans and we both thinks it is best if I finish
+      rewriting the code first.
       \item DLO Manipulation: No update.
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
