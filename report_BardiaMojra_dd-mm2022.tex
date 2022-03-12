@@ -85,19 +85,27 @@
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-      \item VPQEKF (April 1st, 2022): This week, I continued working on QuEst
-      rewrite and was able to begin testing the code. It still has many bugs and
-      I am debugging it while stepping through the code and comparing results
-      with Kaveh's Matlab implementation. Per Dr. Gans' instructions, I am
-      omitting RANSAC implementation for now but I have already looked up the
-      RANSAC module by Scipy and it seems straightforward. For the fitting and
-      error routines, he used QuEst and Sampson distance respectively.
-      \item DLO Manipulation: I have an idea for estimation pose and momentum
-      of DLO's that is even simpler than sparse DLO representation. Instead of
-      training a DL model to estimate the \emph{unit segments}, I could simply
-      estimate the pose and momentum of the center of the mass through
-      a voting mechanism. High-performance computing (HPC) should be used to
-      evaluate different alternatives as well, I will expand on this idea later.
+      \item VPQEKF (April 1st, 2022): I am almost done debugging and rewriting
+      the \cite{quest} source code; the issue at this point is the SVD function
+      provided by Scipy as it has a
+      different default configuration than what is implemented in Matlab. I
+      tried a few different options as explained in the documentation but I was
+      not able to resolve the issue. I messaged Dr. Gans tonight, he will
+      probably respond over the weekend. In the meantime, I have debugged the
+      code line by line, except at the very end. I even saved keypoints from Matlab
+      in full precision and loaded them into Python implementation to check and
+      confirm its computational integrity. This is needed since the RANSAC
+      feature selects a different set of keypoints each time and we are solving
+      large high order matrices where a small error could propagate into the
+      computation. Moreover, in my
+      implementation, first I find the most prominent keypoints and select the
+      top 30. I perform the same on the next image frame and then I proceed to
+      match the keypoints and find the top five correspondences with the
+      highest cross-matched scores. Once this paper is submitted, I can quickly
+      write additional papers by deploying different variations of the EKF
+      filter, e.g. Unscented-EKF, Ensemble-EKF. Dr. Gans could provide more
+      expert insight at a later time.
+      \item DLO Manipulation: No update.
       \item Pose Estimation: I will need it for DLO segment localization.
       \item NBV-Grasping Project: No update.
       \item PyTorch Tutorials: Transfer learning.
