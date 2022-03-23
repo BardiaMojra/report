@@ -125,29 +125,12 @@ The following items are listed in the order of priority:
 
     \item DLO Manipulation: I read the paper you assigned to me and thank you
     for doing that. At this point, I have had a similar picture in my mind
-    regarding how the grasping task could be achieved. As described in the
-    paper, the authors first detect the objects and localize them within the
-    image frame. Then, they proceed to estimate the grasping pose for each object.
-    They use a mask to isolate each object and they provide RGB and depth as
-    input for their deep learning model. They trained their model to estimate
-    midpoint, angle, and 'probability of grasping point' which I assume refers
-    to the inferred probability of ideal grasping pose. They follow up with a
-    alignment step that technically should decrease the rate of falling items.
-    It is a clever and simple solution to a relatively complicated problem and
-    it could be useful in real-world situations, e.g. pick and place on a
-    production line. \\
-    But the authors do not provide much on the current literature and related works.
-    Moreover, they do not compare their grasping performance against any other
-    existing methods, nor do they mention whether such methods exist or
-    not. On the merit of the submission, there is no scientific or academic
-    contribution or achievement, nor do the authors make such claims. What is
-    described is an engineered solution to the grasping problem which in all
-    fairness is difficult to implement. This does not amount to a scientific
-    contribution. Moreover, the authors claim their proposed method grasps
-    unknown or never-seen-before objects, and in my opinion, that is stretching it
-    too far; it is referring to cylindrical objects versus cylindrical batteries.
-    In my opinion, that should be considered known objects as to the system they
-    are simply, both cylindrical objects.
+    regarding how the grasping task could be achieved. As described in the paper,
+     the authors first localize cylindrical objects individually within the frame
+      and mask everything else. Then, they proceed to estimate the grasping pose
+       for each object. They use a mask to isolate each object and they provide RGB and depth as input for their deep learning model. They trained their model to estimate midpoint, angle, and 'probability of grasping point' which I assume refers to the inferred probability of ideal grasping pose. They follow up with an alignment step that technically should decrease the rate of falling items but the authors do not provide evidence of its effectiveness. It is a clever and simple solution to a relatively complicated problem and
+    it could be useful in real-world situations, e.g. pick and place on a production line.
+    The authors do not provide much information on current literature and related works. This completely undermines the authors' work as a similar or more advanced method could be already published. How can we identify any contributions without making comparisons to the state of the art? The authors did not compare their grasping performance against any other existing methods, nor do they mention whether such methods exist or not. On the merits of the submission, there is no scientific or academic contribution, nor do the authors make such claims. What is described is an engineered solution to the grasping task which in all fairness is a difficult one to implement. As mentioned by the authors, I think this is a work in progress and at this time and in this form, this work does not amount to a scientific contribution. Moreover, the authors claim their proposed method is capable of grasping unknown or never-seen-before objects. In my opinion, such characterization would be a stretch of imagination and play of words; it is referring to grasping cylindrical objects versus cylindrical batteries. In my opinion, they should be considered known objects as to the system they are simply, both cylindrical objects.
 
     \item Pose Estimation: I will need it for DLO segment localization.
     \item NBV-Grasping Project: I talked to Chris about his grasping project
