@@ -70,7 +70,6 @@ The University of Texas at Arlington
       \item Related work literature review
       \item Real dataset + paper (September 2022 - ICRA):
       \begin{itemize}
-            \item Watch IROS manipulation workshop videos. - Done.
             \item Design, discuss and build a data collection and test rig.
       \end{itemize}
       \item Unity dataset
@@ -85,23 +84,24 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (RAL - April 1st, 2022): I talked to Dr. Gans and he said we
-    are targeting the IEEE Robotics and Automation Letters (RAL) journal for
-    this work. Per his recommendation, I only
-    implemented \(\phi_3\) metric from \cite{huynh2009metrics} as it is the
-    only metric we are interested in. The QuEst algorithm works but it produces
-    inaccurate results by a factor of 100-1000 and it seems as
-    if suboptimal point correspondences were picked for calculating rotation
-    between frames. For this reason, I am now implementing RANSAC similar to
-    Kaveh's original implementation. Next, I will implement \emph{semantic
-    segmentation} for the KITTI dataset and it will be used to extract more
-    consistent point correspondences. It is important to select feature points
-    that are only from stationary objects and background; otherwise, including
-    point correspondences from moving objects will introduce significant errors
-    to pose triangulation.
-    \item NBV-Grasping Project: I am making this a part of the DLO project.
-    \item DLO Manipulation: No update.
-    \item Pose Estimation: I will need it for DLO segment localization.
+    \item VPQEKF (RAL - April 1st, 2022): This week, I worked on implementing
+    a custom RANSAC to obtain a subset of matched feature points that form
+    a consistent linear transformation from one frame to another
+    \cite{shi2013sift}. The implemented RANSAC uses QuEst pose estimation
+    algorithm to find a fit and returns a rotation value in form of a
+    quaternion. The rotation model is then used to compute the Sampson distance
+    for all other points and find inlier and outlier data points. This process
+    repeats up to a predetermined limit and the model with the least error is
+    returned as the estimated true transformation. The corresponding translation
+    vector is computed after finding the most fitting rotation model from the
+    matched feature points pool.
+    \item DLO Manipulation Milestones: pose estimation and tracking,
+    object detection (semantic segmentation), grasping, assembly and
+    disassembly, and DLO manipulation.
+    \item Pose Estimation (DLO-01): On-going under VPQEKF.
+    \item Semantic segmentation (DLO-02): Per my discussion with Dr. Gans, I
+    will explore DL methods for the depth or scale problem.
+    \item Grasping Project (DLO-03): I am making this a part of the DLO project.
     \item PyTorch Tutorials: Transfer learning.
 
   \end{itemize}
