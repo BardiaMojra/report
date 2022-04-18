@@ -84,36 +84,96 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I finished
-    working on the RANSAC QuEst module. Initially, I was following Kaveh's
-    RANSAC implementation and I found that very confusing to follow. I read on
-    RANSAC for a day, it turns out there are many published works available to
-    researchers. For example, in \cite{frahm2006ransac} the authors propose a
-    RANSAC method that works with semi-degenerate data. Data degeneracy in
-    RANSAC is referred to a situation where the given dataset does not contain
-    enough constraints for a unique solution to be obtained via linear models.
-    Quaternions are generally more robust to rounding noise and for now, we
-    assume degeneracy is impossible. But in our implementation, we deal with
-    a similar problem where we have to guess and pick the quaternion solution among
-    all possible solutions and I believe the degeneracy test could help us
-    with that. Moreover, \cite{shi2013sift} introduces a method for SIFT feature
-    point matching with an improved RANSAC algorithm. In their work, they add a
-    feedback loop to the random selection feature to improve the selection
-    process and shorten the overall execution time. Moreover, I ported in
-    SIFT matched features from Matlab to Python and I am in the process of
-    comparing outputs line by line. We often forget that some of the
-    mathematical formulas we use are not exact and are mere approximations.
-    More often than not, where are multiple approximation functions are available
-    for mathematical operation. For example, a matrix left division has multiple
-    Python implementation and only some match the operation native to Matlab.
-    Additionally, I noticed the mean rotation error decreased to half after I
-    ported in SIFT matched feature points from Matlab. This points to SIFT's
-    higher accuracy in either feature extraction, matching, or both.
+    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I
+    investigated discrepancies in QuEst Python implementation. I began with
+    loading extracted and matched SIFT features from the Matlab implementation
+    and comparing all computations line by line. I was able to narrow down
+    the error to Scipy's \emph{singular value decomposition} (SVD) routine.
+    This particular SVD routine offers two LAPACK driver options,
+    \emph{'gesvd'} and \emph{'gesdd'}. The 'gesdd' method is based on
+    divide-and-conquer parallelization and is faster. The 'gesvd' method is the
+    general rectangular approach and is also used by Matlab. I tested both
+    options and got similar results. In both cases, the SVD produced a V matrix
+    with values that matched those produced by Matlab up to 18 significant
+    figures with an exception of its \emph{Null Space}. The null space values
+    matched only up to 1 or 2 significant figures and it alludes to accumulated
+    rounding error and propagated observation noise. Before we discuss available
+    remedies for decomposition null spaces, it is worth diving deep into vector
+    spaces, linear algebra, geometric algebra, and singular value decomposition.
+    But rather than going over the basics, I will highlight how they are connected by
+    definition. In short, a \emph{vector space} is a notation that represents
+    some space on basis of \emph{normal vectors}, e.g. i,j,k vectors in 3D
+    Cartesian coordinate frame. These normal vectors correspond to x, y, and z axes
+    which are orthogonal to each other by definition. These constraints form the
+    \emph{Orthonormal} constraint which is assumed by definition when dealing
+    with linear and geometric algebras unless mentioned otherwise. The
+    orthogonality can be confirmed by carrying out the inner product which
+    returns zero confirming independence among axes. In a non-deterministic sense,
+    it can be viewed as zero correlation among axis, but we will leave discussing the
+    probabilistic side of this regime for another time (look into EKF for a more
+    detailed example of such methods). At last, the SVD is used to decompose an
+    often noisy observation into an optimally similar linear model. It is
+    important to note that the SVD transformation is to the frequency domain,
+    this may not be apparent to untrained eyes. By definition, the SVD is a
+    generalized \emph{Fast Fourier Transform} (FFT) and is widely used in
+    computer vision as a tool for principal component analysis and data compression.
+    To better understand the SVD operation of interest, I plotted its
+    singular values and their cumulative sum as they show matrix rank and the
+    distribution of information in the original matrix. The SVD returns U, S, and V
+    which are the left complex unitary matrix, singular values, and right
+    complex unitary matrix, respectively. U and V are complex skew-symmetric
+    matrices and when multiplied form an orthonormal coordinate frame with
+    singular values representing scaler magnitude for vectors on the corresponding
+    axis.
 
 
-    \item DLO Manipulation Milestones: pose estimation and tracking,
-    object detection (semantic segmentation), grasping, assembly and
-    disassembly, and DLO manipulation.
+    \begin{figure}
+      \includegraphics[width=\linewidth]{quest_svd-A_S_eVals.png}
+      \caption{Singular Values}
+      \label{fig:eVals}
+    \end{figure}
+
+    \begin{figure}
+      \includegraphics[width=\linewidth]{quest_svd-A_S_cumEnergy.png}
+      \caption{Singular Value Cumulative Sum}
+      \label{fig:cumsum}
+    \end{figure}
+
+
+    Back to discussing null space created in a situation where we aim to compute
+    the coordinate transformation between two image frames. Given a set of
+    matched correspondences, we aim to compute the closest linear transform
+    between the two frames. Instead of using RANSAC which is too costly, we can
+    simply compute the nearest orthogonal matrix. We know that the
+    transformation is linear, the solution must be unique, and the axis must be
+    orthogonal. Thus, this becomes an optimization problem where we seek to
+    find the linear transform solution that yields the smallest Euclidean
+    distance as it maps the initial coordinate frame to the latter. The Kabsch
+    algorithm (also known as Wahba's problem) claims to provide an optimal
+    method for computing the nearest orthogonal matrix
+    \cite{kabsch1978discussion}. There is an
+    implementation of this algorithm available in Scipy \cite{scipyspa85:online}.
+
+
+
+    \item DLO Manipulation Milestones: I am hesitant to move forward the DLO
+    project after VPQEKF project for multiple reasons. 1) It is too advanced of
+    a problem and I may not be able to finish it the way I want by the end of my
+    Ph.D. studies, 2) the market oppertunity is little for such technology and
+    at this point it is of extreme strategic importance to me to achieve low cost
+    mass production with priority with items with the largest margin. We can
+    keep working on the proposal but I would not spend my own time and money on
+    it at this point. 3) To achieve DLO manipulation, first I must achieve
+    manipulation of rigid objects first and the best approach for that in my
+    opinion is easily available dataset. I think it is strategically important to
+    streamline the data acquisition and annotation process. So I have shared
+    my ideas about making a 3D object scanner and I have some ideas for
+    generating groundtruth automatically or with minimal input. For known objects,
+    I will define grasping normals and surfaces that can be stored onboard. Thus,
+    the grasping problem will be reduced to pose estimation of known objects.
+
+
+    \item 3D Scanner: It is needed for object manipulation and perception tasks.
     \item Pose Estimation (\textcolor{blue}{DLO-01}): On-going under VPQEKF.
     \item Semantic segmentation (\textcolor{blue}{DLO-02}): Per my discussion with Dr. Gans, I
     will explore DL methods for the depth or scale problem.
