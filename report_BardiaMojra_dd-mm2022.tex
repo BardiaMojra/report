@@ -84,93 +84,32 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I
-    investigated discrepancies in QuEst Python implementation. I began with
-    loading extracted and matched SIFT features from the Matlab implementation
-    and comparing all computations line by line. I was able to narrow down
-    the error to Scipy's \emph{singular value decomposition} (SVD) routine.
-    This particular SVD routine offers two LAPACK driver options,
-    \emph{'gesvd'} and \emph{'gesdd'}. The 'gesdd' method is based on
-    divide-and-conquer parallelization and is faster. The 'gesvd' method is the
-    general rectangular approach and is also used by Matlab. I tested both
-    options and got similar results. In both cases, the SVD produced a V matrix
-    with values that matched those produced by Matlab up to 18 significant
-    figures with an exception of its \emph{Null Space}. The null space values
-    matched only up to 1 or 2 significant figures and it alludes to accumulated
-    rounding error and propagated observation noise. Before we discuss available
-    remedies for decomposition null spaces, it is worth diving deep into vector
-    spaces, linear algebra, geometric algebra, and singular value decomposition.
-    But rather than going over the basics, I will highlight how they are connected by
-    definition. In short, a \emph{vector space} is a notation that represents
-    some space on basis of \emph{normal vectors}, e.g. i,j,k vectors in 3D
-    Cartesian coordinate frame. These normal vectors correspond to x, y, and z axes
-    which are orthogonal to each other by definition. These constraints form the
-    \emph{Orthonormal} constraint which is assumed by definition when dealing
-    with linear and geometric algebras unless mentioned otherwise. The
-    orthogonality can be confirmed by carrying out the inner product which
-    returns zero confirming independence among axes. In a non-deterministic sense,
-    it can be viewed as zero correlation among axis, but we will leave discussing the
-    probabilistic side of this regime for another time (look into EKF for a more
-    detailed example of such methods). At last, the SVD is used to decompose an
-    often noisy observation into an optimally similar linear model. It is
-    important to note that the SVD transformation is to the frequency domain,
-    this may not be apparent to untrained eyes. By definition, the SVD is a
-    generalized \emph{Fast Fourier Transform} (FFT) and is widely used in
-    computer vision as a tool for principal component analysis and data compression.
-    To better understand the SVD operation of interest, I plotted its
-    singular values and their cumulative sum as they show matrix rank and the
-    distribution of information in the original matrix. The SVD returns U, S, and V
-    which are the left complex unitary matrix, singular values, and right
-    complex unitary matrix, respectively. U and V are complex skew-symmetric
-    matrices and when multiplied form an orthonormal coordinate frame with
-    singular values representing scaler magnitude for vectors on the corresponding
-    axis.
+    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, Cody and
+    I went over the C++ implementation by Kaveh. Based on my observations, I
+    believe he faced similar issues because there are flags to switch between
+    different algebraic decomposition libraries. Dr. Gans and I decided to pivot
+    from the Python implementation as it is taking too long to figure out and
+    we can not guarantee it will have matching accuracy. I started working on
+    the Matlab code this weekend and I am halfway done. I implemented Python
+    QEKF is in complete compliance with object-oriented programming (OOP) best
+    practices
+    which allows for easy and fast source code transfer. In line with that, I
+    figured out, implemented, and tested its OOP syntax. The data management
+    module is implemented and tested. The QEKF module is implemented but not
+    tested and data logging and visualization modules are to be implemented and
+    tested in the next few days. I do get distracted, there is no denying that
+    and I have always appreciated your guidance. Paying attention to things such
+    as OOP is not a distraction rather it is what helps me achieve
+    exponential growth in my productivity while maintaining source code
+    agility and reliability. This is my understanding, I could be wrong.
 
-
-    \begin{figure}
-      \includegraphics[width=\linewidth]{quest_svd-A_S_eVals.png}
-      \caption{Singular Values}
-      \label{fig:eVals}
-    \end{figure}
-
-    \begin{figure}
-      \includegraphics[width=\linewidth]{quest_svd-A_S_cumEnergy.png}
-      \caption{Singular Value Cumulative Sum}
-      \label{fig:cumsum}
-    \end{figure}
-
-
-    Back to discussing null space created in a situation where we aim to compute
-    the coordinate transformation between two image frames. Given a set of
-    matched correspondences, we aim to compute the closest linear transform
-    between the two frames. Instead of using RANSAC which is too costly, we can
-    simply compute the nearest orthogonal matrix. We know that the
-    transformation is linear, the solution must be unique, and the axis must be
-    orthogonal. Thus, this becomes an optimization problem where we seek to
-    find the linear transform solution that yields the smallest Euclidean
-    distance as it maps the initial coordinate frame to the latter. The Kabsch
-    algorithm (also known as Wahba's problem) claims to provide an optimal
-    method for computing the nearest orthogonal matrix
-    \cite{kabsch1978discussion}. There is an
-    implementation of this algorithm available in Scipy \cite{scipyspa85:online}.
-
-
-
-    \item DLO Manipulation Milestones: I am hesitant to move forward the DLO
-    project after VPQEKF project for multiple reasons. 1) It is too advanced of
-    a problem and I may not be able to finish it the way I want by the end of my
-    Ph.D. studies, 2) the market oppertunity is little for such technology and
-    at this point it is of extreme strategic importance to me to achieve low cost
-    mass production with priority with items with the largest margin. We can
-    keep working on the proposal but I would not spend my own time and money on
-    it at this point. 3) To achieve DLO manipulation, first I must achieve
-    manipulation of rigid objects first and the best approach for that in my
-    opinion is easily available dataset. I think it is strategically important to
-    streamline the data acquisition and annotation process. So I have shared
-    my ideas about making a 3D object scanner and I have some ideas for
-    generating groundtruth automatically or with minimal input. For known objects,
-    I will define grasping normals and surfaces that can be stored onboard. Thus,
-    the grasping problem will be reduced to pose estimation of known objects.
+    \item DLO Manipulation Milestones: No update other than that Cody asked me
+    if I am open to mentoring the EE robotics team this year and helping him with it.
+    He suggested the National Robotics Challenge (NRC) but it is not meant for
+    Ph.D. students. I will bring up NIST and will ask if they want to help me
+    with my next paper/project and in return, I will teach and explain everything
+    with will give them credit on the final paper(s). It is important to me to
+    build a solid team as well as external alliances. Please advise.
 
 
     \item 3D Scanner: It is needed for object manipulation and perception tasks.
@@ -191,8 +130,8 @@ The following items are listed in the order of priority:
 \newpage
 
 %Sets the bibliography style to UNSRT and import the
-\newpage
-\bibliography{ref}
-\bibliographystyle{ieeetr}
+% \newpage
+% \bibliography{ref}
+% \bibliographystyle{ieeetr}
 
 \end{document}
