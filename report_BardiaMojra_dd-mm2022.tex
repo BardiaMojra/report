@@ -44,31 +44,32 @@ The University of Texas at Arlington
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item VPQEKF (RAL - April 1st): Work on the paper.
-      \item DLO Manipulation Dataset (ICRA - September)
+      \item VPQEKF (\textcolor{red}{April 13th}): Work on the paper.
+      \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 1st})
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-  \item QEKF Paper - 30\% extension (April 1st):
+  \item QEKF Paper - 30\% extension (\textcolor{red}{April 13th}):
   \begin{itemize}
       \item Edit VEst section and add updates.
   \end{itemize}
-  \item QEKF/QuEst+VEst Implementation (\textcolor{red}{Feb. 28th}):
+  \item QEKF/QuEst+VEst Implementation (\textcolor{red}{April 13th}):
   \begin{itemize}
-      \item Implement QuEst 5-point: Done, debugging.
+      \item Implement and test QEKF in Matlab. Done.
+      \item OOP Integration: QEKF is done, QuEst is done but not tested, and
+VEst is remaining.
       \item Feature point extraction: implement semantic segmentation
-      \item Implement VEst
       \item Address scale factor (depth-scale) issues: DL solutions?
       \item Address "hand off" issue when objects enter or leave field of view
       \item Real-time streaming images for real-time operation (optional)
       \item Experiments
-      \item Noise issue: noise cannot be modeled
+      \item Noise issue: noise cannot be modeled - revisit
   \end{itemize}
-  \item  DLO Manipulation:
+  \item  DLO Manipulation:  \textcolor{red}{Sept. 1st}
   \begin{itemize}
       \item Related work literature review
-      \item Real dataset + paper (September 2022 - ICRA):
+      \item Real dataset + paper (ICRA -  \textcolor{red}{Sept. 1st}):
       \begin{itemize}
             \item Design, discuss and build a data collection and test rig.
       \end{itemize}
@@ -84,35 +85,39 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, Cody and
-    I went over the C++ implementation by Kaveh. Based on my observations, I
-    believe he faced similar issues because there are flags to switch between
-    different algebraic decomposition libraries. Dr. Gans and I decided to pivot
-    from the Python implementation as it is taking too long to figure out and
-    we can not guarantee it will have matching accuracy. I started working on
-    the Matlab code this weekend and I am halfway done. I implemented Python
-    QEKF is in complete compliance with object-oriented programming (OOP) best
-    practices
-    which allows for easy and fast source code transfer. In line with that, I
-    figured out, implemented, and tested its OOP syntax. The data management
-    module is implemented and tested. The QEKF module is implemented but not
-    tested and data logging and visualization modules are to be implemented and
-    tested in the next few days. I do get distracted, there is no denying that
-    and I have always appreciated your guidance. Paying attention to things such
-    as OOP is not a distraction rather it is what helps me achieve
-    exponential growth in my productivity while maintaining source code
-    agility and reliability. This is my understanding, I could be wrong.
+    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): I tested QEKF Matlab
+    and shared the results with Dr. Gans. Then, I worked on the
+    integration part of the project. To integrate the three modules, I am
+    deploying object-oriented programming (OOP) scheme for effective management.
+    Everybody writes code, not many write useful code.
+    The QEKF module is ready since it is already in OOP format. I finished
+    porting in QuEst/main file to OOP format and began testing it. The source code
+    has not and will not change since it is implemented in "Static"
+    function style (each function in a separate file). Static functions can be
+    used as-is in form of local 'scope' functions in Matlab OOP. I have not
+    started working on VEst and I estimate it to take less than two days (that
+    includes a day for testing). Moreover, the new QuEst code includes all other pose
+    estimation methods implemented by Kaveh. The following figure shows my
+    contribution to the QEKF project over the past 6 months.
 
-    \item DLO Manipulation Milestones: No update other than that Cody asked me
-    if I am open to mentoring the EE robotics team this year and helping him with it.
-    He suggested the National Robotics Challenge (NRC) but it is not meant for
-    Ph.D. students. I will bring up NIST and will ask if they want to help me
-    with my next paper/project and in return, I will teach and explain everything
-    with will give them credit on the final paper(s). It is important to me to
-    build a solid team as well as external alliances. Please advise.
+    \begin{figure}
+      \includegraphics[width=\linewidth]{qekf_contribs.png}
+    \end{figure}
 
+    \item DLO Manipulation Milestones: Early in the week, I did some tutorials
+    on Blender and began recreating the lab work cell area. Ideally, I will use
+    Nvidia's Isaac simulation as I am confident they will use their trade secrets
+    to achieve better performance on their hardware compared to all other
+    competitors. Moreover, I strongly think adding projectors to the data collection
+    rig can significantly improve computer-assisted annotation. The projection
+    can be used as closed-loop visual feedback and can be cross-referenced
+    with the depth map. You can create robustness by cross-referencing high
+    probability estimates. Please don't share this idea with anyone.
 
     \item 3D Scanner: It is needed for object manipulation and perception tasks.
+
+
+
     \item Pose Estimation (\textcolor{blue}{DLO-01}): On-going under VPQEKF.
     \item Semantic segmentation (\textcolor{blue}{DLO-02}): Per my discussion with Dr. Gans, I
     will explore DL methods for the depth or scale problem.
