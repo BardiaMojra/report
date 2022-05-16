@@ -56,9 +56,8 @@ The University of Texas at Arlington
   \end{itemize}
   \item QEKF/QuEst+VEst Implementation (\textcolor{red}{April 13th}):
   \begin{itemize}
-      \item Implement and test QEKF in Matlab. Done.
-      \item OOP Integration: QEKF is done, QuEst is done but not tested, and
-VEst is remaining.
+      \item OOP Integration: QuEst is tested and other algorithms have been
+      integrated and tested as well. Integrate VEst --- On-going.
       \item Feature point extraction: implement semantic segmentation
       \item Address scale factor (depth-scale) issues: DL solutions?
       \item Address "hand off" issue when objects enter or leave field of view
@@ -68,16 +67,35 @@ VEst is remaining.
   \end{itemize}
   \item  DLO Manipulation:  \textcolor{red}{Sept. 1st}
   \begin{itemize}
-      \item Related work literature review
-      \item Real dataset + paper (ICRA -  \textcolor{red}{Sept. 1st}):
+      \item Find other ICRA dataset papers and summarize the structure. --- This week.
+      \item Dataset (ICRA -  \textcolor{red}{Sept. 1st}):
       \begin{itemize}
-            \item Design, discuss and build a data collection and test rig.
+            \item Finalize MoCap design, design digital twin work cell. --- This week.
+            \item Build work cell.
+            \item Collect data and create a dataset.
+            \item Create object dynamics ground-truth method, format, and evaluation
+            metrics.
       \end{itemize}
-      \item Unity dataset
+      \item Control and Tracking
       \begin{itemize}
-            \item Recreate virtual duplicates of physical test material
+            \item Create UR5+DLO simulation in Matlab and begin work on H-Infinity control before Reza leaves for Indiana State.
             \item Model dynamics and deformity
       \end{itemize}
+      \item Real-Time Preception
+      \begin{itemize}
+        \item Implement PVnet, perform transfer learning and retrain using
+        in house dataset.
+        \item Time model inference, using auto-encoders generate the lowest
+        dimensional representation for each object.
+        \item Use another GAN model for object deformity for each object.
+        \item Evaluate encoded representation for accuracy.
+        \item Used another GAN to explore other abstraced representations from
+        individual encoded representation. In theory, we can create a low
+        dimensionsal representation for multiple similar objects, given all
+        individual low-dimensional representations. This is inspired by "fundamental
+        principles first" approach which has universal applicability.
+      \end{itemize}
+      \item
   \end{itemize}
 \end{itemize}
 
@@ -85,12 +103,70 @@ VEst is remaining.
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): No update.
-    \item DLO Manipulation and Milestones: No update.
-    \item 3D Scanner: I think it might best if buy one or borrow one from UTARI.
-    \item Pose Estimation (\textcolor{blue}{DLO-01}): On-going under VPQEKF.
-    \item Semantic segmentation (\textcolor{blue}{DLO-02}): Per my discussion with Dr. Gans, I
-    will explore DL methods for the depth or scale problem.
+    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I finished
+    testing and validating QuEst source code into the integrated system
+    environment. Moreover, I integrated other classical pose estimation algorithms.
+
+    \begin{figure}
+      \includegraphics[width=\linewidth]{pose_est_algs.png}
+      \caption{Classical Pose Estimation Methods}
+      \label{fig:poses}
+    \end{figure}
+
+    \item DLO Dataset: I will look into the bill of material and the final design
+    this week. I should perhaps have a discussion with Sami about this. I am sure
+    he knows a lot more than me. He can probably provide very good insight on
+    topology representation and preception. Moreover, I took the following photos
+    as initial samples. In my work, I need to take more photos of the marker
+    from different angles and train a minimal model that robustly detects this
+    marker from any angle (with glare). I have not gone through the papers we
+    found last week. In fact, it seems that I have lost them since I had to reinstall
+    my OS on Friday. I will make an outline for the dataset paper and will do
+    some tutorials on Dataset generation from ICRA.
+
+    \begin{figure}
+      \begin{center}
+      \includegraphics[width=.6\linewidth]{DLO_0001.png}
+      \caption{DLO Sample Image}
+      \label{fig:DLO01}
+      \end{center}
+    \end{figure}
+
+    \begin{figure}
+      \begin{center}
+      \includegraphics[width=.6\linewidth]{shiny_checks.png}
+      \caption{Shiny Marker}
+      \label{fig:Marker01}
+      \end{center}
+    \end{figure}
+
+    \item DLO Control: I had a meeting with Dr. Gans and Reza
+    where we discussed H-Infinity and Mu-Synthesis control design and it seems
+    to be a great fit for controlling a DLO in stable congfiguration. In theory,
+    a H-infinity controller takes advantage of one additional constraint to bound
+    the output. The constaint is conservation of energy from thermodynamics.
+    In context of H-infinity control, it assumes that no matter how unstable the
+    output, its magnitude will never be larger than the energy of the input and
+    the system itself (maximum gain in any dimension and at any frequency). The controller pays attention
+    to the ratio of the input and resulting output change. Thus,
+    one can define a optimization criterion, e.g. local estimation accuracy,
+    model input noise to the system and H-infinity controller will guarantee
+    the system will preform within a certain bound. This bound is defined by
+    ratio of magnitude of the input and the system where sensitivity is minimized
+    recursively. This creates robustness in control while maintaining optimality
+    to defined criterion. H-infinity is used for linear or linearized systems and
+    Mu-synthesis is for nonlinear systems where there is uncertainty. Moreover,
+    Reza mentioned \emph{Linear Parameter Varying control} (LPV) where a nonlinear
+    system is model as parameterized linear system with \emph{Gain Scheduling}.
+    LPV can be particularly helpful in controlling DLOs, and perhaps it could
+    be extended to multiple DLO classes. We can begin this project in simulation
+    and quickly publish a paper with Reza on just the controller design for DLOs.
+
+    \item DLO Perception: Building scanner would be too time consuming. Ensenso
+    makes high quality 3D scanners and UTARI has one. We could borrow it or we can
+    set the scanner there \cite{3DCamera52:online}.
+
+    \item Semantic segmentation (\textcolor{blue}{DLO-02}): Per my discussion with Dr. Gans, I will explore DL methods for the depth or scale problem.
     \item Grasping Project (\textcolor{blue}{DLO-03}): I am making this a part of the DLO project.
     \item PyTorch Tutorials: Transfer learning.
 
@@ -105,8 +181,8 @@ The following items are listed in the order of priority:
 \newpage
 
 %Sets the bibliography style to UNSRT and import the
-% \newpage
-% \bibliography{ref}
-% \bibliographystyle{ieeetr}
+\newpage
+\bibliography{ref}
+\bibliographystyle{ieeetr}
 
 \end{document}
