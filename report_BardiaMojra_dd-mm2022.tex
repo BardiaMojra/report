@@ -44,25 +44,24 @@ The University of Texas at Arlington
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item VPQEKF (\textcolor{red}{April 13th}): Work on the paper.
+      \item VPQEKF (\textcolor{red}{May 30th}): Work on the paper.
       \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 1st})
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-  \item QEKF Paper - 30\% extension (\textcolor{red}{April 13th}):
+  \item QEKF Paper - 30\% extension (\textcolor{red}{May 30th}):
   \begin{itemize}
       \item Edit VEst section and add updates.
   \end{itemize}
-  \item QEKF/QuEst+VEst Implementation (\textcolor{red}{April 13th}):
+  \item QEKF/QuEst+VEst Implementation (\textcolor{red}{May 30th}):
   \begin{itemize}
-      \item OOP Integration: QuEst is tested and other algorithms have been
-      integrated and tested as well. Integrate VEst --- On-going.
+      \item OOP Integration: QEKF - on-going.
       \item Feature point extraction: implement semantic segmentation
       \item Address scale factor (depth-scale) issues: DL solutions?
       \item Address "hand off" issue when objects enter or leave field of view
       \item Real-time streaming images for real-time operation (optional)
-      \item Experiments
+      \item Experiments - on-going.
       \item Noise issue: noise cannot be modeled - revisit
   \end{itemize}
   \item  DLO Manipulation:  \textcolor{red}{Sept. 1st}
@@ -103,68 +102,48 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I finished
-    testing and validating QuEst source code into the integrated system
-    environment. Moreover, I integrated other classical pose estimation algorithms.
-
-    \begin{figure}
-      \includegraphics[width=\linewidth]{pose_est_algs.png}
-      \caption{Classical Pose Estimation Methods}
-      \label{fig:poses}
-    \end{figure}
-
-    \item DLO Dataset: I will look into the bill of material and the final design
-    this week. I should perhaps have a discussion with Sami about this. I am sure
-    he knows a lot more than me. He can probably provide very good insight on
-    topology representation and preception. Moreover, I took the following photos
-    as initial samples. In my work, I need to take more photos of the marker
-    from different angles and train a minimal model that robustly detects this
-    marker from any angle (with glare). I have not gone through the papers we
-    found last week. In fact, it seems that I have lost them since I had to reinstall
-    my OS on Friday. I will make an outline for the dataset paper and will do
-    some tutorials on Dataset generation from ICRA.
+    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I had to
+    spend couple days on the system architecture but it is complete now. Now,
+    I have a complete OOP implementation in Matlab that share the same
+    architecture with my Python implementation. This will allow me to easily
+    reuse, integrate and run source code between the two programming languages.
+    This code is also ready for field deployment since it only saves the
+    estimates at run-time and performs error computation at post processing.
+    The following are the results for QuEst and VEst methods compared against
+    top pose and velocity estimation methods. We compared QuEst against
+    Eight-Point, Nister, and Kukelova pose estimation algorithms and results are
+    shown in figure [1]. Figure [2]
+    shows output results for VEst module with pose estimates from mentioned
+    methods. So far, we have tested our algorithm on KITII, ICL, and TUM
+    benchmarks. I will add Kneip and Stewenius pose estimation methods and NAIST
+    benchmark at a later time.\
 
     \begin{figure}
       \begin{center}
-      \includegraphics[width=.6\linewidth]{DLO_0001.png}
-      \caption{DLO Sample Image}
-      \label{fig:DLO01}
+      \includegraphics[width=\linewidth]{poses_n_benches.png}
+      \caption{Classical Pose Estimation Methods vs. Benchmarks}
+      \label{fig:poses_n_benches}
       \end{center}
     \end{figure}
 
     \begin{figure}
       \begin{center}
-      \includegraphics[width=.6\linewidth]{shiny_checks.png}
-      \caption{Shiny Marker}
-      \label{fig:Marker01}
+      \includegraphics[width=\linewidth]{vels_n_benches.png}
+      \caption{Velocity Estimation Methods vs. Benchmarks}
+      \label{fig:vels_n_benches}
       \end{center}
     \end{figure}
 
-    \item DLO Control: I had a meeting with Dr. Gans and Reza
-    where we discussed H-Infinity and Mu-Synthesis control design and it seems
-    to be a great fit for controlling a DLO in stable congfiguration. In theory,
-    a H-infinity controller takes advantage of one additional constraint to bound
-    the output. The constaint is conservation of energy from thermodynamics.
-    In context of H-infinity control, it assumes that no matter how unstable the
-    output, its magnitude will never be larger than the energy of the input and
-    the system itself (maximum gain in any dimension and at any frequency). The controller pays attention
-    to the ratio of the input and resulting output change. Thus,
-    one can define a optimization criterion, e.g. local estimation accuracy,
-    model input noise to the system and H-infinity controller will guarantee
-    the system will preform within a certain bound. This bound is defined by
-    ratio of magnitude of the input and the system where sensitivity is minimized
-    recursively. This creates robustness in control while maintaining optimality
-    to defined criterion. H-infinity is used for linear or linearized systems and
-    Mu-synthesis is for nonlinear systems where there is uncertainty. Moreover,
-    Reza mentioned \emph{Linear Parameter Varying control} (LPV) where a nonlinear
-    system is model as parameterized linear system with \emph{Gain Scheduling}.
-    LPV can be particularly helpful in controlling DLOs, and perhaps it could
-    be extended to multiple DLO classes. We can begin this project in simulation
-    and quickly publish a paper with Reza on just the controller design for DLOs.
 
-    \item DLO Perception: Building scanner would be too time consuming. Ensenso
-    makes high quality 3D scanners and UTARI has one. We could borrow it or we can
-    set the scanner there \cite{3DCamera52:online}.
+    \item DLO Dataset: Last night, I recreated Jerry's design for the work cell
+    cage, he no longer has the CAD file. I sent out a link to the file and asked
+    if they want to make any changes or add anything. We will finalize the
+    design this week. I reached to Sami, he seems interested and we agreed to
+    meet today. I need to read more on digital twin as well as the dataset papers
+    Dr. Gans and I found last week.
+
+    \item DLO Control: No update.
+    \item DLO Perception: No update.
 
     \item Semantic segmentation (\textcolor{blue}{DLO-02}): Per my discussion with Dr. Gans, I will explore DL methods for the depth or scale problem.
     \item Grasping Project (\textcolor{blue}{DLO-03}): I am making this a part of the DLO project.
