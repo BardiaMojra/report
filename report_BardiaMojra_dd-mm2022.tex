@@ -56,20 +56,20 @@ The University of Texas at Arlington
   \end{itemize}
   \item QEKF/QuEst+VEst Implementation (\textcolor{red}{May 30th}):
   \begin{itemize}
-      \item OOP Integration: QEKF - on-going.
+      \item OOP Integration: QEKF - Done.
       \item Feature point extraction: implement semantic segmentation
       \item Address scale factor (depth-scale) issues: DL solutions?
       \item Address "hand off" issue when objects enter or leave field of view
-      \item Real-time streaming images for real-time operation (optional)
-      \item Experiments - on-going.
+      \item Real-time streaming images for real-time operation (optional) - Done
+      \item Experiments - Done
       \item Noise issue: noise cannot be modeled - revisit
   \end{itemize}
   \item  DLO Manipulation:  \textcolor{red}{Sept. 1st}
   \begin{itemize}
-      \item Find other ICRA dataset papers and summarize the structure. --- This week.
+      \item Find other ICRA dataset papers and summarize the structure. --- On-going.
       \item Dataset (ICRA -  \textcolor{red}{Sept. 1st}):
       \begin{itemize}
-            \item Finalize MoCap design, design digital twin work cell. --- This week.
+            \item Finalize MoCap design, design digital twin work cell. --- Done.
             \item Build work cell.
             \item Collect data and create a dataset.
             \item Create object dynamics ground-truth method, format, and evaluation
@@ -82,8 +82,8 @@ The University of Texas at Arlington
       \end{itemize}
       \item Real-Time Preception
       \begin{itemize}
-        \item Implement PVnet, perform transfer learning and retrain using
-        in house dataset.
+        \item PVNet approach for known objects
+        \item Rope Manipulation dataset
         \item Time model inference, using auto-encoders generate the lowest
         dimensional representation for each object.
         \item Use another GAN model for object deformity for each object.
@@ -102,48 +102,36 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): This week, I had to
-    spend couple days on the system architecture but it is complete now. Now,
-    I have a complete OOP implementation in Matlab that share the same
-    architecture with my Python implementation. This will allow me to easily
-    reuse, integrate and run source code between the two programming languages.
-    This code is also ready for field deployment since it only saves the
-    estimates at run-time and performs error computation at post processing.
-    The following are the results for QuEst and VEst methods compared against
-    top pose and velocity estimation methods. We compared QuEst against
-    Eight-Point, Nister, and Kukelova pose estimation algorithms and results are
-    shown in figure [1]. Figure [2]
-    shows output results for VEst module with pose estimates from mentioned
-    methods. So far, we have tested our algorithm on KITII, ICL, and TUM
-    benchmarks. I will add Kneip and Stewenius pose estimation methods and NAIST
-    benchmark at a later time.\
+    \item VPQEKF (\textcolor{red}{RAL - April 1st, 2022}): I finished working on
+    VPQEKF code and shared results with Dr. Gans. He provided feedback and updated
+    the code to better represent the output. But there seem to remain some confusion
+    on what the output represent. In short, the system runs 4 QEKF's at the same
+    time, one for each pose estimation method. The run-time Kalman filters are
+    stored and managed as different instances of the same object, where each instance
+    receives pose and velocity estimates corresponding to its assigned pose method.
+    For each keyframe, inputs, outputs, and some state variables (e.g. QEKF state
+    residual) are stored in a frame buffer. At the end of each frame iteration,
+    the frame buffer is passed to the data logger module which stores each variable
+    in its corresponding instacne of the log object. Any variable could be logged
+    with minimal changes to the code. Dr. Gans and I will discuss the code and its
+    output next week. The outputs are attached to this report for your attention.
 
-    \begin{figure}
-      \begin{center}
-      \includegraphics[width=\linewidth]{poses_n_benches.png}
-      \caption{Classical Pose Estimation Methods vs. Benchmarks}
-      \label{fig:poses_n_benches}
-      \end{center}
-    \end{figure}
-
-    \begin{figure}
-      \begin{center}
-      \includegraphics[width=\linewidth]{vels_n_benches.png}
-      \caption{Velocity Estimation Methods vs. Benchmarks}
-      \label{fig:vels_n_benches}
-      \end{center}
-    \end{figure}
-
-
-    \item DLO Dataset: Last night, I recreated Jerry's design for the work cell
-    cage, he no longer has the CAD file. I sent out a link to the file and asked
-    if they want to make any changes or add anything. We will finalize the
-    design this week. I reached to Sami, he seems interested and we agreed to
-    meet today. I need to read more on digital twin as well as the dataset papers
-    Dr. Gans and I found last week.
+    \item DLO Dataset: Jerry and Joe seem very busy so I just went with their
+    design. It is probably the best design since it take minimal time to build.
+    I researched ICRA DLO manipulation papers, made a list and began dissecting
+    them systematically. I also started a mind-map for related work section. The
+    paper review document and the mind-map are attached for your attention. It
+    turns out, I have been over-thinking (as always) the DLO manipulation task.
+    It seems that even RGB only dataset could be sufficient to teach an agent to
+    manipulation DLOs in real time. The authors in \cite{zhang2021deformable}
+    created a state estimation and predition framework very similar to what I
+    have thinking. Of course, I did not see it as clearly them but I think it
+    provides a good base-line for my paper. Moreover, I can follow their method
+    and create a similar dataset with our added contributions such as additional
+    objects or sensors (and sensor fusion model).
 
     \item DLO Control: No update.
-    \item DLO Perception: No update.
+    \item DLO Perception: No update. -- might not be needed.
 
     \item Semantic segmentation (\textcolor{blue}{DLO-02}): Per my discussion with Dr. Gans, I will explore DL methods for the depth or scale problem.
     \item Grasping Project (\textcolor{blue}{DLO-03}): I am making this a part of the DLO project.
