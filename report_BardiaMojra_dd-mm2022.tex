@@ -17,7 +17,7 @@
 \usepackage{wrapfig}
 \usepackage{url}
 \usepackage[table]{xcolor}
-\graphicspath{{images/}}
+\graphicspath{{images_dd-mm2022/}}
 \setlength{\parindent}{0.25in}
 \setlength{\parskip}{.05in}
 \pagestyle{plain}
@@ -52,14 +52,12 @@ The University of Texas at Arlington
 \begin{itemize}
   \item QEKF Paper - 30\% extension (\textcolor{red}{June 30th}):
   \begin{itemize}
-      \item Read and summarize recent QEKF papers.
+      \item Read and summarize recent VO and QEKF papers.
   \end{itemize}
   \item QEKF/QuEst+VEst Implementation (\textcolor{red}{May 30th}):
   \begin{itemize}
-      \item Feature point extraction: implement semantic segmentation
+      \item Point-feature extraction: tracking issue
       \item Address scale factor (depth-scale) issues: DL solutions?
-      \item Address "hand off" issue when objects enter or leave field of view
-      \item Experiments - On-going
       \item Noise issue: noise cannot be modeled - revisit
       \item Adding plots - On-going
       \item Add semantic segmentation for detecting moving object pixels and rejecting matched features in those regions
@@ -105,84 +103,70 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL - April 30st, 2022}): I met with Dr. Gans
-    and we went over the XEst results. I made the modules for pose and velocity
-    estimations more distinct. Although the QuEst and VEst estimation methods
-    are independent methods, I named pose and velocity modules QuEst+ and VEst+
-    respectively. QuEst+ and VEst+ modules can contain any number of pose and
-    velocity estimation modules which are the used by a corresponding QEKF filter.
-    Right now, the QEKF filter instances only correspond to selected pose estimation
-    methods but additional instances could be spawned for different velocity
-    estimation methods on demand. This feature allows for benchmarking any
-    methods and not just limited to pose and velocity estimations. Below are
-    the results for QuEst+, VEst+, and QEKF modules. The entire system is called
-    \emph{XEst} with \emph{X} referring modularity of the QEKF estimation system.
-    Note that there are two types of error, GT-X and Z-X represent the
-    groundtruth vs. the state error and the observation vs. the state, respectively.
-    It is clear to me that there are some issues with computation so I am plotting
-    the data logs to debug them. I need to focus on this and just wrap it up. I
-    will spend this week on reading RAL EKF papers and make come up with a list
-    of contributions. I am confident I can wrap this up quickly. Moreover, we
-    could follow up on this paper with a double-Quaternion formulation of the
-    same algorithms. It would be very simple and straight forwards paper, perhaps
-    a journal paper.
+    \item XEst (\textcolor{red}{RAL - April 30st, 2022}): I found a series of
+    papers on visual inertial odometry (VIO) and line feature tracking. In the VIO
+    papers, the authors used inertial information from an IMU sensor to estimate
+    depth. Per my conversation with Dr. Gans, we are not  interested in methods
+    that use inertial information collected from an IMU as it would dilute our
+    work on vision-based approaches. Moreover, line-feature tracking has been
+    used in visual-SLAM applications and is shown to perform more robustly than
+    line features. I have not found a working implementation yet. At this moment,
+    I am redoing a part data log visualization for QEKF module.
 
     \begin{figure}[H]
       \begin{center}
-        \includegraphics[width=\linewidth]{fig01_QuEstP.png}
+        \includegraphics[width=\linewidth]{fig_mat-feat_kf00004.png}
       \end{center}
-      \caption{QuEst+ module output error statistics on KITTI dataset, running with EightPoint, Nister, Kukelova, QuEst and VEst algorithms for pose estimation.}
+      \caption{Acceptable point-feature matches between two frames.}
     \end{figure}
 
     \begin{figure}[H]
       \begin{center}
-        \includegraphics[width=\linewidth]{fig02_VEstP.png}
+        \includegraphics[width=\linewidth]{fig_mat-feat_kf00022.png}
       \end{center}
-      \caption{VEst+ module output error statistics on KITTI dataset, running only with the VEst algorithm for velocity estimation.}
+      \caption{Noisy point-feature matches between two frames.}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=.8\linewidth]{line_features.png}
+      \end{center}
+      \caption{Line-features from an image sequence.}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=\linewidth]{plt_pos_log_Nister.png}
+      \end{center}
+      \caption{Pose estimation log: Nister vs. Groundtruth.}
     \end{figure}
 
 
     \begin{figure}[H]
       \begin{center}
-        \includegraphics[width=\linewidth]{fig03_QEKF.png}
+        \includegraphics[width=\linewidth]{plt_pos_log_QuEst.png}
       \end{center}
-      \caption{QEKF module output error statistics on KITTI dataset, running with various pose estimation algorithms.}
+      \caption{Pose estimation log: QuEst vs. Groundtruth.}
     \end{figure}
 
     \item XEst - Semantic segmentation (\textcolor{red}{RAL - April 30st, 2022}):
-    I found \cite{ballester2021dot} for semantic segmentation of moving cars and
-    pedestrians. The matched feature points that are labelled as moving object
-    will be removed from pose and velocity estimation methods as their inclusion
-    results in increased error.
+    No update on implementing \cite{ballester2021dot}.
 
-    \item DLO Dataset: There are number of recent papers that have made
-    significant contribution to real-time manipulation of DLOs,
-    \cite{zhang2021deformable}, \cite{zhang2020robots}, \cite{narang2021sim},
-    and \cite{laezza2021reform}. Based on my understanding at the moment, the
-    are two main approaches for real-time manipulation of DLO, quasi-static and
-    non-quasi-static approaches. Quasi-static modeling of a DLO defines our
-    initial approach where we aimed to model the object in form of a set of
-    dynamic segments with locally linear dynamic behavior. Non-quasi-static
-    approaches define the system as inherently non-linear and aim to model the
-    system in a non-linear and often latent space. The two are two completely
-    different regimes of mathematical analysis and the manipulation task of DLOs
-    the latter is the superior approach. MuJuCo is the only state of the art
-    contact-based physics engine that was designed from ground up for this
-    specific purpose. In addition, it has built-in API with Unity rendering
-    engine which also features API for digital twin, business intelligence and
-    ROS. Please see attachments for more detailed analysis. Moreover, for
-    dynamic dataset collection, we need a high frequency auto-annotation system
-    to capture accurate dynamics, essentially with every other frame as a UV
-    ground truth frame. I can design and build a simple embedded switcher circuit
-    for automating that. But this has to be after the XEst paper, or after I
-    finish the initial draft.
+    \item DLO Dataset: I installed Unity and soon will begin working on tutorials.
+    \item Linus (REU): He is working on Unity tutorials, recreating RVL workcell,
+    and importing UR5 model into Unity.
+    \item Maicol (REU): He is working on ROS2 tutorials, MoveIt tutorials, and
+    way-point navigation of UR5 in Unity.
+    \item Myself (with REU): I will start on MuJuCo tutorials as well.
 
-    \item DLO Control: No update.
-    \item DLO Perception: No update. -- might not be needed.
-
+    \item DLO Control (MuJuCo): No update.
 
     \item Grasping Project (\textcolor{blue}{DLO-03}): I am making this a part of the DLO project.
     \item PyTorch Tutorials: Transfer learning.
+    \item Manifold learning: Marcus emailed me some papers, I will read them
+    and reply to him. I am not particularly interested in the project but his
+    ideas are interesting and I would like to help him if I can. He is very
+    knowledgeable on mathematics and I cherish that.
 
   \end{itemize}
 
