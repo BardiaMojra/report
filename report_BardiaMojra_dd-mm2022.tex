@@ -51,21 +51,21 @@ The University of Texas at Arlington
 \section{To Do}
 \begin{itemize}
   \item QEKF Paper - 30\% extension (\textcolor{red}{June 30th}):
+  \item Implementation (\textcolor{red}{May 30th}):
   \begin{itemize}
-      \item Read and summarize recent VO and QEKF papers.
-  \end{itemize}
-  \item QEKF/QuEst+VEst Implementation (\textcolor{red}{May 30th}):
-  \begin{itemize}
-      \item Point-feature extraction: tracking issue
-      \item Address scale factor (depth-scale) issues: DL solutions?
+      \item Point-feature extraction: tracking issue -- resolved
+      \item Address scale factor (depth-scale) issues: -- resolved
       \item Noise issue: noise cannot be modeled - revisit
-      \item Adding plots - On-going
-      \item Add semantic segmentation for detecting moving object pixels and rejecting matched features in those regions
+      \item Adding plots -- done
+      \item Rewrite RQuEst (RANSAC-QuEst) to use triangulation
+      \item Replace the relative pose estimation routine in SfM example with RQuEst
   \end{itemize}
   \item  DLO Manipulation:  \textcolor{red}{ICRA - Sept. 1st}
   \begin{itemize}
-      \item Find other ICRA dataset papers and summarize the structure. --- On-going.
-      \item Dynamic Dataset Collection System with Reinforcement Learning:
+      \item Work on the paper everyday -- up-coming
+      \item Find other ICRA dataset papers and summarize the structure. -- Done.
+      \item Setup Omniverse on TACC -- Next
+      \item Setup digital twin reinforcement learing setup:
       \begin{itemize}
         \item Design dynamic DLO data collection system.
         \item Build work cell.
@@ -77,7 +77,7 @@ The University of Texas at Arlington
       \begin{itemize}
         \item Deep learning methods for keypoint pose estimation in real-time.
         \item Use UV dye dataset
-        \item Use PVNet-based approach for known-objects
+        \item Use PVNet-like approach for known-object pose estimation.
       \end{itemize}
       \item Learning DLO Dynamics and System Identification
       \begin{itemize}
@@ -103,15 +103,14 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL - April 30st, 2022}): I found a series of
-    papers on visual inertial odometry (VIO) and line feature tracking. In the VIO
-    papers, the authors used inertial information from an IMU sensor to estimate
-    depth. Per my conversation with Dr. Gans, we are not  interested in methods
-    that use inertial information collected from an IMU as it would dilute our
-    work on vision-based approaches. Moreover, line-feature tracking has been
-    used in visual-SLAM applications and is shown to perform more robustly than
-    line features. I have not found a working implementation yet. At this moment,
-    I am redoing a part data log visualization for QEKF module.
+    \item XEst (\textcolor{red}{RAL - April 30st, 2022}): I finished working on
+    the plotting module for QEKF and was able to generate log plots for each of
+    the pose estimation algorithms. Although, there is an issue with the
+    quaternion estimation output where it does not update properly. It seems to
+    be a tuning issue, I looked into it but the issue presisted and I am working
+    Bundle Adjustment so I shelved QEKF for now.
+
+
 
     \begin{figure}[H]
       \begin{center}
@@ -119,6 +118,8 @@ The following items are listed in the order of priority:
       \end{center}
       \caption{Acceptable point-feature matches between two frames.}
     \end{figure}
+
+
 
     \begin{figure}[H]
       \begin{center}
