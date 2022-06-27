@@ -108,57 +108,104 @@ The following items are listed in the order of priority:
     the pose estimation algorithms. Although, there is an issue with the
     quaternion estimation output where it does not update properly. It seems to
     be a tuning issue, I looked into it but the issue presisted and I am working
-    Bundle Adjustment so I shelved QEKF for now.
-
-
-
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=\linewidth]{fig_mat-feat_kf00004.png}
-      \end{center}
-      \caption{Acceptable point-feature matches between two frames.}
-    \end{figure}
-
-
-
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=\linewidth]{fig_mat-feat_kf00022.png}
-      \end{center}
-      \caption{Noisy point-feature matches between two frames.}
-    \end{figure}
-
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=.8\linewidth]{line_features.png}
-      \end{center}
-      \caption{Line-features from an image sequence.}
-    \end{figure}
-
-    \begin{figure}[H]
-      \begin{center}
-        \includegraphics[width=\linewidth]{plt_pos_log_Nister.png}
-      \end{center}
-      \caption{Pose estimation log: Nister vs. Groundtruth.}
-    \end{figure}
-
+    Bundle Adjustment so I shelved QEKF for now. Figures 1 shows the estimated
+    poses, figures 2 and 3 show the QEKF outputs for the QuEst algorithm. The
+    rest of the outputs are attached to this report.
 
     \begin{figure}[H]
       \begin{center}
         \includegraphics[width=\linewidth]{plt_pos_log_QuEst.png}
       \end{center}
-      \caption{Pose estimation log: QuEst vs. Groundtruth.}
+      \caption{Pose module: Estimated pose log using QuEst.}
     \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=\linewidth]{plt_qekf_log_residual_QuEst.png}
+      \end{center}
+      \caption{QEKF module: State ($T_{xyz},~V_{xyz},~Q_{xyzw}$) residual log
+      with QuEst estimations as state measurements.}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=\linewidth]{plt_qekf_log_ZvsX_QuEst.png}
+      \end{center}
+      \caption{QEKF module: State measurement vs. state estimation for QuEst.}
+    \end{figure}
+
+    Regarding our direction moving forward, I believe Dr. Gans and I have a
+    made new realization. EKF remains one of the state-of-the-art
+    methods for real-time state estimation with at least partially known
+    dynamic model and completely known navigation environment. But related
+    implementations for VSLAM and Structure from Motion (SfM) rely on \emph{Pose Graph},
+    \emph{loop closure} via \emph{place recognition}, and two \emph{Bundle Adjustments}
+    (one local and during run-time, the other at post processing).
+    Related work by Nister \cite{nister2004efficient} makes no mention of
+    EKF, loop closure, nor pose graph but based on my understanding I believe
+    they implemented a variation of VSLAM or SfM. I was able to successfully run
+    VSLAM and SfM in Matlab. Figures 4-5, 6-8
+    show the outputs for VSLAM and SfM, respectively. Right now, I am in the
+    process of rewriting the relative pose estimation algorithm to use QuEst
+    with RANSAC (RQuEst) and triangulation instead of Sampson distance.
+    Triangulation is a more robust method for finding the correct solution as
+    Sampson distance is affected by noise. Moreover, they use pose graph and
+    have a much more advanced method for point feature matching,
+    keyframe selection, and view tracking which I am adopting.
+
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=.6\linewidth]{VSLAM_pFeats.png}
+      \end{center}
+      \caption{VSLAM: Final frame matched point features.}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=.6\linewidth]{VSLAM_track.png}
+      \end{center}
+      \caption{VSLAM: Final track.}
+    \end{figure}
+
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=.6\linewidth]{input_img_sequence.png}
+      \end{center}
+      \caption{SfM: Input image sequence.}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=.6\linewidth]{refined_cam_poses.png}
+      \end{center}
+      \caption{SfM: Refined camera poses.}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \includegraphics[width=.6\linewidth]{dense_reconstruct.png}
+      \end{center}
+      \caption{SfM: Dense reconstruction.}
+    \end{figure}
+
+
 
     \item XEst - Semantic segmentation (\textcolor{red}{RAL - April 30st, 2022}):
     No update on implementing \cite{ballester2021dot}.
+    \item DLO Dataset: I finished tutorials on Unity and learned basic C\# syntax.
+    I also looked into Omniverse and Isaac Sim and decided to switch to that.
+    I will have to install on TACC and asked Linus and Maicol to create their
+    own accounts as well. I learned about a major shortcut that eliminates much
+    of the need for setting up ROS. In one of the views, the presenting Nvidia
+    engineer use Jupyter Noteboot to directly interface with a real robotic
+    arm and synced its digital twin with physical arm which he controlling via
+    real-time input. More
 
-    \item DLO Dataset: I installed Unity and soon will begin working on tutorials.
-    \item Linus (REU): He is working on Unity tutorials, recreating RVL workcell,
-    and importing UR5 model into Unity.
-    \item Maicol (REU): He is working on ROS2 tutorials, MoveIt tutorials, and
-    way-point navigation of UR5 in Unity.
-    \item Myself (with REU): I will start on MuJuCo tutorials as well.
+    \item Linus (REU): He will start on ROS2 tutorials soon.
+    \item Maicol (REU): He will start on TurtleBot tutorials soon.
+    \item Myself (with REU): I will set up Omniverse on TACC and VNC connection this week.
 
     \item DLO Control (MuJuCo): No update.
 
