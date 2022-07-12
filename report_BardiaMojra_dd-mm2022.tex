@@ -53,22 +53,20 @@ The University of Texas at Arlington
   \item QEKF Paper - 30\% extension (\textcolor{red}{June 30th}):
   \item Implementation (\textcolor{red}{May 30th}):
   \begin{itemize}
-      \item Point-feature extraction: tracking issue -- resolved
-      \item Address scale factor (depth-scale) issues: -- resolved
       \item Noise issue: noise cannot be modeled - revisit
-      \item Adding plots -- done
-      \item Rewrite RQuEst (RANSAC-QuEst) to use triangulation
-      \item Replace the relative pose estimation routine in SfM example with RQuEst
+      \item Rewrite RQuEst (RANSAC-QuEst) -- Done
+      \item Replace the relative pose estimation routine in SfM example with RQuEst -- Done
+      \item SfM: RQuEst cannot find solution -- under investigation
   \end{itemize}
   \item  DLO Manipulation:  \textcolor{red}{ICRA - Sept. 1st}
   \begin{itemize}
       \item Work on the paper everyday -- up-coming
-      \item Find other ICRA dataset papers and summarize the structure. -- Done.
-      \item Setup Omniverse on TACC -- Next
+      \item ICRA 2022 RL workshops: gym, stable-baseline3, and RL zoo -- on-going
       \item Setup digital twin reinforcement learing setup:
       \begin{itemize}
+        \item Unity Robotics extension setup -- on-going.
         \item Design dynamic DLO data collection system.
-        \item Build work cell.
+        \item Build work cell. -- on-going
         \item Collect data and create a dataset.
         \item Define evaluation metrics.
         \item Create a high frequency RGBD dataset with UV-frames and open-loop input control actions as the ground truth.
@@ -103,14 +101,8 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL - April 30st, 2022}): I finished working on
-    the plotting module for QEKF and was able to generate log plots for each of
-    the pose estimation algorithms. Although, there is an issue with the
-    quaternion estimation output where it does not update properly. It seems to
-    be a tuning issue, I looked into it but the issue presisted and I am working
-    Bundle Adjustment so I shelved QEKF for now. Figures 1 shows the estimated
-    poses, figures 2 and 3 show the QEKF outputs for the QuEst algorithm. The
-    rest of the outputs are attached to this report.
+    \item XEst (\textcolor{red}{RAL ---}): I integrated Kaveh's QuEst algorithm
+    into Matlab
 
     \begin{figure}[H]
       \begin{center}
