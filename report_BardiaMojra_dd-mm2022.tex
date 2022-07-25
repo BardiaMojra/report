@@ -98,30 +98,37 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL ---}): I printed out saved the outputs for
-    5-point algorithm \cite{nister2004efficient} as well as QuEst as they
-    estimate the essential matrix and
-    quaternion solutions respective. We need to investigate why QuEst can not
-    find a realizable solution. Although Quaternions are very robust to noise,
-    they very sensitive to noise when estimating them from point correspondences.
-    Coming up with a solution could take some time, so I put the project on
-    pause for now.
-    \item DLO Dataset (\textcolor{red}{ICRA - Sept. 1st}): I am working on
-    finishing Unity tutorials today. My notes are attached. Tomorrow, Maicol and
-    I will work Unity-ROS integration with UR5. Then, I will recreate the workcell.
-    \item Maicol (REU): He will do what he wants, but I think he is smart
-    enough not to do that. After your comment, I do not
-    feel comfortable assigning tasks to Maicol. Moveover, I explained to him
-    that this is your lab and you set the rules. If he is interested to
-    volunteer/work at UTARI under my project, I will have to assume
-    responsibility for him. That is what I told Dr. Gans that he agreed to
-    him volunteering in Spring. I explained to him, I have no say on pay and
-    Dr. Gans and Dr. Clements decide on that. I explained, his skillset,
-    contribution and performance are the defining factors for a paid position.
-    I explained to him that this is about mutual interested (him learning, and
-    me getting more done with my research) and I offered him a much fairer deal
-    than when I received as an undergrad. I like him but I don't need his help,
-    to be clear.
+    \item XEst (\textcolor{red}{RAL ---}): No technical update. Dr. Gans, Asif,
+    and I met to discuss Asif's involvement. He didn't seem interested.
+    Kaveh's work is incomplete, I shared this Dr. Gans he agreed. I will finish
+    it later, I will have to obsess over it. This is where I shine the most.
+
+    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 1st}): In this
+    paper, we will introduce a new augmented dataset for learning DLO local
+    dynamics. The dataset is based on a previously available work
+    \cite{zhang2021deformable} where we added annotation that allows for more
+    efficient learning of the DLO dynamics. Moreover, unlike \cite{zhang2021deformable}
+    and \cite{yu2022shape} who used VEA and online-offline Adaptive Control for
+    configuration estimation, respectively;
+    we deploy \emph{the Koopman Operator} to
+    learn the underlying \emph{locally linear dynamics} of the subject DLO.
+    \cite{zhang2021deformable} is the main paper I am following as for base
+    example. \cite{yu2022shape}, \cite{zhang2021deformable}, and \cite{zhang2021robots}
+    are the main papers I am following. Each of those papers have the code
+    available for them. \cite{yu2022shape} provides the code for a reinforcement
+    learning data collection setup with Unity and UR5. This is great basis for
+    my follow up work. \cite{nair2017combining} is the paper I mentioned at the
+    meeting. This paper is by Levine's group and I think both dataset and learning
+    method are very bad. Dr. Gans agreed. The rope is not dynamic for the most
+    part. The test setup does not challenge or interact with object dynamics and
+    its configuration is mostly determined by contact friction with the table.
+    Moreover, the learing methods is extremely inefficient because most pixels
+    in 60K images contain no information regarding object dynamics. My goal is
+    to learn dynamics with the Koopman Operator only from regions where we observe
+    a bend on the DLO. Everything else is noise in regards to the dynamics.
+    I need to read on the Koopman Operator.
+    \item Maicol (REU): I want him to continue on ROS2 and Unity and recreate
+    \cite{yu2022shape} over the summer. I will help him.
     \item PyTorch Tutorials: Transfer learning.
     \item Omniverse: Apply for access. -- To-Do
 
