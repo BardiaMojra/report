@@ -50,11 +50,11 @@ The University of Texas at Arlington
 
 \section{To Do}
 \begin{itemize}
-  \item QEKF Paper - 30\% extension (\textcolor{red}{---}): lack of direction
+  \item QEKF Paper - 30\% extension (\textcolor{red}{---}): QuEst solutions!!
   \item Implementation (\textcolor{red}{---}):
   \begin{itemize}
       \item Noise issue: noise cannot be modeled - revisit
-      \item SfM: RQuEst cannot find solution -- under investigation
+      \item SfM: RQuEst cannot find solution -- under investigation - HAVOK?
   \end{itemize}
   \item  DLO Manipulation: (\textcolor{red}{ICRA - Sept. 1st})
   \begin{itemize}
@@ -69,28 +69,11 @@ The University of Texas at Arlington
         \item Define evaluation metrics.
         \item Create a high frequency RGBD dataset with UV-frames and open-loop input control actions as the ground truth.
       \end{itemize}
-      \item Real-Time Preception
-      \begin{itemize}
-        \item Deep learning methods for keypoint pose estimation in real-time.
-        \item Use UV dye dataset
-        \item Use PVNet-like approach for known-object pose estimation.
-      \end{itemize}
+      \item Real-Time Preception -- on hold
       \item Learning DLO Dynamics and System Identification
       \begin{itemize}
-            \item List feasible approached for learing DLO dynamics
+            \item List feasible approached for learing DLO dynamics -- done
             \item Model dynamics and deformity in a latent space
-      \end{itemize}
-      \item Real-Time Control
-      \begin{itemize}
-        \item Time model inference, using auto-encoders generate the lowest
-        dimensional representation for each object.
-        \item Use another GAN model for object deformity for each object.
-        \item Evaluate encoded representation for accuracy.
-        \item Used another GAN to explore other abstraced representations from
-        individual encoded representation. In theory, we can create a low
-        dimensionsal representation for multiple similar objects, given all
-        individual low-dimensional representations. This is inspired by "fundamental
-        principles first" approach which has universal applicability.
       \end{itemize}
   \end{itemize}
 \end{itemize}
@@ -98,37 +81,38 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL ---}): No technical update. Dr. Gans, Asif,
-    and I met to discuss Asif's involvement. He didn't seem interested.
-    Kaveh's work is incomplete, I shared this Dr. Gans he agreed. I will finish
-    it later, I will have to obsess over it. This is where I shine the most.
+    \item XEst (\textcolor{red}{RAL ---}): No technical update. I have an
+    idea for finding the correct Quaternion solution at the end of QuEst.
+    Instead of trying to find the best 5 point correspondacnes and running a
+    low dimensional linear decomposition, we could keep all the point
+    correspondences and run Dynamic Mode Decomposition (DMD)
+    \cite{schmid2010dynamic} \cite{kutz2016dynamic} to dilute
+    the effect of i.i.d. noise on image pixels. Another method could be HAVOK
+    \cite{brunton2017chaos} which uses DMD and Koopman operator to estimate
+    a low dimensional linear estimate of the transform. The distribution of
+    intermitted forcing in HAVOK could be an indication of how much noise we
+    have bundled with selected point correspondacnes.
 
-    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 1st}): In this
-    paper, we will introduce a new augmented dataset for learning DLO local
-    dynamics. The dataset is based on a previously available work
-    \cite{zhang2021deformable} where we added annotation that allows for more
-    efficient learning of the DLO dynamics. Moreover, unlike \cite{zhang2021deformable}
-    and \cite{yu2022shape} who used VEA and online-offline Adaptive Control for
-    configuration estimation, respectively;
-    we deploy \emph{the Koopman Operator} to
-    learn the underlying \emph{locally linear dynamics} of the subject DLO.
-    \cite{zhang2021deformable} is the main paper I am following as for base
-    example. \cite{yu2022shape}, \cite{zhang2021deformable}, and \cite{zhang2021robots}
-    are the main papers I am following. Each of those papers have the code
-    available for them. \cite{yu2022shape} provides the code for a reinforcement
-    learning data collection setup with Unity and UR5. This is great basis for
-    my follow up work. \cite{nair2017combining} is the paper I mentioned at the
-    meeting. This paper is by Levine's group and I think both dataset and learning
-    method are very bad. Dr. Gans agreed. The rope is not dynamic for the most
-    part. The test setup does not challenge or interact with object dynamics and
-    its configuration is mostly determined by contact friction with the table.
-    Moreover, the learing methods is extremely inefficient because most pixels
-    in 60K images contain no information regarding object dynamics. My goal is
-    to learn dynamics with the Koopman Operator only from regions where we observe
-    a bend on the DLO. Everything else is noise in regards to the dynamics.
-    I need to read on the Koopman Operator.
-    \item Maicol (REU): I want him to continue on ROS2 and Unity and recreate
-    \cite{yu2022shape} over the summer. I will help him.
+
+    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 1st}): This week,
+    I researched Koopman operator, dynamic mode decomposition (DMD)
+    \cite{kutz2016dynamic} \cite{schmid2010dynamic},
+    extended dynamic mode decomposition (EDMD) \cite{williams2015data},
+    Hankel alternative view of Koopman (HAVOK) \cite{brunton2017chaos}, and
+    sparse identification of nonlinear dynamic systems (SiNDy) \cite{brunton2016discovering}.
+    All these methods are very similar in principle as they combine principal
+    component analysis (PCA) with frequency analysis to represent system or data
+    dynamics with respect to both time and space. Each of the mentioned methods
+    slightly differ from each other. For example, HAVOK and Koopman are low
+    dimensional where DMD and EDMD are high dimensional methods. Koopman and
+    HAVOK are continuous where SinDy is sparse. I will test all these methods
+    and present the results in my DLO paper. I will expand more in the paper.
+
+    Moreover, I finished setting up Refind boot manager and installed Ubuntu 18.04.
+    My plan is to use the simulation environment provided in \cite{yu2022shape}
+    to generate appropriate dataset for our experiments.
+
+    \item Maicol (REU): He has finals and he is busy doing Unity tutorials.
     \item PyTorch Tutorials: Transfer learning.
     \item Omniverse: Apply for access. -- To-Do
 
