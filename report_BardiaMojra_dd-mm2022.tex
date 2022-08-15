@@ -44,13 +44,13 @@ The University of Texas at Arlington
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item VPQEKF (\textcolor{red}{---}): Work on the paper.
-      \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 1st})
+      \item VPQEKF (\textcolor{red}{---}): On pause. Asif may look into it.
+      \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 1st}) - on-going.
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-  \item QEKF Paper - 30\% extension (\textcolor{red}{---}): QuEst solutions!!
+  \item QEKF Paper - 30\% extension (\textcolor{red}{---}):
   \item Implementation (\textcolor{red}{---}):
   \begin{itemize}
       \item Noise issue: noise cannot be modeled - revisit
@@ -81,40 +81,23 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL ---}): No technical update. I have an
-    idea for finding the correct Quaternion solution at the end of QuEst.
-    Instead of trying to find the best 5 point correspondacnes and running a
-    low dimensional linear decomposition, we could keep all the point
-    correspondences and run Dynamic Mode Decomposition (DMD)
-    \cite{schmid2010dynamic} \cite{kutz2016dynamic} to dilute
-    the effect of i.i.d. noise on image pixels. Another method could be HAVOK
-    \cite{brunton2017chaos} which uses DMD and Koopman operator to estimate
-    a low dimensional linear estimate of the transform. The distribution of
-    intermitted forcing in HAVOK could be an indication of how much noise we
-    have bundled with selected point correspondacnes.
+    \item XEst (\textcolor{red}{RAL ---}): No update.
 
 
-    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 1st}): This week,
-    I researched Koopman operator, dynamic mode decomposition (DMD)
-    \cite{kutz2016dynamic} \cite{schmid2010dynamic},
-    extended dynamic mode decomposition (EDMD) \cite{williams2015data},
-    Hankel alternative view of Koopman (HAVOK) \cite{brunton2017chaos}, and
-    sparse identification of nonlinear dynamic systems (SiNDy) \cite{brunton2016discovering}.
-    All these methods are very similar in principle as they combine principal
-    component analysis (PCA) with frequency analysis to represent system or data
-    dynamics with respect to both time and space. Each of the mentioned methods
-    slightly differ from each other. For example, HAVOK and Koopman are low
-    dimensional where DMD and EDMD are high dimensional methods. Koopman and
-    HAVOK are continuous where SinDy is sparse. I will test all these methods
-    and present the results in my DLO paper. I will expand more in the paper.
+    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 1st}): I setup the
+    DLO envronment \cite{yu2022shape} in Unity and I am able to run tests and
+    train a model. Now I am
+    looking into how to use this environment with Koopman operator to perform
+    system identification on the DLO. I have been
+    doing Unity ML-Agents tutorials in order to figure how I can interact with
+    the simulation using python script. I have extracted training configuration
+    poses as well.
 
-    Moreover, I finished setting up Refind boot manager and installed Ubuntu 18.04.
-    My plan is to use the simulation environment provided in \cite{yu2022shape}
-    to generate appropriate dataset for our experiments.
+    \item Maicol (REU): He has been working on UR5 workcell. He should be
+    finished by end of next.
+    \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.
 
-    \item Maicol (REU): He has finals and he is busy doing Unity tutorials.
     \item PyTorch Tutorials: Transfer learning.
-    \item Omniverse: Apply for access. -- To-Do
 
   \end{itemize}
 
