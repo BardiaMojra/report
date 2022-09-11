@@ -44,19 +44,18 @@ The University of Texas at Arlington
 
 \section{Specific Research Goals}
 \begin{itemize}
-      \item VPQEKF (\textcolor{red}{---}): On pause. Asif may look into it.
-      \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 1st}) - on-going.
+  \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 19th}) - on-going.
+  \item VPQEKF (\textcolor{red}{---}): On pause. Asif may look into it.
 \end{itemize}
 
 \section{To Do}
 \begin{itemize}
-  \item QEKF Paper - 30\% extension (\textcolor{red}{---}):
-  \item Implementation (\textcolor{red}{---}):
+  \item QEKF Paper (\textcolor{red}{On pause}):
   \begin{itemize}
-      \item Noise issue: noise cannot be modeled - revisit
-      \item SfM: RQuEst cannot find solution -- under investigation - HAVOK?
+      \item Noise issue: noise cannot be modeled - DMD is a robust noise on high dimensional orthonormal time series and should be able to denoise QuEst solutions.
+      \item SfM: RQuEst cannot find solution - A potential solution is described  briefly above.
   \end{itemize}
-  \item  DLO Manipulation: (\textcolor{red}{ICRA - Sept. 1st})
+  \item  DLO Manipulation: (\textcolor{red}{ICRA - section out of date})
   \begin{itemize}
       \item Work on the paper everyday -- up-coming
       \item ICRA 2022 RL workshops: gym, stable-baseline3, and RL zoo -- on-going
@@ -81,25 +80,29 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item XEst (\textcolor{red}{RAL ---}): No update.
 
 
-    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 15th}): Last week,
-    I was mostly busy with Unity tutorials and dealing with the financial aid
-    office. I had to figure out why they thought I make too much money to qualify
-    for FAFSA.
-    This week,
-    I will work on the DLO environment \cite{yu2022shape} in Unity to extract
-    state and input data.
+    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 15th}): I am working
+    piDMD source code and trying to understand how I can use the \emph{\textbf{BCCB}}
+    configuration \cite{baddoo2021physics}. The provided examples are minimal
+    and there are no instructions on how to use or even what it stands for.
+    But fortunately I think I understand the underlying mathematics.\\
+    They acknowledge some of their solutions are unstable and provide an
+    \emph{alternative solution to the upper-triangular piDMD problem.} They use
+    \emph{economy RQ decomposition of X} to write (84) and since \emph{the first
+    two terms of (84) are independent of \textbf{A} and, by multiplicity of the
+    Forbenius norm, have a non-negative sum.} On this basis, the
+    upper-triangular Procrustes is phrased (85) and borrowing a multi-row-wise
+    optimization computational technique from \emph{Block Discrete Fourier
+    Transform,} they write (88) as a direct solution for \textbf{A}, given
+    provided \emph{\textbf{data is rank deficient}}. Most often in real-world
+    experiments, data collected is rack deficient due to noise and measurement
+    imperfections. Moreover, they provide (89) as means to compute \textbf{R}
+    recursively backwards in order incease computational efficacy.
 
-    \item Maicol (REU): I have asked Maicol to wrap up his work on work-cell
-    digital twin in Unity and prepare a short presentation. I asked him present
-    his work to the lab as soon as possible and focus on his classes. He is
-    taking Electronics, Embedded I, Operating Systems and another class. He is
-    interested in helping with DLO project as well as his own DT project.
-    I told him that I dont want him to slow me down but if anything comes up,
-    I will discuss it with him.
+    \item Maicol (REU): He did well. DT is the future the industry has been dreaming of.
     \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.
+    \item XEst (\textcolor{red}{RAL ---}): No update.
 
     \item PyTorch Tutorials: Transfer learning.
 
