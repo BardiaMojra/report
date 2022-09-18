@@ -80,35 +80,66 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-
-
-    \item DLO State Estimation (\textcolor{red}{ICRA - Sept. 15th}): I am working
-    piDMD source code and trying to understand how I can use the \emph{\textbf{BCCB}}
-    configuration \cite{baddoo2021physics}. The provided examples are minimal
-    and there are no instructions on how to use or even what it stands for.
-    But fortunately I think I understand the underlying mathematics.\\
-    They acknowledge some of their solutions are unstable and provide an
-    \emph{alternative solution to the upper-triangular piDMD problem.} They use
-    \emph{economy RQ decomposition of X} to write (84) and since \emph{the first
-    two terms of (84) are independent of \textbf{A} and, by multiplicity of the
-    Forbenius norm, have a non-negative sum.} On this basis, the
-    upper-triangular Procrustes is phrased (85) and borrowing a multi-row-wise
-    optimization computational technique from \emph{Block Discrete Fourier
-    Transform,} they write (88) as a direct solution for \textbf{A}, given
-    provided \emph{\textbf{data is rank deficient}}. Most often in real-world
-    experiments, data collected is rack deficient due to noise and measurement
-    imperfections. Moreover, they provide (89) as means to compute \textbf{R}
-    recursively backwards in order incease computational efficacy.
-
-    \item Maicol (REU): He did well. DT is the future the industry has been dreaming of.
-    \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.
-    \item XEst (\textcolor{red}{RAL ---}): No update.
-
-    \item PyTorch Tutorials: Transfer learning.
-
+    \item DLO State Estimation (\textcolor{red}{IROS}):
+    On piDMD \emph{\textbf{BCCB}}, it stands for
+    \emph{block-continuous-continuous-block} and is a cubic configuration for
+    performing 3D \emph{fast Fourier transform}. The presented implementtation
+    does not run and its root cause was not investigated. The implementtation is
+    equivalent to multiplying data matrix \(\mathbb{X}\) with the Kronecker
+    product of two \emph{discrete Fourier transform matrices} (DFTMat) with dimension
+    factors of M and N as input. M and N are the least factors for square
+    matrices to become the size. This condition is necessary for DFTMat to be
+    applied to a Tensor. I wonder if using a tensor might be necessary to
+    correctly meet 3D adjacency constraints of the physical world.\
+    \emph(UpperTriangular and diagonal) constraints enforce 2D adjacency
+    but we are only able to run the diagonal. Triangular methods use RQ
+    decomposition (yields a singular and full-rank matrix for model) and are
+    thought to be computationally more efficient as
+    authors claimed~\cite{baddoo2021physics}.\\
+    I was able to run the algorithm with various \emph{circulant} constraints
+    which, resulted in poor performance but its surface plot clearly shows a
+    frequency reconstruction in polar coordinated frame. The implementtation
+    calls \(fft2()\) routine which, performs \emph{discrete Fourier transform}
+    on a matrix (2D). Understanding these details is essential for constructing
+    a viable solution for real-time manipulation and control on DLOs.\\
+    Furthermore, I continued testing and investigating piDMD and all it can
+    possibly offer. I plotted reconstructions and model
+    \emph{performance surfaces} and made a startling realization that piDMD is
+    only performing system identification task and as implemented, resultant
+    reconstructions cannot possibly be very accurate. This is related to
+    highly chaotic nature of DLOs; no matter how accurate and precise the model
+    is, it will go out of \emph{synch}. Chaotic systems are still nonlinear
+    systems and they need to be treated \emph{locally in time}. What we are
+    aiming to achieve is to \emph{model (or linearize)} a
+    DLO \emph{globally in space}. Thus, there needs to be online observations.\\
+    I went back to Murphy's paper to implement a Koopman-based controller
+    where, they use data collected from a
+    vertical take-off and landing (VTOL) pendulum system \cite{abraham2017model}.
+    In the paper, they mentioned data collected is a combination of multiple
+    test runs with different initial conditions. The purpose of this is to
+    obtain a set of Koopman operators or model that is robust to a range of
+    initial conditions. Moreover, they use Koopman operator only for system
+    identification and utilize optimal control with a L2 regularizer.\
+    Currently, I am working on Koopman operator approximator routine that
+    takes in number of lifting dimensions and choice of basis functions.
+    On a side note, we never lifted the space in the current implementation of
+    DLO code with piDMD but we can as the feature exists.\\
+    \item Maicol (REU): I want him to continue developing high quality model of
+    workcell (not the lab) and implement basic manipulation tasks. I need this
+    for DLO project and I can not do everything on my own. I can learn anything
+    so I aim high enough that I can barely make it. You do not support that
+    eventhough you have been patient with me.
+    In my strategy, I work on
+    cutting edge problems that others can not and I start with what is of most
+    strategic importance to me, i.e. learning controls and classical computer
+    vision while I am still a PhD student.\\
+    I am sacrificing more than anybody else to achieve my goals and
+    increasingly I feel isolated because of your comments. Comments that show
+    no interest or respect for my work and seem be betting against me everytime.
+    I came here to do good research and no one has any interest in that.\\
+    \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
+    \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
-
-
 \newpage
 
 %Sets the bibliography style to UNSRT and import the
