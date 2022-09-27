@@ -42,10 +42,55 @@ The University of Texas at Arlington
 
 \newpage
 
-\section{Specific Research Goals}
+\section{Research Plan}
+This section outlines my current research plan where the main ideas, target
+conference/journal, and expected date of completion for each paper
+are provided.
 \begin{itemize}
-  \item DLO Manipulation Dataset (ICRA - \textcolor{red}{Sept. 19th}) - on-going.
-  \item VPQEKF (\textcolor{red}{---}): On pause. Asif may look into it.
+  \item Koopman-01 (\textcolor{red}{IROS/RAL - Dec. 1st - active}):
+  Koopman-based MPC
+  control of VTOL-DIP and VTOL-TIP, experiments on choice of basis function and
+  lifting dimensions, and performance comparison with optimal, robust, and/or
+  adaptive control schemes.\
+  \item Quest-01 (\textcolor{orange}{IROS/RAL - Mar. 1st - next}):
+  Optimal transform solution for QuEst based on dominant mode decomposition (DMD).
+  \item Quest-02 (\textcolor{black}{IROS/RAL - date - status}):
+  QuEst-based EKF, structure from motion, and VSLAM, compare performance with
+  existing methods.
+  \item Koopman-02 (\textcolor{black}{IROS/RAL - date - status}):
+  A review on Koopman-based control schemes.
+  \item Koopman-03 (\textcolor{black}{IROS/RAL - date - status}):
+  Koopman-based control of DLO, experiments on choice of basis function and
+  lifting dimensions, compare results with existing methods.
+  \item Koopman-04 (\textcolor{black}{IROS/RAL - date - status}):
+  Physics Informed (PI) Koopman-based control of a DLO,
+  show obtained is persistant, compare to other non-PI methods, offline-online learning.
+  \item Koopman-05 (\textcolor{black}{IROS/RAL - date - status}):
+  PI Koopman operator (PIKO) based persistant model for DLOs, low dimensional,
+  compare performance, offline-online learing/adapting, fast transfer learning.
+  \item Koopman-06 (\textcolor{black}{IROS/RAL - date - status}):
+  PIKO-based unit segment model for DLOs, more generalized, should yield better
+  performance if number segments are selected online in order to
+  obtain optimal representation in real-time given available hardware, compare
+  results.
+  \item Koopman-07 (\textcolor{black}{IROS/RAL - date - status}):
+  DLO dataset, PIKO-based reinforcement learning of real DLO dynamics in a
+  digital twin (DT) setting,
+  experiments of model persistance, compare learning rate
+  with neural network based methods, compare performance with available methods,
+  and experiments on learing limitations.
+  \item Koopman-08 (\textcolor{black}{IROS/RAL - date - status}):
+  Koopman-based real-time control of DLO on GPU.
+  \item Koopman-09 (\textcolor{black}{IROS/RAL - date - status}):
+  PIKO-based real-time control of DLO on GPU.
+  \item Koopman-10 (\textcolor{black}{IROS/RAL - date - status}):
+  PIKO-based real-time control of deformable planar objects (DPO).
+  \item Koopman-11 (\textcolor{black}{IROS/RAL - date - status}):
+  PIKO-based real-time control of deformable volume objects (DVO).
+  \item Koopman-12 (\textcolor{black}{IROS/RAL - date - status}):
+  PIKO-based unit segment for DPOs, on GPU.
+  \item Koopman-13 (\textcolor{black}{IROS/RAL - date - status}):
+  PIKO-based unit segment for DVOs, on GPU.
 \end{itemize}
 
 \section{To Do}
@@ -57,86 +102,48 @@ The University of Texas at Arlington
   \end{itemize}
   \item  DLO Manipulation: (\textcolor{red}{ICRA - section out of date})
   \begin{itemize}
-      \item Work on the paper everyday -- up-coming
-      \item ICRA 2022 RL workshops: gym, stable-baseline3, and RL zoo -- on-going
       \item Setup digital twin reinforcement learing setup:
       \begin{itemize}
-        \item Unity Robotics extension setup -- on-going.
+        \item Unity Robotics extension setup -- done.
         \item Design dynamic DLO data collection system.
-        \item Build work cell. -- on-going
+        \item Build work cell. -- done
         \item Collect data and create a dataset.
         \item Define evaluation metrics.
         \item Create a high frequency RGBD dataset with UV-frames and open-loop input control actions as the ground truth.
       \end{itemize}
       \item Real-Time Preception -- on hold
-      \item Learning DLO Dynamics and System Identification
-      \begin{itemize}
-            \item List feasible approached for learing DLO dynamics -- done
-            \item Model dynamics and deformity in a latent space
-      \end{itemize}
+      \item Learning DLO Dynamics and System Identification - PIKO - On-going
   \end{itemize}
 \end{itemize}
 
+\newpage
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item DLO State Estimation (\textcolor{red}{IROS}):
-    On piDMD \emph{\textbf{BCCB}}, it stands for
-    \emph{block-continuous-continuous-block} and is a cubic configuration for
-    performing 3D \emph{fast Fourier transform}. The presented implementtation
-    does not run and its root cause was not investigated. The implementtation is
-    equivalent to multiplying data matrix \(\mathbb{X}\) with the Kronecker
-    product of two \emph{discrete Fourier transform matrices} (DFTMat) with dimension
-    factors of M and N as input. M and N are the least factors for square
-    matrices to become the size. This condition is necessary for DFTMat to be
-    applied to a Tensor. I wonder if using a tensor might be necessary to
-    correctly meet 3D adjacency constraints of the physical world.\
-    \emph(UpperTriangular and diagonal) constraints enforce 2D adjacency
-    but we are only able to run the diagonal. Triangular methods use RQ
-    decomposition (yields a singular and full-rank matrix for model) and are
-    thought to be computationally more efficient as
-    authors claimed~\cite{baddoo2021physics}.\\
-    I was able to run the algorithm with various \emph{circulant} constraints
-    which, resulted in poor performance but its surface plot clearly shows a
-    frequency reconstruction in polar coordinated frame. The implementtation
-    calls \(fft2()\) routine which, performs \emph{discrete Fourier transform}
-    on a matrix (2D). Understanding these details is essential for constructing
-    a viable solution for real-time manipulation and control on DLOs.\\
-    Furthermore, I continued testing and investigating piDMD and all it can
-    possibly offer. I plotted reconstructions and model
-    \emph{performance surfaces} and made a startling realization that piDMD is
-    only performing system identification task and as implemented, resultant
-    reconstructions cannot possibly be very accurate. This is related to
-    highly chaotic nature of DLOs; no matter how accurate and precise the model
-    is, it will go out of \emph{synch}. Chaotic systems are still nonlinear
-    systems and they need to be treated \emph{locally in time}. What we are
-    aiming to achieve is to \emph{model (or linearize)} a
-    DLO \emph{globally in space}. Thus, there needs to be online observations.\\
-    I went back to Murphy's paper to implement a Koopman-based controller
-    where, they use data collected from a
-    vertical take-off and landing (VTOL) pendulum system \cite{abraham2017model}.
-    In the paper, they mentioned data collected is a combination of multiple
-    test runs with different initial conditions. The purpose of this is to
-    obtain a set of Koopman operators or model that is robust to a range of
-    initial conditions. Moreover, they use Koopman operator only for system
-    identification and utilize optimal control with a L2 regularizer.\
-    Currently, I am working on Koopman operator approximator routine that
-    takes in number of lifting dimensions and choice of basis functions.
-    On a side note, we never lifted the space in the current implementation of
-    DLO code with piDMD but we can as the feature exists.\\
-    \item Maicol (REU): I want him to continue developing high quality model of
-    workcell (not the lab) and implement basic manipulation tasks. I need this
-    for DLO project and I can not do everything on my own. I can learn anything
-    so I aim high enough that I can barely make it. You do not support that
-    eventhough you have been patient with me.
-    In my strategy, I work on
-    cutting edge problems that others can not and I start with what is of most
-    strategic importance to me, i.e. learning controls and classical computer
-    vision while I am still a PhD student.\\
-    I am sacrificing more than anybody else to achieve my goals and
-    increasingly I feel isolated because of your comments. Comments that show
-    no interest or respect for my work and seem be betting against me everytime.
-    I came here to do good research and no one has any interest in that.\\
+    \item DLO Manipulation (\textcolor{red}{IROS}):
+    Last week, I was finally able to understand how Koopman operator is
+    implemented. I was able to find the implementation by Ian Abraham for
+    their DLO paper \cite{abraham2017model}. I ported the code in from Python
+    to Matlab and successfully run the project with a Van Der Pol model. As they
+    explain, a Van Der Pol model is created for generating multiple runs with
+    known random initial conditions and control input. Total of 10 runs with
+    200 time samples each are collected and concatenated. Multiple runs with
+    random initial conditions is crucial for properly capturing dominant dynamics
+    of the entire system. Moreover, the 2 dimensional system was lifted to 4
+    and a unique choice of basis function was used. The implementation is
+    fully object oriented which, allows quick and easy reuse with any simulation
+    or choice of basis function. Now, we want to replace Van Der Pol oscillator
+    with a double-pendulum, experiment with different choices of basis function,
+    and model predictive control (MPC) control schemes.
+    Later in the week, I learned Matlab Simscape multi-body simulator and
+    created a double-pendulum model.
+    At this time, I am learning about Simscape models and objects and how they
+    could be integrated into Matlab source code. This is a huge feat because
+    the model can be extended without having to change the source code and
+    Matlab code generator can be used to generate C, C++, and CUDA source code.
+    This is where object oriented implementation makes all the difference and
+    due to my implementation, the integration will require minimal effort.\\
+    \item Maicol (REU): No update, he is busy with classes.\\
     \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
     \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
