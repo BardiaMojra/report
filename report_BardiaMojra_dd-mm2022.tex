@@ -129,28 +129,17 @@ Target Journals: RAL, CVPR, CORAL.
 The following items are listed in the order of priority:
 \begin{itemize}
     \item DLO Manipulation (\textcolor{red}{IROS}):
-    Last week, I was finally able to understand how Koopman operator is
-    implemented. I was able to find the implementation by Ian Abraham for
-    their DLO paper \cite{abraham2017model}. I ported the code in from Python
-    to Matlab and successfully run the project with a Van Der Pol model. As they
-    explain, a Van Der Pol model is created for generating multiple runs with
-    known random initial conditions and control input. Total of 10 runs with
-    200 time samples each are collected and concatenated. Multiple runs with
-    random initial conditions is crucial for properly capturing dominant dynamics
-    of the entire system. Moreover, the 2 dimensional system was lifted to 4
-    and a unique choice of basis function was used. The implementation is
-    fully object oriented which, allows quick and easy reuse with any simulation
-    or choice of basis function. Now, we want to replace Van Der Pol oscillator
-    with a double-pendulum, experiment with different choices of basis function,
-    and model predictive control (MPC) control schemes.
-    Later in the week, I learned Matlab Simscape multi-body simulator and
-    created a double-pendulum model.
-    At this time, I am learning about Simscape models and objects and how they
-    could be integrated into Matlab source code. This is a huge feat because
-    the model can be extended without having to change the source code and
-    Matlab code generator can be used to generate C, C++, and CUDA source code.
-    This is where object oriented implementation makes all the difference and
-    due to my implementation, the integration will require minimal effort.\\
+    This week, I planned on working SimScape multi-body simulation tutorials
+    but I did not work on it. I am very much angry and frankly hurt over Dr.
+    Beksi choosing to humiliate me in front of the lab. It bothers that he
+    provided no valid reason, nor apologized for his conduct. It bothers me
+    because I trusted him and listened to him. It bothers me because I have
+    been working as hard as anybody else in this lab spite everything I am
+    going through. It bothers me because I am doing good research but it is
+    dismissed and humiliated because of a conference deadline. I feel alone,
+    pushed out and depressed. I was wrong to listen to Dr. Beksi and not going
+    on vacations, or going out. Listening to him is making me lose all
+    motivation. \\
     \item Maicol (REU): No update, he is busy with classes.\\
     \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
     \item XEst (\textcolor{red}{RAL ---}): No update.\\
