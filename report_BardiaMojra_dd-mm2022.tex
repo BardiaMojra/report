@@ -129,18 +129,34 @@ Target Journals: RAL, CVPR, CORAL.
 The following items are listed in the order of priority:
 \begin{itemize}
     \item DLO Manipulation (\textcolor{red}{IROS}):
-    This week, I planned on working SimScape multi-body simulation tutorials
-    but I did not work on it. I am very much angry and frankly hurt over Dr.
-    Beksi choosing to humiliate me in front of the lab. It bothers that he
-    provided no valid reason, nor apologized for his conduct. It bothers me
-    because I trusted him and listened to him. It bothers me because I have
-    been working as hard as anybody else in this lab spite everything I am
-    going through. It bothers me because I am doing good research but it is
-    dismissed and humiliated because of a conference deadline. I feel alone,
-    pushed out and depressed. I was wrong to listen to Dr. Beksi and not going
-    on vacations, or going out. Listening to him is making me lose all
-    motivation. \\
-    \item Maicol (REU): No update, he is busy with classes.\\
+    Last week, I looked into SimScape code API so it can be integrated into
+    our code. It has a learning curve that could delay our progress. Dr. Gans
+    and I decided to set that aside in the interest of implementing and
+    experimenting with a cart-pendulum system. I implemented the model and
+    associated Koopman operator controller. The model is a classical explicit
+    dynamical expression. However, the controller is different. In their seminal
+    work the authors, Ian Abraham and Tod Murphy, define two mapping functions
+    for state and input, respectively. The state, $x(t)->z(x(t))$ is lifted
+    from 4 to 7. Then, they consider an observable function $x(t),u(t)->v(x(t),u(t))$,
+    and provided its derivatives $dv/du$ and $dv/dz$. They define a \emph{general
+    objective function} with a \emph{differentiable policy}. They use a technique
+    called \emph{mode insertion gradient} which, I do not understand at this time.
+    This is too advanced and I only stared reading this part on Friday, so I do
+    not fully understand it. They analytically derive a \emph{Control Hamiltonian
+    with the input integrated}. This allows for optimal control with the input
+    and significantly reduced the training time. Moreover, they extend this
+    with an active learner which, I have not looked into.
+    \emph{Active-Koopman} is a separate paper \cite{abraham2019active} from
+    \cite{abraham2017model} which, we were originally following but the explanation
+    did not make sense for the cart-pendulum example.
+    I ported the code in and I am stepping through it. I don't believe the code
+    I ported in was the active learning example because they provide a separate
+    example for that but I am not sure. In the code, the policy is actively
+    updated.  \\
+    \item Maicol (REU): I want him to start working on Omniverse and Isaac Sim
+    tutorials, at his leasure. I believe having someone on the team who is
+    familiar with these development environments brings considerable value to
+    the team and particularly my own research.\\
     \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
     \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
