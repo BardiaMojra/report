@@ -128,47 +128,43 @@ Target Journals: RAL, CVPR, CORAL.
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item DOD Smart: I need to work on this asap.\\
+    \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
     \item DLO Manipulation (\textcolor{red}{IROS}):
-    Last week, I was mostly busy with assignments and exams. I was able to
-    implement MPC-Koopman controller for an inverted pendulum system. For
-    training purposes, I am able to generate \emph{nTrials} test runs with
-    a length of \emph{nSamps} given generated random input and initial conditions.
-    Moreover, lifted state and control input variables are depicted in figures
-    2 and 3. This inverted pendulum example is based on python implementation
-    for \cite{abraham2017model}.\\
+    This week, Dr. Gans and I debugged MPC-Koopman Cart-Pendulum code and I was
+    able to run some tests. For now, I ran 5 simple tests where they all have
+    the same training configuration but the tests are run for different lengths.
+    The goal of this preliminary experiment is to examine controller stability
+    of at steady state. The original code used 10 sets, 200 samples each for
+    training and 200 samples for test run duration. I kept the same training
+    congfiguration and increased test run samples from 200 to a range from 500
+    to 100,000 samples. Figure 1 depicts lifted state variables and control
+    input for T000002 with 1000 test run samples. I observed a mild
+    oscillation about the upright position but it is more stable at steady state
+    than an optimal controller. This is very interesting. Compared
+    to an optimal controller, MPC-Koopman controller damps state error much less
+    aggressively but it is UUB stable for much longer. Figure 2 depicts the
+    system lifted state and control input for T000004 with 20,000 test run
+    sample. An optimal controller,
+    exhibits random jerky response that makes the system eventually become
+    unstable. I will review the results with Dr. Gans, work on DOD Smart proposal
+    and move on to the dataset \cite{abraham2017model}.\\
 
     \begin{figure}[hp]
     \centering
     \captionsetup{justification=centering,margin=2cm}
-    \includegraphics[scale=.40]{plt_training_XU.png}
-      \caption{Inverted pendulum training data with $nTrials=10$ and
-      $nSamps = 200$. The data is generated with random initial conditions and
-      random input. Plot shows system state and control input with the following
-      as its variables, pendulum angle $\theta$, cart position $x$,
-      pendulum angular velocity $\dot{\theta}$, cart velocity $\dot{x}$, and
-      control input $u$.}
+    \includegraphics[scale=.40]{T0002_plt_run_Z1.png}
+      \caption{Inverted pendulum test run data with $nSamps = 1000$.}
     \end{figure}
 
     \begin{figure}[hp]
       \centering
       \captionsetup{justification=centering,margin=2cm}
-      \includegraphics[scale=.40]{plt_training_Z1.png}
+      \includegraphics[scale=.40]{T0004_plt_run_Z2.png}
         \caption{This image depicts the lifted state prior variables $z(x)$ and the
-        lifted control variables $v(u)$.}
-    \end{figure}
-
-
-    \begin{figure}[hp]
-      \centering
-      \captionsetup{justification=centering,margin=2cm}
-      \includegraphics[scale=.40]{plt_training_Z2.png}
-        \caption{This image depicts the lifted state posterior variables $z(x)$ and the
-        lifted control variables $v(u)$.}
+        lifted control variables $v(u)$ at steady state.}
     \end{figure}
 
     \item Maicol (REU): No update.\\
-    \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
     \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
 \newpage
