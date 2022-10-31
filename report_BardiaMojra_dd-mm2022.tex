@@ -42,7 +42,7 @@ The University of Texas at Arlington
 
 \newpage
 
-\section{Research Plan}
+\section{Research Plan - Out of date}
 This section outlines my current research plan where the main ideas, target
 conference/journal, and expected date of completion for each paper
 are provided.
@@ -101,7 +101,7 @@ Target Journals: RAL, CVPR, CORAL.
   PIKO-based unit segment for DVOs, on GPU.
 \end{itemize}
 
-\section{To Do}
+\section{To Do - Out of date}
 \begin{itemize}
   \item QEKF Paper (\textcolor{red}{On pause}):
   \begin{itemize}
@@ -128,43 +128,38 @@ Target Journals: RAL, CVPR, CORAL.
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-    \item DoD SMART (\textcolor{red}{Dec 1st.}): I started the application.\\
+    \item DoD SMART (\textcolor{red}{Dec 1st.}): I will be working on this for
+    the next couple weeks.\\
+    \item DLO Dataset (\textcolor{red}{Dec 1st.}): I am currently designing the
+    test. Later this week, I need to figure out how I want to collect visual and
+    pose data for the DLO. I think the best method would be a combination of
+    multiple cameras and depth sensors. I will discuss this with Dr. Gans and
+    Chris to get their input. For the test, so far I have the following:
+    \begin{itemize}
+      \item Clamped end low, DLO on table and flat, change gripper pose, no
+      twist on DLO: omega shape, s shape, u shape, circle shape, ellipse shape,
+      spiral.\
+      \item Clamped end low, DLO on table and 3D, with twist: same shapes.
+      \item Clamped end low, DLO angles at 30 degrees and 3D, without twist: same shapes.
+      \item Clamped end low, DLO angles at 45 degrees and 3D, without twist: same shapes.
+      \item Clamped end low, DLO angles at 60 degrees and 3D, without twist: same shapes.
+      \item Clamped end low, DLO angles at 30 degrees and 3D, with twist: same shapes.
+      \item Clamped end low, DLO angles at 45 degrees and 3D, with twist: same shapes.
+      \item Clamped end low, DLO angles at 60 degrees and 3D, with twist: same shapes.
+    \end{itemize}
+
     \item DLO Manipulation (\textcolor{red}{IROS}):
-    This week, Dr. Gans and I debugged MPC-Koopman Cart-Pendulum code and I was
-    able to run some tests. For now, I ran 5 simple tests where they all have
-    the same training configuration but the tests are run for different lengths.
-    The goal of this preliminary experiment is to examine controller stability
-    of at steady state. The original code used 10 sets, 200 samples each for
-    training and 200 samples for test run duration. I kept the same training
-    congfiguration and increased test run samples from 200 to a range from 500
-    to 100,000 samples. Figure 1 depicts lifted state variables and control
-    input for T000002 with 1000 test run samples. I observed a mild
-    oscillation about the upright position but it is more stable at steady state
-    than an optimal controller. This is very interesting. Compared
-    to an optimal controller, MPC-Koopman controller damps state error much less
-    aggressively but it is UUB stable for much longer. Figure 2 depicts the
-    system lifted state and control input for T000004 with 20,000 test run
-    sample. An optimal controller,
-    exhibits random jerky response that makes the system eventually become
-    unstable. I will review the results with Dr. Gans, work on DOD Smart proposal
-    and move on to the dataset \cite{abraham2017model}.\\
-
-    \begin{figure}[hp]
-    \centering
-    \captionsetup{justification=centering,margin=2cm}
-    \includegraphics[scale=.40]{T0002_plt_run_Z1.png}
-      \caption{Inverted pendulum test run data with $nSamps = 1000$.}
-    \end{figure}
-
-    \begin{figure}[hp]
-      \centering
-      \captionsetup{justification=centering,margin=2cm}
-      \includegraphics[scale=.40]{T0004_plt_run_Z2.png}
-        \caption{This image depicts the lifted state prior variables $z(x)$ and the
-        lifted control variables $v(u)$ at steady state.}
-    \end{figure}
-
-    \item Maicol (REU): No update.\\
+    Dr. Gans and I reviewed the Koopman cart-pendulum controller and there seem
+    to be a bug in the code, \cite{abraham2017model}. The solution does not
+    converge to zero as it should. I suspect the issue is related to Matlab and
+    Python handle vectors differently. I will inject known vector into both
+    implementation and trace where computational divergence begins. I am putting
+    this on pause until after the dataset is collected or some progress has been
+    made on that effort.\\
+    \item Maicol (REU): I gave him my paper on optimal control of double
+    inverted pendulum to read, it is gentle introduction to advanced robotics.
+    There, I show modeling and derivation of optimal controller for a nonlinear
+    and chaotic system. \\
     \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
 \newpage
