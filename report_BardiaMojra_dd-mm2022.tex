@@ -42,6 +42,45 @@ The University of Texas at Arlington
 
 \newpage
 
+
+\section{DLO Dataset Tests}
+\begin{itemize}
+  \item Clamped end low, DLO on table and flat, change gripper pose, no
+  twist on DLO:\@ omega shape, s shape, u shape, circle shape, ellipse shape,
+  spiral.
+  \item Clamped end low, DLO on table and 3D, with twist: same shapes.
+  \item Clamped end low, DLO angles at 30 degrees and 3D, without twist.
+  \item Clamped end low, DLO angles at 45 degrees and 3D, without twist.
+  \item Clamped end low, DLO angles at 60 degrees and 3D, without twist.
+  \item Clamped end low, DLO angles at 75 degrees and 3D, without twist.
+  \item Clamped end low, DLO angles at 90 degrees and 3D, without twist.
+  \item Clamped end low, DLO angles at 30 degrees and 3D, with twist.
+  \item Clamped end low, DLO angles at 45 degrees and 3D, with twist.
+  \item Clamped end low, DLO angles at 60 degrees and 3D, with twist.
+  \item Clamped end low, DLO angles at 75 degrees and 3D, with twist.
+  \item Clamped end low, DLO angles at 90 degrees and 3D, with twist.
+\end{itemize}
+
+\section{Progress}
+The following items are listed in the order of priority:
+\begin{itemize}
+  \item DoD SMART (\textcolor{red}{Dec 1st.}): I am currently working on this.\\
+  \item DLO Dataset (\textcolor{red}{Dec 1st.}): I finished designing the test.
+  This week, I will finish the test setup design and BOM. I will send out the
+  BOM by the end of this week. Moreover, I am installing Unity, Fusion360, and
+  setting up Intel Realsense for data collection. We will use a Realsense D455
+  and I borroughed one from the lab.
+  \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
+  \item Maicol (REU): He is working with me on DLO dataset. \\
+  \item XEst (\textcolor{red}{RAL ---}): No update.\\
+  \end{itemize}
+\newpage
+
+%Sets the bibliography style to UNSRT and import the
+\newpage
+\bibliography{ref}
+\bibliographystyle{ieeetr}
+
 \section{Research Plan - Out of date}
 This section outlines my current research plan where the main ideas, target
 conference/journal, and expected date of completion for each paper
@@ -100,73 +139,4 @@ Target Journals: RAL, CVPR, CORAL.
   \item Koopman-13 (\textcolor{black}{IROS/RAL - date - status}):
   PIKO-based unit segment for DVOs, on GPU.
 \end{itemize}
-
-\section{To Do - Out of date}
-\begin{itemize}
-  \item QEKF Paper (\textcolor{red}{On pause}):
-  \begin{itemize}
-      \item Noise issue: noise cannot be modeled - DMD is a robust noise on high dimensional orthonormal time series and should be able to denoise QuEst solutions.
-      \item SfM: RQuEst cannot find solution - A potential solution is described  briefly above.
-  \end{itemize}
-  \item  DLO Manipulation: (\textcolor{red}{ICRA - section out of date})
-  \begin{itemize}
-      \item Setup digital twin reinforcement learing setup:
-      \begin{itemize}
-        \item Unity Robotics extension setup -- done.
-        \item Design dynamic DLO data collection system.
-        \item Build work cell. -- done
-        \item Collect data and create a dataset.
-        \item Define evaluation metrics.
-        \item Create a high frequency RGBD dataset with UV-frames and open-loop input control actions as the ground truth.
-      \end{itemize}
-      \item Real-Time Preception -- on hold
-      \item Learning DLO Dynamics and System Identification - PIKO - On-going
-  \end{itemize}
-\end{itemize}
-
-\newpage
-\section{Progress}
-The following items are listed in the order of priority:
-\begin{itemize}
-    \item DoD SMART (\textcolor{red}{Dec 1st.}): I will be working on this for
-    the next couple weeks.\\
-    \item DLO Dataset (\textcolor{red}{Dec 1st.}): I am currently designing the
-    test. Later this week, I need to figure out how I want to collect visual and
-    pose data for the DLO. I think the best method would be a combination of
-    multiple cameras and depth sensors. I will discuss this with Dr. Gans and
-    Chris to get their input. For the test, so far I have the following:
-    \begin{itemize}
-      \item Clamped end low, DLO on table and flat, change gripper pose, no
-      twist on DLO: omega shape, s shape, u shape, circle shape, ellipse shape,
-      spiral.\
-      \item Clamped end low, DLO on table and 3D, with twist: same shapes.
-      \item Clamped end low, DLO angles at 30 degrees and 3D, without twist: same shapes.
-      \item Clamped end low, DLO angles at 45 degrees and 3D, without twist: same shapes.
-      \item Clamped end low, DLO angles at 60 degrees and 3D, without twist: same shapes.
-      \item Clamped end low, DLO angles at 30 degrees and 3D, with twist: same shapes.
-      \item Clamped end low, DLO angles at 45 degrees and 3D, with twist: same shapes.
-      \item Clamped end low, DLO angles at 60 degrees and 3D, with twist: same shapes.
-    \end{itemize}
-
-    \item DLO Manipulation (\textcolor{red}{IROS}):
-    Dr. Gans and I reviewed the Koopman cart-pendulum controller and there seem
-    to be a bug in the code, \cite{abraham2017model}. The solution does not
-    converge to zero as it should. I suspect the issue is related to Matlab and
-    Python handle vectors differently. I will inject known vector into both
-    implementation and trace where computational divergence begins. I am putting
-    this on pause until after the dataset is collected or some progress has been
-    made on that effort.\\
-    \item Maicol (REU): I gave him my paper on optimal control of double
-    inverted pendulum to read, it is gentle introduction to advanced robotics.
-    There, I show modeling and derivation of optimal controller for a nonlinear
-    and chaotic system. \\
-    \item XEst (\textcolor{red}{RAL ---}): No update.\\
-  \end{itemize}
-\newpage
-
-%Sets the bibliography style to UNSRT and import the
-\newpage
-\bibliography{ref}
-\bibliographystyle{ieeetr}
-
 \end{document}
