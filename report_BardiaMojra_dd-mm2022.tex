@@ -43,45 +43,63 @@ The University of Texas at Arlington
 \newpage
 
 
-\section{DLO Dataset Tests}
-\begin{itemize}
-  \item Clamped end low, DLO on table and flat, change gripper pose, no
-  twist on DLO:\@ omega shape, s shape, u shape, circle shape, ellipse shape,
-  spiral.
-  \item Clamped end low, DLO on table and 3D, with twist: same shapes.
-  \item Clamped end low, DLO angles at 30 degrees and 3D, without twist.
-  \item Clamped end low, DLO angles at 45 degrees and 3D, without twist.
-  \item Clamped end low, DLO angles at 60 degrees and 3D, without twist.
-  \item Clamped end low, DLO angles at 75 degrees and 3D, without twist.
-  \item Clamped end low, DLO angles at 90 degrees and 3D, without twist.
-  \item Clamped end low, DLO angles at 30 degrees and 3D, with twist.
-  \item Clamped end low, DLO angles at 45 degrees and 3D, with twist.
-  \item Clamped end low, DLO angles at 60 degrees and 3D, with twist.
-  \item Clamped end low, DLO angles at 75 degrees and 3D, with twist.
-  \item Clamped end low, DLO angles at 90 degrees and 3D, with twist.
-\end{itemize}
 
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DoD SMART (\textcolor{red}{Dec 1st.}): Submitted. \\
-  \item Photogrammertry Scanner: I developed a camera calibration module but my
-  initial system didnot work based on SfM code. I wanted this to work as a pose estimation
-  methods for DLO dataset, but it seem to complex and expensive at this point.
-  After discussing it with Dr. Gans and looking deeper into what it takes to
-  build one, we decided to use a Intel depth camera for now. I collected data with
-  two different cables to check image quality and the retrievable DLO configuration.
-  \item DLO Dataset (\textcolor{red}{Dec 1st.}): This week, I worked the BOM for
-  UR5 work cell, the final version is attached. Moreover, Maicol and I worked on
-  UR5 setup and we collected a test-run recording. One of the RealSense L515 cameras
-  doesnot work properly. We looked the issue, they recommended returning it.
-  Moreover, we printed the DLO mounting piece with Jerry's guidance.
-  I am figuring out how to work with the collected dataset at the moment. Maicol
-  and I are reviewing ROS and UR5 tutorials as well.
+  \item DLO Dataset (\textcolor{red}{March 1st.}): This week, Maicol and I
+  collected initial measurements for DLO dataset. We tested L515 LiDAR in different
+  ambient light settings. L515 datasheet and user guide recommend operating the
+  device in indoor environments and avoid sunlight as much as possible. We
+  made various recordings of four DLOs in different light settings, i.e., at noon,
+  at sunset, and after sunset. We did not observe a considerable difference between
+  the measurements but we lack a systematic method for quantitatively measuring the
+  effects of sunlight on DLO configuration estimation. See figures 1-4.\
+
+  \begin{figure}[h]
+    \caption{DLOs}
+    \includegraphics[width=8cm]{side_01.png}
+    \centering
+  \end{figure}
+
+
+  \begin{figure}[h]
+    \caption{DLOs}
+    \includegraphics[width=8cm]{side_02.png}
+    \centering
+  \end{figure}
+
+  \begin{figure}[h]
+    \caption{DLOs}
+    \includegraphics[width=8cm]{side_03.png}
+    \centering
+  \end{figure}
+
+  \begin{figure}[h]
+    \caption{DLOs}
+    \includegraphics[width=8cm]{top.png}
+    \centering
+  \end{figure}
+
+
+  Perhaps, it would be useful in our paper if we
+  provide information regarding ambient light (in lux) and how it effects our
+  measurements and configuration estimation of DLO. The DLOs include a thick hose
+  (part number and description needed), a AWG 10 red and black and CAT-6 bundle,
+  a CSA LL90485 Water resistant with three AWG 16 conductors, a yellow Southwire
+  E51583(UL) AWG 14 wire. See figure 5.\\
+
+
+  \begin{figure}[h]
+    \caption{DLOs}
+    \includegraphics[width=8cm]{DLOs}
+    \centering
+  \end{figure}
+
+  Currently, I am working on extracting the DLO shape from raw data.
+
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
-  \item Maicol (REU): I checked with Maicol on his reports, he miss his last
-  report due to finals, but is up to date now. I gave additional details regarding
-  our work to help him with his writing.\\
+  \item Maicol (REU): //
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
 \newpage
