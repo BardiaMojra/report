@@ -47,47 +47,78 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{March 1st.}): Last week, I figured out the 
-  simplest way to collect data from UR5 and RealSense camera without using ROS. 
-  
-ata.
+  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I figured out the
+  simplest way to collect data with UR5 and RealSense camera without using ROS.
+  I asked Chat GPT to write such code to find out what Python libraries are
+  available, please see attachments. Maicol is working on the next iteration of
+  the mount; we are trying to make it more accessable to researchers. We recognize
+  the lack of systematic approach to DLO system identification, control and
+  manipulation research. I am about to start working on the paper. Moreover,
+  I have shared my DLO master repository with you, Maicol, and Chris. Please
+  let me know if you have any issues accessing it; I might have to generate a
+  token for each access permission. Please find the repository at
+  \href{https://github.com/BardiaMojra/dlo.git}{https://github.com/BardiaMojra/dlo.git}.
 
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
   \item Maicol (REU): //
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
-\newpage
+
+
+\section{Research Plan}
+This section outlines my current research plan for the next 3 months, 6 months,
+and 1 year. Moreover, I have included open projects and ideas to keep track of
+them.\\
+Target conferences: ICRA, IROS (March), CASE (Late Feb.), NIPS.\\
+Target Journals: RAL, CVPR, CORAL.\\
+
+\subsection{Research Plan:}
+\begin{itemize}
+  \item \textbf{3 months:} The primary objective will be to publish the DLO dataset paper,
+  (\textcolor{red}{DLO-1}),
+  finished my classes, and to meet my next Ph.D. milestone, comprehensive exam.
+  My goal is to submit the DLO dataset paper to IROS by March 1st.\
+  \item \textbf{6 months:} Next, I want to explore using DMD as a method to retrieve the
+  correct Quaternion solution for the QuEst method, (\textcolor{red}{QuEst-01}).
+  I believe this testing this
+  is fairly fast and I should be able to publish that paper fairly quickly. I
+  believe the RAL would be an appropriate journal to target; we can discuss
+  this further with Dr. Gans to get his input.\
+  \item \textbf{1 year:} Next, I want to focus on (\textcolor{red}{PIKO-01}) as a method
+  for fast online system identification. My aim is to confirm this method by
+  comparing against existing Koopman-based methods. In the following work I
+  will extend this method to control DLOs in real time (\textcolor{red}{DLO-02}).\
+\end{itemize}
+
+\subsection{Research Pipeline:}
+\begin{itemize}
+  \item DLO-01 (\textcolor{red}{IROS - March 1st, 2023}):
+  DLO manipulation dataset with DLO configuration and gripper pose, as well
+  as the gripper control input. Ideally, UR5 back-EMF current and bus voltage
+  should be recorded. A DLO mount is introduced. A method for configuration
+  estimation is introduced. Perhaps, a method for learning DLO dynamic can be
+  trained and introduced.\
+  \item QuEst-01 (\textcolor{red}{IROS}):
+  Optimal transform solution for QuEst based on dominant mode decomposition (DMD).
+  \item PIKO-01 (\textcolor{red}{TBD}):
+  This work leverages DMD and Physics-Informed machine learning to extract
+  low-dimensional coherent modal structures from dynamic data. This method
+  will extends DMD-based approaches to include mixed basis functions. Moreover,
+  this method will automatically try to find the best fit at a specified range
+  of ranks. This method will be validated by comparing against the existing
+  Koopman-based MPC control schemes for VTOL-DIP method and introducing a method
+  for controlling VTOL-TIP in simulation.
+  This methods will become the backbone of my Koopman-based MPC
+  control research effort.\
+  \item DLO-02 (\textcolor{red}{TBD}):
+  This methods extend PIKO-01 to a control method for the DLO-01 dataset.
+
+\end{itemize}
+  \newpage
 
 %Sets the bibliography style to UNSRT and import the
 \newpage
 \bibliography{ref}
 \bibliographystyle{ieeetr}
 
-\section{Research Plan - Out of date}
-This section outlines my current research plan where the main ideas, target
-conference/journal, and expected date of completion for each paper
-are provided.
-Target conferences: ICRA, IROS (March), CASE (Late Feb.), NIPS.
-Target Journals: RAL, CVPR, CORAL.
-
-\begin{itemize}
-  \item Koopman-01 (\textcolor{red}{IROS - Dec. 1st - active}):
-  Koopman-based MPC control of VTOL-DIP and VTOL-TIP in simulation,
-  DLO pose estimation in simulation,
-  experiments on choice of basis function and lifting dimensions,
-  and performance comparison with optimal, robust, and/or
-  adaptive control schemes.\
-  \item Koopman-02 (\textcolor{red}{ACC - Sep 30th - active}):
-  A review on Koopman-based control schemes. \textcolor{red}{Not enough, make
-  it part of another paper.} Read papers and write literature reviews.\
-
-  \item Koopman-03 (\textcolor{black}{RAL - Mar. 1st - status}):
-  Extension to Koopman-01, Koopman-based dynamic estimation of DLO,
-  collect dynamic DLO dataset,
-  prediction of DLO configuration.
-
-  \item Quest-01 (\textcolor{orange}{IROS - Mar. 1st - next}):
-  Optimal transform solution for QuEst based on dominant mode decomposition (DMD).
-
-\end{itemize}
 \end{document}
