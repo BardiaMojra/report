@@ -47,20 +47,24 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I figured out the
-  simplest way to collect data with UR5 and RealSense camera without using ROS.
-  I asked Chat GPT to write such code to find out what Python libraries are
-  available, please see attachments. Maicol is working on the next iteration of
-  the mount; we are trying to make it more accessable to researchers. We recognize
-  the lack of systematic approach to DLO system identification, control and
-  manipulation research. I am about to start working on the paper. Moreover,
-  I have shared my DLO master repository with you, Maicol, and Chris. Please
-  let me know if you have any issues accessing it; I might have to generate a
-  token for each access permission. Please find the repository at
-  \href{https://github.com/BardiaMojra/dlo.git}{https://github.com/BardiaMojra/dlo.git}.
-
+  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I finished
+  reviewing the RealSense documentation and code examples. I worked through UR5e tutorials
+  and I am currently setting up the gripper. I take responsibility for originally
+  installing the gripper and not setting it up in software. Per UR documentation,
+  the robot touch center point (TCP), payload weight, and payload center of
+  gravity (CoG) should be updated according to the application. This is besides
+  the URCaps driver that is required for UR5e to interface with the gripper.
+  Improper payload configuration could explain the drift issue noted by Joe. In
+  the tutorial, they instruct updating the payload configuration per objects in
+  an object pick and placement application.
+  I am setting up UR5e and the gripper per documentation; I will try to save and
+  document everything as much as possible. Perhaps sometime today, I will record
+  a trajectory with UR5e over Ethernet connection. In the next step, I will
+  record the input, robot state, RGB images, point cloud frames, and depth map
+  frames.\\
+  \item Maicol: He has been assisting with updating the design and printing
+  the DLO mount.\\
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
-  \item Maicol (REU): //
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
 
