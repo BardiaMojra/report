@@ -47,23 +47,25 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I finished
-  reviewing the RealSense documentation and code examples. I worked through UR5e tutorials
-  and I am currently setting up the gripper. I take responsibility for originally
-  installing the gripper and not setting it up in software. Per UR documentation,
-  the robot touch center point (TCP), payload weight, and payload center of
-  gravity (CoG) should be updated according to the application. This is besides
-  the URCaps driver that is required for UR5e to interface with the gripper.
-  Improper payload configuration could explain the drift issue noted by Joe. In
-  the tutorial, they instruct updating the payload configuration per objects in
-  an object pick and placement application.
-  I am setting up UR5e and the gripper per documentation; I will try to save and
-  document everything as much as possible. Perhaps sometime today, I will record
-  a trajectory with UR5e over Ethernet connection. In the next step, I will
-  record the input, robot state, RGB images, point cloud frames, and depth map
-  frames.\\
-  \item Maicol: He has been assisting with updating the design and printing
-  the DLO mount.\\
+  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I wrote two
+  separate programs; one for collecting RealSense RGBD frames and generating the
+  corresponding point cloud for each frame, and another for connecting to UR5e
+  over IP and commanding it via a TCP-based ASCII API. The robot runs a custom
+  program (URP file) that anticipates commands while in Realtime Data Exchange
+  (RTDE) mode. I had some issues rerunning the program on Friday, which I need to
+  figure out why. Moreover, I need to set boundaries and movement constraints
+  to prevent self-collusion. Additionally, I need to investigate how we can
+  configure the elbow to stay up or down while the arm is in motion. The point
+  clouds and robot state data look good, and I need to combine the two programs
+  to collect and store data in sync. Lastly, Dr. Gans and I explored methods for
+  automatically segmenting and annotating the point cloud frames. Dr. Gans
+  suggested we use high-contrast colors for the DLO and its background (table)
+  and convert the point cloud colors to HSV color mapping for automated annotation.
+  I think it is simple and effective, I will implement it. We can also use
+  K-nearest neighbors and random forest algorithms to filter out noise and reconstruct
+  the DLO from a point cloud frame where a section of the DLO is missing or
+  is occluded.\\
+  \item Maicol:
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
