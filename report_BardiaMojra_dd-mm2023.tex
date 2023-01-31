@@ -47,25 +47,17 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I wrote two
-  separate programs; one for collecting RealSense RGBD frames and generating the
-  corresponding point cloud for each frame, and another for connecting to UR5e
-  over IP and commanding it via a TCP-based ASCII API. The robot runs a custom
-  program (URP file) that anticipates commands while in Realtime Data Exchange
-  (RTDE) mode. I had some issues rerunning the program on Friday, which I need to
-  figure out why. Moreover, I need to set boundaries and movement constraints
-  to prevent self-collusion. Additionally, I need to investigate how we can
-  configure the elbow to stay up or down while the arm is in motion. The point
-  clouds and robot state data look good, and I need to combine the two programs
-  to collect and store data in sync. Lastly, Dr. Gans and I explored methods for
-  automatically segmenting and annotating the point cloud frames. Dr. Gans
-  suggested we use high-contrast colors for the DLO and its background (table)
-  and convert the point cloud colors to HSV color mapping for automated annotation.
-  I think it is simple and effective, I will implement it. We can also use
-  K-nearest neighbors and random forest algorithms to filter out noise and reconstruct
-  the DLO from a point cloud frame where a section of the DLO is missing or
-  is occluded.\\
-  \item Maicol:
+  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I finished
+  developing and testing the configuration and data logging modules. I am mostly
+  adapting the python module I developed while working on QEKF project. Currently,
+  I am adapting the data management module; responsible for post-processing and
+  saving the data to file. Next, I will integrate the perception module into
+  the system, and we will begin collecting test data. At some point, I will
+  turn the UR5e example code into a module to seamlessly integrate into
+  my general OOP (object-oriented programming) architecture and other projects.
+  These modules will become a foundation to build upon while decreasing
+  development time.\\
+  \item Maicol: \\
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
@@ -92,7 +84,7 @@ Target Journals: RAL, CVPR, CORAL.\\
   this further with Dr. Gans to get his input.\
   \item \textbf{1 year:} Next, I want to focus on (\textcolor{red}{PIKO-01}) as a method
   for fast online system identification. My aim is to confirm this method by
-  comparing against existing Koopman-based methods. In the following work I
+  comparing it against existing Koopman-based methods. In the following work, I
   will extend this method to control DLOs in real time (\textcolor{red}{DLO-02}).\
 \end{itemize}
 
@@ -109,15 +101,15 @@ Target Journals: RAL, CVPR, CORAL.\\
   \item PIKO-01 (\textcolor{red}{TBD}):
   This work leverages DMD and Physics-Informed machine learning to extract
   low-dimensional coherent modal structures from dynamic data. This method
-  will extends DMD-based approaches to include mixed basis functions. Moreover,
+  will extend DMD-based approaches to include mixed basis functions. Moreover,
   this method will automatically try to find the best fit at a specified range
-  of ranks. This method will be validated by comparing against the existing
+  of ranks. This method will be validated by comparing it against the existing
   Koopman-based MPC control schemes for VTOL-DIP method and introducing a method
   for controlling VTOL-TIP in simulation.
-  This methods will become the backbone of my Koopman-based MPC
+  This method will become the backbone of my Koopman-based MPC
   control research effort.\
   \item DLO-02 (\textcolor{red}{TBD}):
-  This methods extend PIKO-01 to a control method for the DLO-01 dataset.
+  This method will extend PIKO-01 to a control method for the DLO-01 dataset.
 
 \end{itemize}
   \newpage
