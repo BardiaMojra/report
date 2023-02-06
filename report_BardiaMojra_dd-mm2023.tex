@@ -47,21 +47,24 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I finished
-  developing and testing the configuration and data logging modules. I am mostly
-  adapting the python module I developed while working on QEKF project. Currently,
-  I am adapting the data management module; responsible for post-processing and
-  saving the data to file. Next, I will integrate the perception module into
-  the system, and we will begin collecting test data. At some point, I will
-  turn the UR5e example code into a module to seamlessly integrate into
-  my general OOP (object-oriented programming) architecture and other projects.
-  These modules will become a foundation to build upon while decreasing
-  development time.\\
+  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I worked on
+  the RealSense module (rsDevice) for the most part. It turned out more complex
+  than I expected, but I have a much better understanding of the RealSense system.
+  RealSense has an internal save-to-file operation that is efficient in terms of
+  memory usage and execution time. This method is sufficient for data collection.
+  However, due to its distributed systems architecture, it is appropriate to use
+  ROS for real-time operations where the data is processed online. I have
+  integrated online data extraction without logging for visualization purposes.
+  This will affect the frame rate at which we can collect data, and I will
+  measure the execution times. Initially, I integrated Open3D for visualization,
+  but its integrated RealSense API has known bugs. I am using
+  OpenCV for now, but I will make a separate visualization module. I will be
+  ready to collect data soon, but learning the API is essential.\\
   \item Maicol: \\
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
-
+https://www.youtube.com/watch?v=WK5gUedQpK8
 
 \section{Research Plan}
 This section outlines my current research plan for the next 3 months, 6 months,
