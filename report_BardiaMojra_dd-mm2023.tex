@@ -47,24 +47,35 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last week, I worked on
-  the RealSense module (rsDevice) for the most part. It turned out more complex
-  than I expected, but I have a much better understanding of the RealSense system.
-  RealSense has an internal save-to-file operation that is efficient in terms of
-  memory usage and execution time. This method is sufficient for data collection.
-  However, due to its distributed systems architecture, it is appropriate to use
-  ROS for real-time operations where the data is processed online. I have
-  integrated online data extraction without logging for visualization purposes.
-  This will affect the frame rate at which we can collect data, and I will
-  measure the execution times. Initially, I integrated Open3D for visualization,
-  but its integrated RealSense API has known bugs. I am using
-  OpenCV for now, but I will make a separate visualization module. I will be
-  ready to collect data soon, but learning the API is essential.\\
+  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last night, I was able
+  to test the RealSense+UR5e data collection system in operation mode. I need to
+  disable the watchdog timer, and UR5e will run properly, but I rather keep it or
+  replace it with a similar safety feature. The code is developed based on
+  the latest versions of OpenCV, RealSense, and UR5e Python API, making it useful
+  for further development for at least five years. Moreover, the code
+  is objected-oriented and coding-standard compliant, making it portable,
+  modular, and easy to integrate into various applications. It can easily support
+  multiple dataset papers. rsDevice module is the object-oriented implementation of
+  RealSense API that currently supports RGBD capture, alignment, depth clipping,
+  decimation, filtering, save-to-file, live 2D view, point cloud generation,
+  bag file parser (rsParser Module), and more. The implementation supports
+  expansion to all available features provided by the manufacturer. While working
+  on the rsDevice module, I learned the original C++ implementation of the
+  RealSense API is buggy and requires special care while handling. C++ does not
+  have built-in garbage collection at the compiler level nor it provides routines
+  such as Malloc() and Calloc() for manual garbage collection. These routines
+  were introduced in C11 version of the C language, but I can not recall the same
+  for C++. Ultimately, their solution is to run the driver (pipeline) at the
+  Kernel level, similar to ROS and in Docker, as everything is contained. My
+  solution was to declare RealSense native objects as global objects within the
+  rsDevice module. The parser must be a separate module because
+  once the pipeline is closed, the deleted RealSense objects linger and do not allow
+  a new pipeline to start. Moreover, OpenCV (live-view mode) interferes with
+  bag file write operation; recorded bag files will have corrupted indexes.\\
   \item Maicol: \\
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
   \end{itemize}
-https://www.youtube.com/watch?v=WK5gUedQpK8
 
 \section{Research Plan}
 This section outlines my current research plan for the next 3 months, 6 months,
@@ -77,7 +88,7 @@ Target Journals: RAL, CVPR, CORAL.\\
 \begin{itemize}
   \item \textbf{3 months:} The primary objective will be to publish the DLO dataset paper,
   (\textcolor{red}{DLO-1}),
-  finished my classes, and to meet my next Ph.D. milestone, comprehensive exam.
+  finished my classes, and to meet my next Ph.D. milestone, the comprehensive exam.
   My goal is to submit the DLO dataset paper to IROS by March 1st.\
   \item \textbf{6 months:} Next, I want to explore using DMD as a method to retrieve the
   correct Quaternion solution for the QuEst method, (\textcolor{red}{QuEst-01}).
