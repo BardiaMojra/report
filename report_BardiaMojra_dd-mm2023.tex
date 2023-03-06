@@ -47,31 +47,16 @@ The University of Texas at Arlington
 \section{Progress}
 The following items are listed in the order of priority:
 \begin{itemize}
-  \item DLO Dataset (\textcolor{red}{IROS - March 1st.}): Last night, I was able
-  to test the RealSense+UR5e data collection system in operation mode. I need to
-  disable the watchdog timer, and UR5e will run properly, but I rather keep it or
-  replace it with a similar safety feature. The code is developed based on
-  the latest versions of OpenCV, RealSense, and UR5e Python API, making it useful
-  for further development for at least five years. Moreover, the code
-  is objected-oriented and coding-standard compliant, making it portable,
-  modular, and easy to integrate into various applications. It can easily support
-  multiple dataset papers. rsDevice module is the object-oriented implementation of
-  RealSense API that currently supports RGBD capture, alignment, depth clipping,
-  decimation, filtering, save-to-file, live 2D view, point cloud generation,
-  bag file parser (rsParser Module), and more. The implementation supports
-  expansion to all available features provided by the manufacturer. While working
-  on the rsDevice module, I learned the original C++ implementation of the
-  RealSense API is buggy and requires special care while handling. C++ does not
-  have built-in garbage collection at the compiler level nor it provides routines
-  such as Malloc() and Calloc() for manual garbage collection. These routines
-  were introduced in C11 version of the C language, but I can not recall the same
-  for C++. Ultimately, their solution is to run the driver (pipeline) at the
-  Kernel level, similar to ROS and in Docker, as everything is contained. My
-  solution was to declare RealSense native objects as global objects within the
-  rsDevice module. The parser must be a separate module because
-  once the pipeline is closed, the deleted RealSense objects linger and do not allow
-  a new pipeline to start. Moreover, OpenCV (live-view mode) interferes with
-  bag file write operation; recorded bag files will have corrupted indexes.\\
+  \item DLO Dataset (\textcolor{red}{RAL}): I have been trying to collect data
+  and I keep having various issues with both RealSense and UR5e. RealSense
+  Python API is finicky (poor implementation by Intel), and I keep having issues
+  parsing RealSense bag files. I found the bug; started debugging to learn
+  they recommend using ROS at the end. This has happened twice in two weeks,
+  a clear sign of what needs to be done. Dr. Gans and I agree on that, so I am
+  working on that. I will use ROS+Docker because of its containerization.
+  Moreover, I have been working on the dataset paper. At this point, I have
+  written the first draft for the introduction and related work sections. See
+  attachment. \\
   \item Maicol: \\
   \item DLO Manipulation (\textcolor{red}{IROS}): \cite{abraham2017model}.\\
   \item XEst (\textcolor{red}{RAL ---}): No update.\\
